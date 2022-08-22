@@ -8,6 +8,8 @@
     --white-color: #fff;
     --title-color: #494949;
     --slogan-color: #656565;
+    --text-color: #333;
+    --height-header: 77px;
 }
 
 body {
@@ -21,4 +23,14 @@ body {
 html {
     font-family: 'Montserrat', sans-serif;
     font-size: 62.5%;
+}
+
+a{
+    display: block;
+    text-decoration: none;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
