@@ -206,7 +206,7 @@ function Header() {
                                                                     Nike air force 1
                                                                 </Link>
                                                                 <div className={cx('product-color')}>
-                                                                    Color:  red
+                                                                    Color: red
                                                                 </div>
                                                                 <div className={cx('product-quantity')}>
                                                                     Số lượng: 1

@@ -41,15 +41,6 @@
     transition: transform 0.5s ease, opacity 0.2s ease, max-height 0s step-end, max-width 0s step-end, padding 0s step-end;
     animation: SubNavAnimation ease 0.5s;
 
-    li {
-        width: 100%;
-        margin: 0;
-
-        &:last-child a {
-            border-bottom: none;
-        }
-    }
-
     a {
         color: var(--text-color);
         font-weight: 400;
@@ -59,6 +50,18 @@
         color: #333;
         border-bottom: solid 1px #e5e6ec;
         text-align: left;
+
+    }
+
+    li {
+        width: 100%;
+        margin: 0;
+
+        &:last-child {
+            a {
+                border-bottom: none;
+            }
+        }
 
     }
 
@@ -203,6 +206,7 @@
     text-align: center;
     display: none;
     box-shadow: 0 0 2px black;
+
     .cart-noti {
         font-size: 1.5rem;
     }
@@ -221,6 +225,7 @@
 .form-products {
     display: flex;
     flex-wrap: wrap;
+
     .list-products {
         padding: 10px;
         width: 100%;
@@ -288,6 +293,7 @@
 .pay-btn {
     font-size: 1.5rem;
     padding: 10px;
+
     .total {
         display: flex;
         justify-content: space-between;
@@ -299,7 +305,8 @@
         color: var(--red-color);
         font-weight: 500;
     }
-    button{
+
+    button {
         width: 100%;
         background-color: #3f3fdb;
         color: var(--white-color);
