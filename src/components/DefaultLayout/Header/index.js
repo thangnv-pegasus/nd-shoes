@@ -5,13 +5,16 @@ import styles from './Header.module.scss'
 import routes from '../../../routes'
 import Logo from '../../Logo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown, faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faBasketShopping, faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faUser } from '@fortawesome/free-regular-svg-icons'
 import Search from '../../Search'
 
 const cx = className.bind(styles)
+const login = false;
+const size = 0;
 
 function Header() {
+
 
     return (
         <div className={cx('header')}>
@@ -139,12 +142,33 @@ function Header() {
                                 <li className={cx('search-icon')}>
                                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                                     <div className={cx('search-form')}>
-                                        {/* <Search /> */}
+                                        <Search />
                                     </div>
                                 </li>
                                 <li>
-                                    <Link to="">
+                                    <Link to="" className={cx('login-icon')}>
                                         <FontAwesomeIcon icon={faUser} />
+                                        {
+                                            login ? (
+                                                <div className={cx('user-form', 'form')}>
+                                                    <Link to="" className={cx('my-account')}>
+                                                        Tài khoản
+                                                    </Link>
+                                                    <Link to="" className={cx('log-out')}>
+                                                        Đăng xuất
+                                                    </Link>
+                                                </div>
+                                            ) : (
+                                                <div className={cx('login-form', 'form')}>
+                                                    <Link to="" className={cx('login')}>
+                                                        Đăng nhập
+                                                    </Link>
+                                                    <Link to="" className={cx('sign-up')}>
+                                                        Đăng ký
+                                                    </Link>
+                                                </div>
+                                            )
+                                        }
                                     </Link>
                                 </li>
                                 <li>
@@ -155,13 +179,120 @@ function Header() {
                                         </div>
                                     </Link>
                                 </li>
-                                <li>
+                                <li className={cx('header-cart')}>
                                     <Link to="" className={cx('shopping-cart')}>
                                         <FontAwesomeIcon icon={faCartShopping} />
                                         <div className={cx('current')}>
                                             0
                                         </div>
                                     </Link>
+                                    {
+                                        size <= 0 ? (
+                                            <div className={cx('cart-form')}>
+                                                <p className={cx('cart-noti')}>
+                                                    Không có sản phẩm nào bên trong giỏ hàng của bạn
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className={cx('cart-form', 'form-products')}>
+                                                <div className={cx('list-products')}>
+                                                    <div className={cx('product-item')}>
+                                                        <div className={cx('product-infor')}>
+                                                            <Link to="" className={cx('product-img')}>
+                                                                <img src="https://bizweb.dktcdn.net/thumb/compact/100/437/253/products/sp7-den-do.jpg" />
+                                                            </Link>
+                                                            <div className={cx('product-name')}>
+                                                                <Link to="" className={cx('product-title')}>
+                                                                    Nike air force 1
+                                                                </Link>
+                                                                <div className={cx('product-color')}>
+                                                                    Color:  red
+                                                                </div>
+                                                                <div className={cx('product-quantity')}>
+                                                                    Số lượng: 1
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className={cx('product-price')}>
+                                                            3.000.000đ
+                                                        </div>
+                                                    </div>
+                                                    <div className={cx('product-item')}>
+                                                        <div className={cx('product-infor')}>
+                                                            <Link to="" className={cx('product-img')}>
+                                                                <img src="https://bizweb.dktcdn.net/thumb/compact/100/437/253/products/sp7-den-do.jpg" />
+                                                            </Link>
+                                                            <div className={cx('product-name')}>
+                                                                <Link to="" className={cx('product-title')}>
+                                                                    Nike air force 1
+                                                                </Link>
+                                                                <div className={cx('product-color')}>
+                                                                    Color:  red
+                                                                </div>
+                                                                <div className={cx('product-quantity')}>
+                                                                    Số lượng: 1
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className={cx('product-price')}>
+                                                            3.000.000đ
+                                                        </div>
+                                                    </div>
+                                                    <div className={cx('product-item')}>
+                                                        <div className={cx('product-infor')}>
+                                                            <Link to="" className={cx('product-img')}>
+                                                                <img src="https://bizweb.dktcdn.net/thumb/compact/100/437/253/products/sp7-den-do.jpg" />
+                                                            </Link>
+                                                            <div className={cx('product-name')}>
+                                                                <Link to="" className={cx('product-title')}>
+                                                                    Nike air force 1
+                                                                </Link>
+                                                                <div className={cx('product-color')}>
+                                                                    Color:  red
+                                                                </div>
+                                                                <div className={cx('product-quantity')}>
+                                                                    Số lượng: 1
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className={cx('product-price')}>
+                                                            3.000.000đ
+                                                        </div>
+                                                    </div>
+                                                    <div className={cx('product-item')}>
+                                                        <div className={cx('product-infor')}>
+                                                            <Link to="" className={cx('product-img')}>
+                                                                <img src="https://bizweb.dktcdn.net/thumb/compact/100/437/253/products/sp7-den-do.jpg" />
+                                                            </Link>
+                                                            <div className={cx('product-name')}>
+                                                                <Link to="" className={cx('product-title')}>
+                                                                    Nike air force 1
+                                                                </Link>
+                                                                <div className={cx('product-color')}>
+                                                                    Color:  red
+                                                                </div>
+                                                                <div className={cx('product-quantity')}>
+                                                                    Số lượng: 1
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className={cx('product-price')}>
+                                                            3.000.000đ
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className={cx('pay-btn')}>
+                                                    <div className={cx('total')}>
+                                                        <span>Tổng tiền: </span>
+                                                        <span className={cx('result')}>3.000.000đ</span>
+                                                    </div>
+                                                    <button>
+                                                        Thanh toán
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )
+                                    }
                                 </li>
                             </ul>
                         </div>

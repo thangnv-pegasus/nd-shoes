@@ -8,13 +8,12 @@ const cx = classNames.bind(styles)
 function Search() {
     return (
         <form className={cx('search-form')}>
-            <input type="text" placeholder='Search...' />
+            <input type="text" placeholder='Tìm kiếm sản phẩm...' />
             <button>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
         </form>
     )
 }
-
 
 export default Search
