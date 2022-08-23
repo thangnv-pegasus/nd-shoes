@@ -1,0 +1,33 @@
+.banner{
+    width: 100%;
+    height: 510px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-top: var(--height-header);
+    &:hover{
+        .control{
+            display: block;
+        }
+    }
+}
+.control{
+    position: absolute;
+    top: 50%;
+    font-size: 3rem;
+    padding: 10px;
+    transform: translateY(-50%);
+    color: var(--white-color);
+    cursor: pointer;
+    display: none;
+    &:hover{
+        color: var(--blue-color);
+    }
+}
+.control-left{
+    left:0;
+}
+.control-right{
+    right: 0;
+}
