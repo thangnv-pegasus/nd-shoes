@@ -1,8 +1,8 @@
-.home{
+.home {
     min-height: 1000px;
 }
 
-.sub-banner__section{
+.sub-banner__section {
     background: #3f3fdb;
     padding: 25px 30px;
     margin: auto;
@@ -11,12 +11,134 @@
     z-index: 9;
     margin-bottom: 50px;
 }
-.banner-item{
+
+.banner-item {
     padding: 0 10px;
 }
 
-.new-products{
-    .title{
+.new-products {
+
+    .title {
         text-align: center;
+    }
+}
+
+.intro-img {
+    margin-bottom: 40px;
+    width: 100%;
+    height: 364px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+
+    li {
+        color: var(--text-color);
+        font-size: 16px;
+        padding: 5px 10px;
+        line-height: 19.5px;
+        margin: 0 5px;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--white-color);
+            background-color: #3f3fdb;
+        }
+    }
+}
+
+.products-section {
+    padding-bottom: 50px;
+}
+
+.see-more {
+    width: 245px;
+    height: 60px;
+    background: #3f3fdb;
+    font-size: 18px;
+    text-align: center;
+    line-height: 60px;
+    margin: auto;
+    margin-top: 45px;
+    color: var(--white-color);
+    font-weight: 600;
+
+    &:hover {
+        background: var(--red-color);
+    }
+}
+
+.active {
+    color: var(--white-color) !important;
+    background-color: #3f3fdb;
+}
+
+.accessory {
+    margin-bottom: 40px;
+}
+
+.accessory-img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: all ease 0.3s;
+    }
+
+    &:hover img {
+        transform: scale(1.05);
+    }
+}
+
+.sm-1 {
+    margin-bottom: 24px;
+}
+
+.accessory-title {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    z-index: 9;
+    width: calc(100% - 30px);
+    color: var(--white-color);
+
+    .accessory-name {
+        font-size: 32px;
+        line-height: 20px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        &:hover{
+            color: var(--red-color);
+        }
+    }
+
+    a {
+        color: var(--white-color);
+        font-size: 1.2rem;
+        line-height: 20px;
+        span{
+            color: #3f3fdb;
+            font-size: 1.6rem;
+        }
+        &:hover{
+            color: var(--red-color);
+        }
     }
 }

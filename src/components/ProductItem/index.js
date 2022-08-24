@@ -8,7 +8,7 @@ import styles from './ProductItem.module.scss'
 
 const cx = classNames.bind(styles)
 
-function ProductItem({img_src,name,brand,price,sale}) {
+function ProductItem({ img_src, name, brand, price_main, sale, price_sale }) {
 
     const [like, setLike] = useState(false)
 
@@ -24,7 +24,15 @@ function ProductItem({img_src,name,brand,price,sale}) {
                 {brand}
             </div>
             <div className={cx('product-price')}>
-                {price}
+                <div className={cx('price-main')}>
+                    {price_main}
+                </div>
+                {
+                    price_sale &&
+                    <div className={cx('price-sale')}>
+                        {price_sale}
+                    </div>
+                }
             </div>
             <div className={cx('heart')} onClick={() => setLike(!like)}>
                 {!like && <FontAwesomeIcon icon={faHeart} className={cx('heart-1')} />}
