@@ -7,10 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowsRotate, faGift, faPhone } from '@fortawesome/free-solid-svg-icons'
 import Title from '../../components/Title'
 import ProductItem from '../../components/ProductItem'
+import data from '../../data/db.json'
 
 const cx = classNames.bind(styles)
 
+
 function Home() {
+    const products = data.products
     return (
         <div className={cx('home')}>
             <Banner />
@@ -65,9 +68,25 @@ function Home() {
                     </Title>
                     <div className={cx('products-section')}>
                         <div className='row'>
-                            <div className="col c-3">
-                                <ProductItem />
-                            </div>
+                            {
+                                products.map((product) => {
+                                    if(product.id < 8) {
+                                        return (
+                                            <div className="col c-3" key={product.id}>
+                                                <ProductItem
+                                                    img_src={product.img_color[0].url[0]}
+                                                    name={product.name}
+                                                    price={product.price_main}
+                                                    brand={product.brand}
+                                                />
+                                            </div>
+                                        )
+                                    }
+                                    else{
+                                        return;
+                                    }
+                                })
+                            }
                         </div>
                     </div>
                 </div>

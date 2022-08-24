@@ -8,24 +8,23 @@ import styles from './ProductItem.module.scss'
 
 const cx = classNames.bind(styles)
 
-function ProductItem() {
+function ProductItem({img_src,name,brand,price,sale}) {
 
     const [like, setLike] = useState(false)
 
-    const sale = true;
     return (
         <div className={cx('product-item')}>
             <div className={cx('product-img')}>
-                <img src="https://bizweb.dktcdn.net/thumb/large/100/437/253/products/sp8-cam-trang.jpg?v=1640061137000" className={cx('img-1')} />
+                <img src={img_src} className={cx('img-1')} />
             </div>
             <Link to="" className={cx('product-name')}>
-                Nike air force 1 07
+                {name}
             </Link>
             <div className={cx('product-brand')}>
-                Nike
+                {brand}
             </div>
             <div className={cx('product-price')}>
-                3.500.000đ
+                {price}
             </div>
             <div className={cx('heart')} onClick={() => setLike(!like)}>
                 {!like && <FontAwesomeIcon icon={faHeart} className={cx('heart-1')} />}
