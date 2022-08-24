@@ -6,6 +6,7 @@ import { faHandshake } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowsRotate, faGift, faPhone } from '@fortawesome/free-solid-svg-icons'
 import Title from '../../components/Title'
+import ProductItem from '../../components/ProductItem'
 
 const cx = classNames.bind(styles)
 
@@ -57,11 +58,18 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className='grid wide'>
-                <div className={cx('new-products')}>
+            <div className={cx('new-products')}>
+                <div className='grid wide'>
                     <Title to="/" slogan='Các sản phẩm mới có tại cửa hàng'>
                         Sản phẩm mới
                     </Title>
+                    <div className={cx('products-section')}>
+                        <div className='row'>
+                            <div className="col c-3">
+                                <ProductItem />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

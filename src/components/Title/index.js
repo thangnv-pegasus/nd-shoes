@@ -6,7 +6,6 @@ const cx = classNames.bind(styles)
 
 function Title({ children, to, slogan }) {
     if (to) {
-        console.log(to)
         return (
             <div className={cx('section')}>
                 <Link to={to} className={cx('link', 'title')}>
