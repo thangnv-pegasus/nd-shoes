@@ -124,7 +124,8 @@
         line-height: 20px;
         font-weight: 600;
         margin-bottom: 15px;
-        &:hover{
+
+        &:hover {
             color: var(--red-color);
         }
     }
@@ -133,12 +134,46 @@
         color: var(--white-color);
         font-size: 1.2rem;
         line-height: 20px;
-        span{
+
+        span {
             color: #3f3fdb;
             font-size: 1.6rem;
         }
-        &:hover{
+
+        &:hover {
             color: var(--red-color);
         }
     }
 }
+
+.feed-back {
+    background-image: url('https://bizweb.dktcdn.net/100/423/630/files/background-feedback.jpg?v=1640052884750');
+    height: 800px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin: 40px 0;
+    z-index: 0;
+
+    .feedback-section {
+        padding: 80px 0;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        filter: saturate(0);
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: -1;
+    }
+}
+
+.news{
+    margin-bottom: 40px;
+}
+

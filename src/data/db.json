@@ -2580,10 +2580,63 @@
             "class": "bag"
         }
     ],
+    "feedback": [
+        {
+            "id": 1,
+            "name": "Đạt Vilamiu",
+            "comment": "Adidas Stan Smith là một trong những đôi giày thời đại mang đến cho mình cảm giác hứng khởi mỗi khi xỏ chân vào. Các bạn chưa biết chọn giày ở đâu có thể tham khảo giày của Mew Shoes nhé.",
+            "url": "https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/feedback_1.jpg?1660294502239"
+        },
+        {
+            "id": 2,
+            "name": "Trang Đào",
+            "comment": "Nike Epic React Flyknit là một trong số ít những đôi giày mang đến cho mình cảm giác hứng khởi mỗi khi xỏ chân vào. Các bạn chưa biết chọn giày ở đâu có thể tham khảo giày của Mew Shoes nhé.",
+            "url": "https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/feedback_2.jpg?1660294502239"
+        },
+        {
+            "id": 3,
+            "name": "Nhung Nguyễn",
+            "comment": "Nike Air Force 1 Low All White là một trong số ít những đôi giày mang đến cho mình cảm giác hứng khởi mỗi khi xỏ chân vào. Các bạn chưa biết chọn giày ở đâu có thể tham khảo giày của Mew Shoes nhé.",
+            "url": "https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/feedback_5.jpg?1660294502239"
+        },
+        {
+            "id": 4,
+            "name": "Hà Trang",
+            "comment": "Adidas Stan Smith là một trong những đôi giày thời đại mang đến cho mình cảm giác hứng khởi mỗi khi xỏ chân vào. Các bạn chưa biết chọn giày ở đâu có thể tham khảo giày của Mew Shoes nhé.",
+            "url": "https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/feedback_6.jpg?1660294502239"
+        },
+        {
+            "id": 5,
+            "name": "Hương Suri",
+            "comment": "Adidas Stan Smith là một trong những đôi giày thời đại mang đến cho mình cảm giác hứng khởi mỗi khi xỏ chân vào. Các bạn chưa biết chọn giày ở đâu có thể tham khảo giày của Mew Shoes nhé.",
+            "url": "https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/feedback_3.jpg?1660294502239"
+        },
+        {
+            "id": 6,
+            "name": "Tiến Bịp",
+            "comment": "Adidas Stan Smith là một trong những đôi giày thời đại mang đến cho mình cảm giác hứng khởi mỗi khi xỏ chân vào. Các bạn chưa biết chọn giày ở đâu có thể tham khảo giày của Mew Shoes nhé.",
+            "url": "https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/feedback_4.jpg?1660294502239"
+        },
+        {
+            "id": 7,
+            "name": "Lộc Fuho",
+            "comment": "Adidas Stan Smith là một trong những đôi giày thời đại mang đến cho mình cảm giác hứng khởi mỗi khi xỏ chân vào. Các bạn chưa biết chọn giày ở đâu có thể tham khảo giày của Mew Shoes nhé.",
+            "url": "https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/feedback_7.jpg?1660294502239"
+        },
+        {
+            "id": 8,
+            "name": "Trần Đức Bo",
+            "comment": "Adidas Stan Smith là một trong những đôi giày thời đại mang đến cho mình cảm giác hứng khởi mỗi khi xỏ chân vào. Các bạn chưa biết chọn giày ở đâu có thể tham khảo giày của Mew Shoes nhé.",
+            "url": "https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/feedback_8.jpg?1660294502239"
+        }
+    ],
     "blogs": [
         {
             "id": 1,
             "title": "King James mang đôi OFF-WHITE x Nike Air Force 1 University Yellow của Virgil Abloh có gì đặc biệt?",
+            "author": "Nguyễn Anh Dũng",
+            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t7.jpg?v=1640076034077",
+            "date": "Ngày 21/12/2021",
             "content": [
                 "OFF-WHITE x Nike Air Force 1 University Yellow là đôi sneakers được hé lộ trong website public—domain.com, một website mô phỏng màn hình desktop làm việc của Virgil Abloh. Đây là đôi sneakers được giới sneakerhead trông chờ bởi phối màu vàng cực kỳ bắt mắt, bên cạnh việc collab cực hype giữa Virgil Abloh và Nike từ năm 2017 mang tên THE TEN.",
                 "Trên chân Lebron James đôi Off-white x Nike Air Force 1 University Yellow Virgil Abloh Trên chân Lebron James đôi Off-white x Nike Air Force 1 University Yellow do Virgil Abloh ký tặng. Tính đến nay, Nike và Virgil Abloh đã leak ra thêm nhiều mẫu collab, như một cách viral tự nhiên nhằm giúp cho những ai yêu thích sneakers phải luôn trông chờ và cập nhật tin tức. Ngoài ra, việc teasing (ra mắt không chính thức) một sản phẩm trên một Đại diện Thương hiệu với sức ảnh hưởng lớn, cụ thể ở đây là King James, VĐV Lebron James, mang trên chân như một cú hích khiến đôi giày ngày càng được chú ý hơn trước ngày ra mắt chính thức.",
@@ -2593,6 +2646,9 @@
         {
             "id": 2,
             "title": "Hàng loạt các phối màu của adidas Stan Smith được tung ra dành cho tín đồ mê sneakers",
+            "author": "Nguyễn Anh Dũng",
+            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t5.jpg?v=1640075969097",
+            "date": "Ngày 21/12/2021",
             "content": [
                 "Adidas Stan Smith đã không còn xa lạ với bất cứ ai yêu mến sneakers trên toàn cầu nói chung và tại Việt Nam nói riêng. Một thiết kế giản đơn sử dụng chất liệu da màu trắng & gót xanh lá cây lấy ý tưởng từ quả bóng tennis ra mắt vào năm 1963. Trải qua quá trình phát triển, Stan Smith là một trong những sản phẩm tiêu biểu cho nền văn hóa sneakers trên toàn cầu. Khó ai có thể phủ nhận được tính ứng dụng cực kỳ linh hoạt của đôi sneakers này bởi nó hoàn toàn có thể đi cùng với các outfit dành cho những ai yêu mến thời trang đường phố, hay linh động hơn là một item không thể thiếu cho những ai phải sử dụng thời trang văn phòng mang tính chuẩn mực nhưng có nét riêng phá cách.",
                 "Hàng loạt các phối màu của adidas Stan Smith đã được ra mắt với mức giá 100 USD, một mức giá quá sức tuyệt vời cho đôi sneakers adidas Stan Smith. Bên cạnh đó, adidas còn đang đẩy mạnh quá trình hợp tác cùng với Parley For The Oceans để bắt đầu đưa các vật liệu nhựa tái chế vào các đôi sneakers classic này. adidas và Parley For The Oceans đã thành công vang dội kể từ khi ra mắt vào năm 2017 với hàng trăm triệu đôi giày mà đặc biệt là Ultra BOOST đã được bán ra trên toàn cầu. Go Green – Sông xanh là một ý tưởng độc đáo kết hợp cùng màu xanh Green của Stan Smith mà adidas mong muốn truyền tải đến những fans hâm mộ sneakers.",
@@ -2602,6 +2658,9 @@
         {
             "id": 3,
             "title": " Nike AIR FORCE 1 Love Women – Phối màu dành riêng cho một nửa thế giới",
+            "author": "Nguyễn Anh Dũng",
+            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t6.jpeg?v=1640075992740",
+            "date": "Ngày 21/12/2021",
             "content": [
                 "Nike lại tiếp tục tung ra một phối màu sử dụng tông màu trắng chủ đạo bằng chất liệu canvas kết hợp denim trên đôi sneakers được xem là biểu tượng của thương hiệu, Nike Air Force 1 Love Women.",
                 "Đôi sneakers Air Force 1 Love Women lần này được phát hành dành riêng cho phái nữ. Khi nhìn vào phần lưỡi gà, điểm đặc biệt nhất đó chính là logo The Swoosh và trái tim cùng kề cạnh như biểu hiện cho tình yêu mà thương hiệu đến từ Mỹ dành riêng cho phái nữ, một nửa quan trong của thế giới.",
@@ -2616,6 +2675,9 @@
         {
             "id": 4,
             "title": "Tokyo hoài niệm trong Tuần lễ Thời trang Milan",
+            "author": "Nguyễn Anh Dũng",
+            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t4.jpeg?v=1640075922867",
+            "date": "Ngày 21/12/2021",
             "content": [
                 "Thương hiệu thời trang Nhật Bản Onitsuka Tiger tiếp tục trình làng bộ sưu tập (BST) đương đại kết hợp giữa thời trang và thể thao, pha trộn giữa yếu tố di sản và tinh thần đổi mới.",
                 "Onitsuka Tiger, dưới sự chỉ đạo nghệ thuật của Andrea Pompilio, vừa mới giới thiệu bộ sưu tập Xuân/Hè 2022 tại Milan theo hình thức một bộ phim ngắn với tựa đề “MILAN-TOKYO”, do Hideto Hotta đạo diễn.",
@@ -2630,6 +2692,9 @@
         {
             "id": 5,
             "title": "Onitsuka Tiger ra mắt đồng phục chính thức của Intel World Open",
+            "author": "Nguyễn Anh Dũng",
+            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t3.jpg?v=1640075877943",
+            "date": "Ngày 21/12/2021",
             "content": [
                 "Thương hiệu thời trang Nhật Bản Onitsuka Tiger tự hào thông báo về việc tham gia Intel World Open – giải đấu Esports toàn cầu do Intel tổ chức, với tư cách là đối tác sản xuất đồng phục chính thức. Trong thời gian diễn ra sự kiện, thương hiệu cũng hợp tác với Tomohisa Yamashita và phát hành loạt video trên YouTube nhằm thúc đẩy sự phát triển của một xã hội hòa nhập thông qua Esports, trong đó video đầu tiên được phát hành hôm nay.",
                 "Onitsuka Tiger đã luôn chú ý đến tiềm năng của Esports trong việc tạo ra một xã hội nơi mà mỗi cá nhân đều được đón nhận, bất kể tuổi tác, giới tính, quốc tịch hay bất kỳ khiếm khuyết nào, hướng tới mục tiêu giúp Esports trở nên phổ biến cùng với nhiều cơ hội và thách thức mới.",
@@ -2641,6 +2706,9 @@
         {
             "id": 6,
             "title": "Vợ của Kobe Bryant đã thỏa thuận chấm dứt hợp đồng cùng Nike",
+            "author": "Nguyễn Anh Dũng",
+            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t2.jpg?v=1640075847057",
+            "date": "Ngày 21/12/2021",
             "content": [
                 "Vanessa Bryant, vợ của Kobe Bryant – VĐV Bóng rổ có tầm ảnh hưởng cực lớn trong nền văn hóa sneakers cũng như bộ môn Bóng rổ, đã kết thúc hợp đồng hợp tác cùng Nike. Trong suốt quá trình Kobe Bryant (Black Mamba) và Nike hợp tác đã đưa ra hàng loạt sản phẩm cực đỉnh đến cộng đồng “Quả bóng Cam” trên toàn cầu. Di sản mà Kobe để lại sau ngày mất vẫn luôn ở đó & truyền cảm hứng cho những ai mong muốn theo đuổi đam mê & sống hết mình cho sự chọn lựa về sự nghiệp cũng như giấc mơ của riêng mình.",
                 "Kobe Bryant",

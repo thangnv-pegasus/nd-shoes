@@ -10,6 +10,8 @@ import ProductItem from '../../components/ProductItem'
 import data from '../../data/db.json'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import FeedBack from '../../components/FeedBack'
+import Blog from '../../components/Blog'
 
 const cx = classNames.bind(styles)
 const products = data.products
@@ -22,6 +24,9 @@ const Puma = products.filter((product) => product.brand.toLowerCase() === 'puma'
 const Fila = products.filter((product) => product.brand.toLowerCase() === 'fila')
 const MLB = products.filter((product) => product.brand.toLowerCase() === 'mlb')
 const NewBalance = products.filter((product) => product.brand.toLowerCase() === 'new balance')
+
+const feedback = data.feedback
+const blogs = data.blogs
 
 function Home() {
     const [elementActive, setElementActive] = useState()
@@ -273,6 +278,57 @@ function Home() {
                         <Link to="" className={cx('see-more')}>
                             Xem tất cả
                         </Link>
+                    </div>
+                </div>
+            </div>
+            <div className={cx('feed-back')}>
+                <div className='grid wide' style={{ zIndex: '10' }}>
+                    <div className={cx('feedback-section')}>
+                        <Title
+                            slogan='Album feedback của khách hàng về ND Shoes'
+                            whiteColor={true}
+                        >
+                            Feed back
+                        </Title>
+                        <div className='row'>
+                            {
+                                feedback.map((fb) => {
+                                    return (
+                                        <div className='col l-3' key={fb.id}>
+                                            <FeedBack
+                                                feedback={fb}
+                                            />
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={cx('news')}>
+                <div className='grid wide'>
+                    <div className={cx('news-section')}>
+                        <Title to="/"
+                            slogan='Tổng hợp tin tức, mẹo vặt cho bạn'
+                        >
+                            Tin tức
+                        </Title>
+                        <div className='row'>
+                            {
+                                blogs.map(blog => {
+                                    if (blog.id < 4) {
+                                        return (
+                                            <div className='col l-4'>
+                                                <Blog
+                                                    blog={blog}
+                                                />
+                                            </div>
+                                        )
+                                    }
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
