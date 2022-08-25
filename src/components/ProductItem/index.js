@@ -1,5 +1,5 @@
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { faHeart as Heart1 } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown, faCartArrowDown, faHeart as Heart1 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
 import { useState } from "react";
@@ -37,6 +37,9 @@ function ProductItem({ img_src, name, brand, price_main, sale, price_sale }) {
             <div className={cx('heart')} onClick={() => setLike(!like)}>
                 {!like && <FontAwesomeIcon icon={faHeart} className={cx('heart-1')} />}
                 {like && <FontAwesomeIcon icon={Heart1} className={cx('heart-2')} />}
+            </div>
+            <div className={cx('add-cart')}>
+                <FontAwesomeIcon icon={faCartArrowDown} />
             </div>
             {
                 sale &&
