@@ -8,29 +8,29 @@ import styles from './ProductItem.module.scss'
 
 const cx = classNames.bind(styles)
 
-function ProductItem({ img_src, name, brand, price_main, sale, price_sale }) {
+function ProductItem({ product }) {
 
     const [like, setLike] = useState(false)
-
+    const sale = false
     return (
         <div className={cx('product-item')}>
             <div className={cx('product-img')}>
-                <img src={img_src} className={cx('img-1')} />
+                <img src={product.img_color[0].url[0]} className={cx('img-1')} />
             </div>
             <Link to="" className={cx('product-name')}>
-                {name}
+                {product.name}
             </Link>
             <div className={cx('product-brand')}>
-                {brand}
+                {product.brand}
             </div>
             <div className={cx('product-price')}>
                 <div className={cx('price-main')}>
-                    {price_main}
+                    {product.price_main}
                 </div>
                 {
-                    price_sale &&
+                    product.price_sale &&
                     <div className={cx('price-sale')}>
-                        {price_sale}
+                        {product.price_sale}
                     </div>
                 }
             </div>

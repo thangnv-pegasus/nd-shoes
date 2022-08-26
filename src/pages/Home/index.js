@@ -130,11 +130,7 @@ function Home() {
                                         return (
                                             <div className='col l-3' key={product.id}>
                                                 <ProductItem
-                                                    img_src={product.img_color[0].url[0]}
-                                                    name={product.name}
-                                                    price_main={product.price_main}
-                                                    price_sale={product.price_sale}
-                                                    brand={product.brand}
+                                                    product={product}
                                                 />
                                             </div>
                                         )
@@ -164,11 +160,7 @@ function Home() {
                                         return (
                                             <div className='col l-3' key={product.id}>
                                                 <ProductItem
-                                                    img_src={product.img_color[0].url[0]}
-                                                    name={product.name}
-                                                    price_main={product.price_main}
-                                                    price_sale={product.price_sale}
-                                                    brand={product.brand}
+                                                    product={product}
                                                 />
                                             </div>
                                         )
@@ -221,11 +213,7 @@ function Home() {
                                         return (
                                             <div className='col l-3' key={index}>
                                                 <ProductItem
-                                                    img_src={product.img_color[0].url[0]}
-                                                    name={product.name}
-                                                    price_main={product.price_main}
-                                                    price_sale={product.price_sale}
-                                                    brand={product.brand}
+                                                    product={product}
                                                 />
                                             </div>
                                         )

@@ -1,5 +1,6 @@
 .sort{
     padding-bottom: 15px;
+    user-select: none;
 }
 .title{
     font-size: 1.4rem;
@@ -37,12 +38,13 @@
         margin-right: 10px;
         border-radius: 100%;
         top: 1px;
-        position: relative;
     }
 
-    input:checked ~ span{
-        background-color: var(--red-color) !important;
-    }
+    input:checked{
+        & ~ span{
+            background-color: var(--red-color) !important;
+        }
+    } 
 }
 .default{
     span{

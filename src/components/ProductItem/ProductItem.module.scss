@@ -105,6 +105,7 @@
         background: #696969;
         padding-top: 2px;
         transform: translateX(120%);
+        opacity: 0;
         cursor: pointer;
         &:hover{
             background-color: #333;
@@ -113,6 +114,7 @@
     &:hover{
         .add-cart{
             transform: translateX(0);
+            opacity: 1;
         }
     }
 }
