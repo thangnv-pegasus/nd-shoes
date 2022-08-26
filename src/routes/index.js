@@ -3,7 +3,10 @@ const routes = {
     intro: '/intro',
     products: '/products',
     news: '/news',
-    contact: '/contact'
+    contact: '/contact',
+    accessory: '/accessory',
+    accessoryItem: '/accessory/:namePage',
+    detailProduct: '/product/:productId'
 }
 
 export default routes

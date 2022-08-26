@@ -1,17 +1,19 @@
 import classNames from 'classnames/bind'
-import styles from './Home.module.scss'
-import Banner from '../../components/Banner'
-import BannerItem from '../../components/BannerItem'
-import { faHandshake } from '@fortawesome/free-regular-svg-icons'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowsRotate, faGift, faLongArrowRight, faPhone, faRightLong } from '@fortawesome/free-solid-svg-icons'
+
+import styles from './Home.module.scss'
+import BannerItem from '../../components/BannerItem'
+import Banner from '../../components/Banner'
+import { faHandshake } from '@fortawesome/free-regular-svg-icons'
+import { faArrowsRotate, faGift, faPhone, faRightLong } from '@fortawesome/free-solid-svg-icons'
 import Title from '../../components/Title'
 import ProductItem from '../../components/ProductItem'
 import data from '../../data/db.json'
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import FeedBack from '../../components/FeedBack'
 import Blog from '../../components/Blog'
+import routes from '../../routes'
 
 const cx = classNames.bind(styles)
 const products = data.products
@@ -138,7 +140,7 @@ function Home() {
                                 })
                             }
                         </div>
-                        <Link to="" className={cx('see-more')}>
+                        <Link to={routes.products} className={cx('see-more')}>
                             Xem tất cả
                         </Link>
                     </div>
@@ -168,7 +170,7 @@ function Home() {
                                 })
                             }
                         </div>
-                        <Link to="" className={cx('see-more')}>
+                        <Link to={routes.products} className={cx('see-more')}>
                             Xem tất cả
                         </Link>
                     </div>
@@ -235,8 +237,8 @@ function Home() {
                                 <div className={cx('accessory-img', 'big-img')}>
                                     <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/accessories_1.jpg?1660294502239" />
                                     <div className={cx('accessory-title')}>
-                                        <Link to="" className={cx('accessory-name')}>Balo-túi</Link>
-                                        <Link to="">Xem thêm
+                                        <Link to={`/accessory/bag`} className={cx('accessory-name')}>Balo-túi</Link>
+                                        <Link to={`/accessory/bag`}>Xem thêm
                                             <span> <FontAwesomeIcon icon={faRightLong} /> </span>
                                         </Link>
                                     </div>
@@ -246,8 +248,8 @@ function Home() {
                                 <div className={cx('accessory-img', 'sm-img', 'sm-1')}>
                                     <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/accessories_2.jpg?1660294502239" />
                                     <div className={cx('accessory-title')}>
-                                        <Link to="" className={cx('accessory-name')}>Tất giày</Link>
-                                        <Link to="">Xem thêm
+                                        <Link to={`/accessory/sock`} className={cx('accessory-name')}>Tất giày</Link>
+                                        <Link to={`/accessory/sock`}>Xem thêm
                                             <span> <FontAwesomeIcon icon={faRightLong} /> </span>
                                         </Link>
                                     </div>
@@ -255,15 +257,15 @@ function Home() {
                                 <div className={cx('accessory-img', 'sm-img')}>
                                     <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/accessories_3.jpg?1660294502239" />
                                     <div className={cx('accessory-title')}>
-                                        <Link to="" className={cx('accessory-name')}>Mũ</Link>
-                                        <Link to="">Xem thêm
+                                        <Link to={`/accessory/hat`} className={cx('accessory-name')}>Mũ</Link>
+                                        <Link to={`/accessory/hat`}>Xem thêm
                                             <span> <FontAwesomeIcon icon={faRightLong} /> </span>
                                         </Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <Link to="" className={cx('see-more')}>
+                        <Link to={routes.accessory} className={cx('see-more')}>
                             Xem tất cả
                         </Link>
                     </div>
@@ -297,7 +299,7 @@ function Home() {
             <div className={cx('news')}>
                 <div className='grid wide'>
                     <div className={cx('news-section')}>
-                        <Title to="/"
+                        <Title to={routes.news}
                             slogan='Tổng hợp tin tức, mẹo vặt cho bạn'
                         >
                             Tin tức
