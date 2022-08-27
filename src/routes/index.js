@@ -6,7 +6,8 @@ const routes = {
     contact: '/contact',
     accessory: '/accessory',
     accessoryItem: '/accessory/:namePage',
-    detailProduct: '/product/:productId'
+    detailProduct: '/product/:productId',
+    detailBlog: '/blog/:blogId'
 }
 
 export default routes

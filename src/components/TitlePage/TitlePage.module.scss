@@ -11,10 +11,13 @@
     font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-bottom: 30px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 304px;
+    text-align: center;
     &::before{
         content: '';
         position: absolute;

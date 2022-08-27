@@ -1,7 +1,7 @@
 .banner-item {
     color: var(--white-color);
     text-align: center;
-
+    user-select: none;
     .icon {
         font-size: 4rem;
         margin-bottom: 15px;

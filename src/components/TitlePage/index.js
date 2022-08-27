@@ -6,7 +6,9 @@ const cx = classNames.bind(styles)
 function TitlePage({ chidren }) {
     return (
         <div className={cx('title-page')}>
-            {chidren}
+            <div className='grid wide'>
+                {chidren}
+            </div>
         </div>
     )
 }

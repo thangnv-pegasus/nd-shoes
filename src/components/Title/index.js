@@ -8,7 +8,7 @@ function Title({ children, to, slogan, whiteColor }) {
     if (to) {
         return (
             <div className={cx('section')}>
-                <Link to={to} className={cx('link', 'title')}>
+                <Link to={to} className={cx('link', 'title')} onClick={()=>window.scrollTo(0,0)}>
                     {children}
                     <div className={cx('title-before')}></div>
                     <div className={cx('title-after')}></div>

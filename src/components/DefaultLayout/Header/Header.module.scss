@@ -41,6 +41,7 @@
     transition: transform 0.5s ease, opacity 0.2s ease, max-height 0s step-end, max-width 0s step-end, padding 0s step-end;
     animation: SubNavAnimation ease 0.5s;
     z-index: 10;
+
     a {
         color: var(--text-color);
         font-weight: 400;
@@ -132,6 +133,7 @@
     right: -36px;
     margin-top: 15px;
     display: none;
+    z-index: 10;
 
     &::before {
         content: "";
@@ -206,9 +208,11 @@
     text-align: center;
     display: none;
     box-shadow: 0 0 2px black;
+    z-index: 10;
 
     .cart-noti {
         font-size: 1.5rem;
+        padding: 10px;
     }
 
     &::before {

@@ -7,6 +7,7 @@ import Contact from '../pages/Contact'
 import AccessoryItem from "../pages/AccessoryItem";
 import Accessory from "../pages/Accessory";
 import DetailProduct from "../pages/DetailProduct";
+import DetailBlog from "../pages/DetailBlog";
 
 const publicRoutes = [
     {
@@ -40,6 +41,10 @@ const publicRoutes = [
     {
         path: routes.detailProduct,
         component: DetailProduct
+    },
+    {
+        path: routes.detailBlog,
+        component: DetailBlog
     }
 ]
 

@@ -6,6 +6,8 @@ import TitlePage from '../../components/TitlePage'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClipboard } from '@fortawesome/free-regular-svg-icons'
+import Title from '../../components/Title'
+import ProductItem from '../../components/ProductItem'
 
 const cx = classNames.bind(styles)
 const products = data.products
@@ -18,7 +20,6 @@ function DetailProduct() {
 
     const thisProduct = products.find(product => product.id == productId)
     const listImg = thisProduct.img_color
-    console.log(listImg)
 
     return (
         <div className={cx('detail')}>
@@ -98,7 +99,7 @@ function DetailProduct() {
                                     </button>
                                 </div>
                             </div>
-                            <Link to="" className={cx('guide-box')}>
+                            <Link to="" className={cx('guide-box')} onClick={()=>window.scrollTo(0,0)}>
                                 <span>
                                     <FontAwesomeIcon icon={faClipboard} />
                                 </span> Xem hướng dẫn chọn size
@@ -109,6 +110,45 @@ function DetailProduct() {
                             <div className={cx('product-color')}>
                                 Màu sắc hiển thị: {listImg[0].color}
                             </div>
+                        </div>
+                    </div>
+                    <div className={cx('product-detail')}>
+                        <div className={cx('detail-title')}>
+                            Thông tin chi tiết
+                        </div>
+                        <div className={cx('detail-box')}>
+                            {
+                                thisProduct.detais.map((detailI, index) => {
+                                    return (
+                                        <div className={cx('box-item')} key={index}>
+                                            <div className={cx('box-title')}>
+                                                {detailI.title}
+                                            </div>
+                                            <div className={cx('box-content')}>
+                                                {detailI.content}
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                    <div className={cx('similar-product')}>
+                        <Title slogan='Các sản phẩm tương tự'>
+                            Sản phẩm tương tự
+                        </Title>
+                        <div className='row'>
+                            {
+                                products.map(product =>{
+                                    if(product.id<5){
+                                        return (
+                                            <div className='col l-3' key={product.id}>
+                                                <ProductItem product={product} />
+                                            </div>
+                                        )
+                                    }
+                                })
+                            }
                         </div>
                     </div>
                 </div>
