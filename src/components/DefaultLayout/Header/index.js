@@ -13,8 +13,7 @@ const cx = className.bind(styles)
 const login = false;
 const size = 0;
 
-function Header() {
-
+function Header({ thisAccount, login, setLogin }) {
 
     return (
         <div className={cx('header')}>
@@ -152,9 +151,9 @@ function Header() {
                                             login ? (
                                                 <div className={cx('user-form', 'form')}>
                                                     <Link to="" className={cx('my-account')}>
-                                                        Tài khoản
+                                                        {thisAccount.username}
                                                     </Link>
-                                                    <Link to="" className={cx('log-out')}>
+                                                    <Link to="/" className={cx('log-out')} onClick={() => setLogin(false)}>
                                                         Đăng xuất
                                                     </Link>
                                                 </div>

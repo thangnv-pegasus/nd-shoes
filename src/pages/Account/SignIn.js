@@ -1,19 +1,50 @@
 import classNames from "classnames/bind";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from './Account.module.scss'
 import TitlePage from '../../components/TitlePage'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle, faGooglePlus } from "@fortawesome/free-brands-svg-icons";
 import routes from "../../routes";
+import { useState } from "react";
+import data from '../../data/db.json'
 
 const cx = classNames.bind(styles)
+const acc = data.account
 
-function Signin() {
+function Signin({ setLogin,setThisAccount }) {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    let check = false;
+    const navigate = useNavigate()
+
+    const checkAccount = () => {
+        let check = false;
+        let account;
+        for (let item of acc) {
+            if (item.email == email && item.password == password) {
+                check = true;
+                account = item
+                alert('true')
+                navigate('/')
+                break;
+            }
+        }
+        if(!check){
+            alert('Sai tài khoản hoặc mật khẩu!')
+        }
+        setThisAccount(account)
+        setLogin(check)
+    }
+
     return (
         <div className={cx('sign-in')}>
             <TitlePage chidren='Đăng nhập tài khoản' />
             <div className="grid wide">
-                <form className={cx('form')}>
+                <form className={cx('form')} onSubmit={(e) => {
+                    e.preventDefault()
+                    checkAccount()
+                }}>
                     <div className={cx('title-form')}>
                         <Link to={routes.signin} className={cx('border-bot')}>
                             Đăng nhập
@@ -25,11 +56,17 @@ function Signin() {
                     <div className={cx('content-form')}>
                         <label>
                             <p>Email*</p>
-                            <input type="email" placeholder="Nhập địa chỉ email" />
+                            <input type="email" placeholder="Nhập địa chỉ email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </label>
                         <label>
                             <p>Mật khẩu*</p>
-                            <input type="password" placeholder="Nhập mật khẩu" />
+                            <input type="password" placeholder="Nhập mật khẩu"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                            />
                         </label>
                         <button type="submit">
                             Đăng nhập
@@ -43,11 +80,11 @@ function Signin() {
                     </div>
                     <div className={cx('social-network')}>
                         <div className={cx('facebook')}>
-                            <FontAwesomeIcon icon={faFacebook} className={cx('icon')}/>
+                            <FontAwesomeIcon icon={faFacebook} className={cx('icon')} />
                             <span>Facebook</span>
                         </div>
                         <div className={cx('google')}>
-                            <FontAwesomeIcon icon={faGoogle} className={cx('icon')}/>
+                            <FontAwesomeIcon icon={faGoogle} className={cx('icon')} />
                             <span>Google</span>
                         </div>
                     </div>

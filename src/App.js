@@ -1,8 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import { publicRoutes } from './config/routes'
 import DefaultLayout from './components/DefaultLayout'
+import { useState } from 'react';
 
 function App() {
+
+  const [login, setLogin] = useState(false)
+  const [thisAccount, setThisAccount] = useState()
+
   return (
     <div className="App">
       <Routes>
@@ -18,8 +23,17 @@ function App() {
                 key={index}
                 path={routeI.path}
                 element={
-                  <Layout>
-                    <Element />
+                  <Layout
+                    setLogin={setLogin}
+                    thisAccount = {thisAccount}
+                    login = {login}
+                  >
+                    <Element 
+                      login = {login}
+                      setLogin={setLogin}
+                      thisAccount = {thisAccount}
+                      setThisAccount={setThisAccount}
+                    />
                   </Layout>
                 }
               />
