@@ -8,6 +8,7 @@ import AccessoryItem from "../pages/AccessoryItem";
 import Accessory from "../pages/Accessory";
 import DetailProduct from "../pages/DetailProduct";
 import DetailBlog from "../pages/DetailBlog";
+import ProductKind from "../pages/ProductKind";
 
 const publicRoutes = [
     {
@@ -45,6 +46,10 @@ const publicRoutes = [
     {
         path: routes.detailBlog,
         component: DetailBlog
+    },
+    {
+        path: routes.ProductKind,
+        component: ProductKind
     }
 ]
 

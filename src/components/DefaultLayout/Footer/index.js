@@ -71,7 +71,7 @@ function Footer() {
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to={routes.products} className={(nav) => cx({
+                                                    <NavLink to={`/${'products'}`} className={(nav) => cx({
                                                         active: nav.isActive
                                                     })}>
                                                         Sản phẩm
@@ -116,7 +116,7 @@ function Footer() {
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to={routes.products} className={(nav) => cx({
+                                                    <NavLink to={`/${'products'}`} className={(nav) => cx({
                                                         active: nav.isActive
                                                     })}>
                                                         Sản phẩm

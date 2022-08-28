@@ -6,11 +6,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useRef, useState } from 'react'
 import ProductItem from '../../components/ProductItem'
+import { useParams } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 const products = data.products
+const accessorys = data.accessory
 
 function Products() {
+
+    const {classI} = useParams()
+    let thisData = products
+    if(classI == 'accessory'){
+        thisData = accessorys
+    }
+
+    
 
     const [check1, setCheck1] = useState(false)
     const [check2, setCheck2] = useState(false)
@@ -18,7 +28,7 @@ function Products() {
     const refOption1 = useRef()
     const refOption2 = useRef()
     const refOption3 = useRef()
-    const [productsRender, setProductsRender] = useState(products)
+    const [productsRender, setProductsRender] = useState(thisData)
 
     const handleHeight = (Element, check) => {
         if (check) {

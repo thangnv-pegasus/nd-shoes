@@ -53,7 +53,6 @@ function Home() {
     },[])
 
 
-
     const handleProductKind = (element) => {
         switch (element.id) {
             case '1':
@@ -83,7 +82,6 @@ function Home() {
         }
         handleActive(element)
     }
-
 
     return (
         <div className={cx('home')}>
@@ -136,7 +134,7 @@ function Home() {
             {/* new products */}
             <div className={cx('new-products')}>
                 <div className='grid wide'>
-                    <Title to={routes.products} slogan='Các sản phẩm mới có tại cửa hàng'>
+                    <Title to={`/${'products'}`} slogan='Các sản phẩm mới có tại cửa hàng'>
                         Sản phẩm mới
                     </Title>
                     <div className={cx('products-section')}>
@@ -155,7 +153,7 @@ function Home() {
                                 })
                             }
                         </div>
-                        <Link to={routes.products} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
+                        <Link to={`/${'products'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
                             Xem tất cả
                         </Link>
                     </div>
@@ -165,7 +163,7 @@ function Home() {
             {/* product hot */}
             <div className={cx('products-hot')}>
                 <div className='grid wide'>
-                    <Title to={routes.products} slogan='Các sản phẩm bán chạy tại cửa hàng'>
+                    <Title to={`/${'products'}`} slogan='Các sản phẩm bán chạy tại cửa hàng'>
                         Sản phẩm bán chạy
                     </Title>
                     <div className={cx('intro-img')}>
@@ -187,7 +185,7 @@ function Home() {
                                 })
                             }
                         </div>
-                        <Link to={routes.products} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
+                        <Link to={`/${'products'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
                             Xem tất cả
                         </Link>
                     </div>
@@ -197,7 +195,7 @@ function Home() {
             {/* product classification */}
             <div className={cx('products-kind')}>
                 <div className='grid wide'>
-                    <Title to={routes.products} slogan='Các sản phẩm Sneakers có tại ND Shoes'>
+                    <Title to={`/${'products'}`} slogan='Các sản phẩm Sneakers có tại ND Shoes'>
                         Sneakers
                     </Title>
                     <div className={cx('products-section')}>
@@ -258,10 +256,10 @@ function Home() {
                                 <div className={cx('accessory-img', 'big-img')}>
                                     <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/accessories_1.jpg?1660294502239" />
                                     <div className={cx('accessory-title')}>
-                                        <Link to={`/accessory/bag`} className={cx('accessory-name')} onClick={() => window.scrollTo(0, 0)}>
+                                        <Link to={`/accessory/${'bag'}`} className={cx('accessory-name')} onClick={() => window.scrollTo(0, 0)}>
                                             Balo-túi
                                         </Link>
-                                        <Link to={`/accessory/bag`} onClick={() => window.scrollTo(0, 0)}>
+                                        <Link to={`/accessory/${'bag'}`} onClick={() => window.scrollTo(0, 0)}>
                                             Xem thêm
                                             <span> <FontAwesomeIcon icon={faRightLong} /> </span>
                                         </Link>
@@ -272,10 +270,10 @@ function Home() {
                                 <div className={cx('accessory-img', 'sm-img', 'sm-1')}>
                                     <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/accessories_2.jpg?1660294502239" />
                                     <div className={cx('accessory-title')}>
-                                        <Link to={`/accessory/sock`} className={cx('accessory-name')} onClick={() => window.scrollTo(0, 0)}>
+                                        <Link to={`/accessory/${'sock'}`} className={cx('accessory-name')} onClick={() => window.scrollTo(0, 0)}>
                                             Tất giày
                                         </Link>
-                                        <Link to={`/accessory/sock`} onClick={() => window.scrollTo(0, 0)}>
+                                        <Link to={`/accessory/${'sock'}`} onClick={() => window.scrollTo(0, 0)}>
                                             Xem thêm
                                             <span> <FontAwesomeIcon icon={faRightLong} /> </span>
                                         </Link>
@@ -284,10 +282,10 @@ function Home() {
                                 <div className={cx('accessory-img', 'sm-img')}>
                                     <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/accessories_3.jpg?1660294502239" />
                                     <div className={cx('accessory-title')}>
-                                        <Link to={`/accessory/hat`} className={cx('accessory-name')} onClick={() => window.scrollTo(0, 0)}>
+                                        <Link to={`/accessory/${'hat'}`} className={cx('accessory-name')} onClick={() => window.scrollTo(0, 0)}>
                                             Mũ
                                         </Link>
-                                        <Link to={`/accessory/hat`} onClick={() => window.scrollTo(0, 0)}>
+                                        <Link to={`/accessory/${'hat'}`} onClick={() => window.scrollTo(0, 0)}>
                                             Xem thêm
                                             <span> <FontAwesomeIcon icon={faRightLong} /> </span>
                                         </Link>
@@ -295,7 +293,7 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                        <Link to={routes.accessory} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
+                        <Link to={`/${'accessory'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
                             Xem tất cả
                         </Link>
                     </div>

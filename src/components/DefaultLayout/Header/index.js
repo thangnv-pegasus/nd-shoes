@@ -41,14 +41,14 @@ function Header() {
                                     </NavLink>
                                 </li>
                                 <li className={cx('all-products')}>
-                                    <NavLink to={routes.products} className={(nav) => cx({
+                                    <NavLink to={`/${'products'}`} className={(nav) => cx({
                                         active: nav.isActive
                                     })}>
                                         Sản phẩm <span><FontAwesomeIcon icon={faAngleDown} /></span>
                                     </NavLink>
                                     <ul className={cx('sub-nav')}>
                                         <li>
-                                            <NavLink to='' className={(nav) => {
+                                            <NavLink to={`/productKind/${'adidas'}`} className={(nav) => {
                                                 cx({
                                                     active: nav.isActive
                                                 })
@@ -57,7 +57,7 @@ function Header() {
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to='' className={(nav) => {
+                                            <NavLink to={`/productKind/${'nike'}`} className={(nav) => {
                                                 cx({
                                                     active: nav.isActive
                                                 })
@@ -66,7 +66,7 @@ function Header() {
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to='' className={(nav) => {
+                                            <NavLink to={`/productKind/${'converse'}`} className={(nav) => {
                                                 cx({
                                                     active: nav.isActive
                                                 })
@@ -75,7 +75,7 @@ function Header() {
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to='' className={(nav) => {
+                                            <NavLink to={`/productKind/${'vans'}`} className={(nav) => {
                                                 cx({
                                                     active: nav.isActive
                                                 })
@@ -84,7 +84,7 @@ function Header() {
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to='' className={(nav) => {
+                                            <NavLink to={`/productKind/${'puma'}`} className={(nav) => {
                                                 cx({
                                                     active: nav.isActive
                                                 })
@@ -93,7 +93,7 @@ function Header() {
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to='' className={(nav) => {
+                                            <NavLink to={`/productKind/${'fila'}`} className={(nav) => {
                                                 cx({
                                                     active: nav.isActive
                                                 })
@@ -102,7 +102,7 @@ function Header() {
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to='' className={(nav) => {
+                                            <NavLink to={`/productKind/${'mlb'}`} className={(nav) => {
                                                 cx({
                                                     active: nav.isActive
                                                 })
@@ -111,7 +111,7 @@ function Header() {
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to='' className={(nav) => {
+                                            <NavLink to={`/productKind/${'new balance'}`} className={(nav) => {
                                                 cx({
                                                     active: nav.isActive
                                                 })

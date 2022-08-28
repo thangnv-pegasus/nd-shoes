@@ -1,21 +1,22 @@
-import classNames from 'classnames/bind'
-import styles from './Accessory.module.scss'
-import TitlePage from '../../components/TitlePage'
+import classNames from "classnames/bind";
+import { useParams } from "react-router-dom";
+import styles from './ProductKind.module.scss'
 import data from '../../data/db.json'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { useEffect, useRef, useState } from 'react'
-import ProductItem from '../../components/ProductItem'
-import { useParams } from 'react-router-dom'
+import TitlePage from '../../components/TitlePage'
+import { useEffect, useRef, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import ProductItem from "../../components/ProductItem";
+
+const products = data.products
 
 const cx = classNames.bind(styles)
 
+function ProductKind() {
 
-function AccessoryItem() {
+    const { kind } = useParams()
 
-    const {namePage} = useParams()
-
-    const products = data.accessory.filter(item => item.class.toLowerCase() == namePage)
+    const thisProducts = products.filter(product => product.brand.toLowerCase() === kind)
 
     const [check1, setCheck1] = useState(false)
     const [check2, setCheck2] = useState(false)
@@ -70,9 +71,10 @@ function AccessoryItem() {
 
         }
     }, [check3])
+
     return (
-        <div className={cx('product-page')}>
-            <TitlePage chidren={namePage} />
+        <div className={cx('product-kind')}>
+            <TitlePage chidren={kind} />
             <div className='grid wide'>
                 <div className={cx('page-section')}>
                     <div className='row'>
@@ -179,16 +181,14 @@ function AccessoryItem() {
                             <div className={cx('products')}>
                                 <div className='row'>
                                     {
-                                        productsRender.map((product) => {
-                                            if (product.id < 10) {
-                                                return (
-                                                    <div className='col l-4' key={product.id}>
-                                                        <ProductItem
-                                                            product={product}
-                                                        />
-                                                    </div>
-                                                )
-                                            }
+                                        thisProducts.map((product) => {
+                                            return (
+                                                <div className='col l-4' key={product.id}>
+                                                    <ProductItem
+                                                        product={product}
+                                                    />
+                                                </div>
+                                            )
                                         })
                                     }
                                 </div>
@@ -201,4 +201,4 @@ function AccessoryItem() {
     )
 }
 
-export default AccessoryItem
+export default ProductKind

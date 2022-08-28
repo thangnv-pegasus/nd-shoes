@@ -1,13 +1,13 @@
 const routes = {
     home: '/',
     intro: '/intro',
-    products: '/products',
+    products: '/:classI',
     news: '/news',
     contact: '/contact',
-    accessory: '/accessory',
     accessoryItem: '/accessory/:namePage',
     detailProduct: '/product/:productId',
-    detailBlog: '/blog/:blogId'
+    detailBlog: '/blog/:blogId',
+    ProductKind: '/productKind/:kind'
 }
 
 export default routes
