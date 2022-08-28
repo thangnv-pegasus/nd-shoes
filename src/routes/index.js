@@ -8,7 +8,10 @@ const routes = {
     detailAcessory: '/accessory/detail/:accessoryId',
     detailProduct: '/product/:productId',
     detailBlog: '/blog/:blogId',
-    ProductKind: '/productKind/:kind'
+    ProductKind: '/productKind/:kind',
+    search: '/search/:searchValue',
+    signin: '/account/signin',
+    signup: '/account/signup'
 }
 
 export default routes

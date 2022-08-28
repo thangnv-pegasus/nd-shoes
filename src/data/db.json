@@ -2717,5 +2717,35 @@
                 "Dù sao thì, những đôi sneakers của Kobe từ bây giờ có thể trở thành những món đồ sưu tầm, để tưởng nhớ cho một Biểu tượng về sự cố gắng, kiên trì, mạnh mẽ & truyền cảm hứng lớn cho thế hệ 8x 9x của chúng ta. Cám ơn Kobe Bryant, our Black Mamba. Đừng quên theo dõi @SNKRVN để cập nhật tin tức mỗi ngày nhé các bạn!"
             ]
         }
+    ],
+    "account":[
+        {
+            "id":1,
+            "username":"Nguyễn Văn A",
+            "email": "NVA@gmail.com",
+            "phone":"012345678",
+            "password":"123456"
+        },
+        {
+            "id":2,
+            "username":"Nguyễn Văn B",
+            "email": "NVB@gmail.com",
+            "phone":"012345678",
+            "password":"123456"
+        },
+        {
+            "id":3,
+            "username":"Nguyễn Văn C",
+            "email": "NVC@gmail.com",
+            "phone":"012345678",
+            "password":"123456"
+        },
+        {
+            "id":4,
+            "username":"Nguyễn Văn D",
+            "email": "NVD@gmail.com",
+            "phone":"012345678",
+            "password":"123456"
+        }
     ]
 }

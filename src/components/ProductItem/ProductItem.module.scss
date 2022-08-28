@@ -21,7 +21,10 @@
         color: var(--text-color);
         margin-top: 10px;
         margin-bottom: 5px;
-
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient:vertical;
+        overflow: hidden;
         &:hover {
             color: var(--red-color);
         }

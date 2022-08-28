@@ -160,10 +160,10 @@ function Header() {
                                                 </div>
                                             ) : (
                                                 <div className={cx('login-form', 'form')}>
-                                                    <Link to="" className={cx('login')}>
+                                                    <Link to={routes.signin} className={cx('login')}>
                                                         Đăng nhập
                                                     </Link>
-                                                    <Link to="" className={cx('sign-up')}>
+                                                    <Link to={routes.signup} className={cx('sign-up')}>
                                                         Đăng ký
                                                     </Link>
                                                 </div>

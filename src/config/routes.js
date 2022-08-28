@@ -8,6 +8,9 @@ import AccessoryItem from "../pages/AccessoryItem";
 import DetailProduct from "../pages/DetailProduct";
 import DetailBlog from "../pages/DetailBlog";
 import ProductKind from "../pages/ProductKind";
+import SearchPage from "../pages/SearchPage";
+import Signin from "../pages/Account/SignIn";
+import SignUp from "../pages/Account/SignUp";
 
 const publicRoutes = [
     {
@@ -49,6 +52,18 @@ const publicRoutes = [
     {
         path: routes.ProductKind,
         component: ProductKind
+    },
+    {
+        path: routes.search,
+        component: SearchPage
+    },
+    {
+        path: routes.signin,
+        component: Signin
+    },
+    {
+        path: routes.signup,
+        component: SignUp
     }
 ]
 
