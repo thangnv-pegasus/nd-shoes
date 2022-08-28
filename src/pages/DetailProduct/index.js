@@ -11,14 +11,20 @@ import ProductItem from '../../components/ProductItem'
 
 const cx = classNames.bind(styles)
 const products = data.products
+const accessorys = data.accessory
 
 function DetailProduct() {
 
     const { productId } = useParams()
+    const {accessoryId} = useParams()
+    console.log(accessoryId)
 
     const [state, setState] = useState(1)
 
-    const thisProduct = products.find(product => product.id == productId)
+    let thisProduct = products.find(product => product.id == productId)
+    if(accessoryId){
+        thisProduct = accessorys.find(product => product.id == accessoryId)
+    }
     const listImg = thisProduct.img_color
 
     return (
@@ -139,8 +145,8 @@ function DetailProduct() {
                         </Title>
                         <div className='row'>
                             {
-                                products.map(product =>{
-                                    if(product.id<5){
+                                products.map((product,index) =>{
+                                    if(index<4){
                                         return (
                                             <div className='col l-3' key={product.id}>
                                                 <ProductItem product={product} />

@@ -5,7 +5,6 @@ import Products from '../pages/Products'
 import News from '../pages/News'
 import Contact from '../pages/Contact'
 import AccessoryItem from "../pages/AccessoryItem";
-import Accessory from "../pages/Accessory";
 import DetailProduct from "../pages/DetailProduct";
 import DetailBlog from "../pages/DetailBlog";
 import ProductKind from "../pages/ProductKind";
@@ -36,11 +35,11 @@ const publicRoutes = [
         component: AccessoryItem
     },
     {
-        path: routes.accessory,
-        component: Accessory
+        path: routes.detailProduct,
+        component: DetailProduct
     },
     {
-        path: routes.detailProduct,
+        path: routes.detailAcessory,
         component: DetailProduct
     },
     {

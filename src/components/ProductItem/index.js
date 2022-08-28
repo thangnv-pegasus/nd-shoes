@@ -12,12 +12,21 @@ function ProductItem({ product }) {
 
     const [like, setLike] = useState(false)
     const sale = false
+
+    let to = ''
+    if(product.class){
+        to = `/accessory/detail/${product.id}`
+    }
+    else{
+        to = `/product/${product.id}`
+    }
+
     return (
         <div className={cx('product-item')}>
             <div className={cx('product-img')}>
                 <img src={product.img_color[0].url[0]} className={cx('img-1')} />
             </div>
-            <Link to={`/product/${product.id}`} className={cx('product-name')} onClick={()=>window.scrollTo(0,0)}>
+            <Link to={to} className={cx('product-name')} onClick={()=>window.scrollTo(0,0)}>
                 {product.name}
             </Link>
             <div className={cx('product-brand')}>

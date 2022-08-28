@@ -20,8 +20,6 @@ function Products() {
         thisData = accessorys
     }
 
-    
-
     const [check1, setCheck1] = useState(false)
     const [check2, setCheck2] = useState(false)
     const [check3, setCheck3] = useState(false)
@@ -184,8 +182,8 @@ function Products() {
                             <div className={cx('products')}>
                                 <div className='row'>
                                     {
-                                        productsRender.map((product) => {
-                                            if (product.id < 10) {
+                                        productsRender.map((product,index) => {
+                                            if (index < 10) {
                                                 return (
                                                     <div className='col l-4' key={product.id}>
                                                         <ProductItem
