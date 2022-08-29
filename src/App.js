@@ -1,13 +1,18 @@
 import { Route, Routes } from 'react-router-dom';
 import { publicRoutes } from './config/routes'
 import DefaultLayout from './components/DefaultLayout'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import data from './data/db.json'
+
+const products = data.products
 
 function App() {
 
   const [login, setLogin] = useState(false)
   const [thisAccount, setThisAccount] = useState()
-
+  const [cart, setCart] = useState([])
+  const [allProduct, setAllProduct] = useState(products.map(item=> ({...item,favorite: false}) ))
+  
   return (
     <div className="App">
       <Routes>
@@ -25,14 +30,19 @@ function App() {
                 element={
                   <Layout
                     setLogin={setLogin}
-                    thisAccount = {thisAccount}
-                    login = {login}
+                    thisAccount={thisAccount}
+                    login={login}
+                    cart = {cart}
+                    allProduct = {allProduct}
                   >
-                    <Element 
-                      login = {login}
+                    <Element
+                      login={login}
                       setLogin={setLogin}
-                      thisAccount = {thisAccount}
+                      thisAccount={thisAccount}
                       setThisAccount={setThisAccount}
+                      setCart = {setCart}
+                      setAllProduct = {setAllProduct}
+                      allProduct = {allProduct}
                     />
                   </Layout>
                 }

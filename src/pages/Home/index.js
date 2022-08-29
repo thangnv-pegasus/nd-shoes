@@ -18,19 +18,20 @@ import routes from '../../routes'
 const cx = classNames.bind(styles)
 const products = data.products
 
-const Adidas = products.filter((product) => product.brand.toLowerCase() === 'adidas')
-const Nike = products.filter((product) => product.brand.toLowerCase() === 'nike')
-const Converse = products.filter((product) => product.brand.toLowerCase() === 'converse')
-const Vans = products.filter((product) => product.brand.toLowerCase() === 'vans')
-const Puma = products.filter((product) => product.brand.toLowerCase() === 'puma')
-const Fila = products.filter((product) => product.brand.toLowerCase() === 'fila')
-const MLB = products.filter((product) => product.brand.toLowerCase() === 'mlb')
-const NewBalance = products.filter((product) => product.brand.toLowerCase() === 'new balance')
+
 
 const feedback = data.feedback
 const blogs = data.blogs
 
-function Home() {
+function Home({ setCart, setAllProduct, allProduct }) {
+    const Adidas = allProduct.filter((product) => product.brand.toLowerCase() === 'adidas')
+    const Nike = allProduct.filter((product) => product.brand.toLowerCase() === 'nike')
+    const Converse = allProduct.filter((product) => product.brand.toLowerCase() === 'converse')
+    const Vans = allProduct.filter((product) => product.brand.toLowerCase() === 'vans')
+    const Puma = allProduct.filter((product) => product.brand.toLowerCase() === 'puma')
+    const Fila = allProduct.filter((product) => product.brand.toLowerCase() === 'fila')
+    const MLB = allProduct.filter((product) => product.brand.toLowerCase() === 'mlb')
+    const NewBalance = allProduct.filter((product) => product.brand.toLowerCase() === 'new balance')
     const [elementActive, setElementActive] = useState()
 
     const [productKind, setProductKind] = useState([...Adidas])
@@ -47,10 +48,10 @@ function Home() {
         })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         let element = refAdidas.current
         setElementActive(element)
-    },[])
+    }, [])
 
 
     const handleProductKind = (element) => {
@@ -82,6 +83,7 @@ function Home() {
         }
         handleActive(element)
     }
+
 
     return (
         <div className={cx('home')}>
@@ -140,12 +142,15 @@ function Home() {
                     <div className={cx('products-section')}>
                         <div className='row'>
                             {
-                                products.map((product,index) => {
-                                    if (product.id < 9) {
+                                allProduct.map((product, index) => {
+                                    if (index < 8) {
                                         return (
                                             <div className='col l-3' key={index}>
                                                 <ProductItem
+                                                    setCart={setCart}
                                                     product={product}
+                                                    setAllProduct={setAllProduct}
+                                                    allProduct={allProduct}
                                                 />
                                             </div>
                                         )
@@ -172,7 +177,7 @@ function Home() {
                     <div className={cx('products-section')}>
                         <div className='row'>
                             {
-                                products.map((product,index) => {
+                                products.map((product, index) => {
                                     if (product.id > 9 && product.id < 18) {
                                         return (
                                             <div className='col l-3' key={index}>
@@ -312,7 +317,7 @@ function Home() {
                         </Title>
                         <div className='row'>
                             {
-                                feedback.map((fb,index) => {
+                                feedback.map((fb, index) => {
                                     return (
                                         <div className='col l-3' key={index}>
                                             <FeedBack

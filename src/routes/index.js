@@ -11,7 +11,9 @@ const routes = {
     ProductKind: '/productKind/:kind',
     search: '/search/:searchValue',
     signin: '/account/signin',
-    signup: '/account/signup'
+    signup: '/account/signup',
+    member: '/member',
+    favorite: '/favorite'
 }
 
 export default routes

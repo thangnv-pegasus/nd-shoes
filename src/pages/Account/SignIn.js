@@ -17,15 +17,23 @@ function Signin({ setLogin,setThisAccount }) {
     const [password, setPassword] = useState('')
     let check = false;
     const navigate = useNavigate()
+    const localAccount = JSON.parse(localStorage.getItem('account'))
 
     const checkAccount = () => {
         let check = false;
         let account;
         for (let item of acc) {
-            if (item.email == email && item.password == password) {
+            if (item.email === email && item.password === password) {
                 check = true;
                 account = item
-                alert('true')
+                navigate('/')
+                break;
+            }
+        }
+        for(let item of localAccount){
+            if(item.email === email && item.password === password){
+                check = true;
+                account = item
                 navigate('/')
                 break;
             }
@@ -33,6 +41,7 @@ function Signin({ setLogin,setThisAccount }) {
         if(!check){
             alert('Sai tài khoản hoặc mật khẩu!')
         }
+        window.scrollTo(0,0)
         setThisAccount(account)
         setLogin(check)
     }

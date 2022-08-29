@@ -11,6 +11,8 @@ import ProductKind from "../pages/ProductKind";
 import SearchPage from "../pages/SearchPage";
 import Signin from "../pages/Account/SignIn";
 import SignUp from "../pages/Account/SignUp";
+import Member from '../pages/Member'
+import Favorite from "../pages/Favorite";
 
 const publicRoutes = [
     {
@@ -64,6 +66,14 @@ const publicRoutes = [
     {
         path: routes.signup,
         component: SignUp
+    },
+    {
+        path: routes.member,
+        component: Member
+    },
+    {
+        path: routes.favorite,
+        component: Favorite
     }
 ]
 

@@ -10,7 +10,6 @@ import { faHeart, faUser } from '@fortawesome/free-regular-svg-icons'
 import Search from '../../Search'
 
 const cx = className.bind(styles)
-const login = false;
 const size = 0;
 
 function Header({ thisAccount, login, setLogin }) {
@@ -150,7 +149,7 @@ function Header({ thisAccount, login, setLogin }) {
                                         {
                                             login ? (
                                                 <div className={cx('user-form', 'form')}>
-                                                    <Link to="" className={cx('my-account')}>
+                                                    <Link to={routes.member} className={cx('my-account')}>
                                                         {thisAccount.username}
                                                     </Link>
                                                     <Link to="/" className={cx('log-out')} onClick={() => setLogin(false)}>
@@ -171,10 +170,10 @@ function Header({ thisAccount, login, setLogin }) {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="" className={cx('products-favorite')}>
+                                    <Link to={routes.favorite} className={cx('products-favorite')}>
                                         <FontAwesomeIcon icon={faHeart} />
                                         <div className={cx('current')}>
-                                            0
+                                            {/* {favoriteProducts.length} */}0
                                         </div>
                                     </Link>
                                 </li>

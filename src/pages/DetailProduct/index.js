@@ -17,7 +17,6 @@ function DetailProduct() {
 
     const { productId } = useParams()
     const {accessoryId} = useParams()
-    console.log(accessoryId)
 
     const [state, setState] = useState(1)
 

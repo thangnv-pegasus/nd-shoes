@@ -39,7 +39,6 @@ function SignUp() {
             }
             alert('Đăng ký thành công!')
             setListAcc(pre => [...pre, acc])
-
         }
     }
 
