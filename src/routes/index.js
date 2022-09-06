@@ -1,7 +1,7 @@
 const routes = {
     home: '/',
     intro: '/intro',
-    products: '/:classI',
+    products: '/products',
     news: '/news',
     contact: '/contact',
     accessoryItem: '/accessory/:namePage',
@@ -13,7 +13,8 @@ const routes = {
     signin: '/account/signin',
     signup: '/account/signup',
     member: '/member',
-    favorite: '/favorite'
+    favorite: '/favorite',
+    cart: '/cart'
 }
 
 export default routes

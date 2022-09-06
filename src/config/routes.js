@@ -36,15 +36,15 @@ const publicRoutes = [
         component: Contact
     },
     {
-        path: routes.accessoryItem,
-        component: AccessoryItem
+        path: routes.ProductKind,
+        component: ProductKind
+    },
+    {
+        path: routes.search,
+        component: SearchPage
     },
     {
         path: routes.detailProduct,
-        component: DetailProduct
-    },
-    {
-        path: routes.detailAcessory,
         component: DetailProduct
     },
     {
@@ -52,12 +52,12 @@ const publicRoutes = [
         component: DetailBlog
     },
     {
-        path: routes.ProductKind,
-        component: ProductKind
+        path: routes.detailAcessory,
+        component: DetailProduct
     },
     {
-        path: routes.search,
-        component: SearchPage
+        path: routes.accessoryItem,
+        component: AccessoryItem
     },
     {
         path: routes.signin,
@@ -75,13 +75,14 @@ const publicRoutes = [
         path: routes.favorite,
         component: Favorite
     }
-]
-
-
-const privateRoutes = [
     
 ]
 
 
-export {publicRoutes}
+const privateRoutes = [
+
+]
+
+
+export { publicRoutes }
 

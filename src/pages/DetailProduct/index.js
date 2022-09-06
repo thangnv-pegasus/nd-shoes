@@ -13,16 +13,34 @@ const cx = classNames.bind(styles)
 const products = data.products
 const accessorys = data.accessory
 
+const ListSize = [36, 37, 38, 39, 40, 41, 42, 43, 44]
+
 function DetailProduct() {
 
     const { productId } = useParams()
-    const {accessoryId} = useParams()
+    const { accessoryId } = useParams()
+    let check = true;
 
     const [state, setState] = useState(1)
+    const [size, setSize] = useState('')
+
+    const handleSize = (element) => {
+        let Ele = element.parentElement
+        console.log(element.checked)
+        if (element.checked) {
+            Ele.style.border = '1px solid #3f3fdb'
+            Ele.style.color = '#3f3fdb'
+        } else {
+            Ele.style.border = '1px solid #f5f5f5'
+            Ele.style.color = 'var(--text-color)'
+        }
+    }
+
 
     let thisProduct = products.find(product => product.id == productId)
-    if(accessoryId){
+    if (accessoryId) {
         thisProduct = accessorys.find(product => product.id == accessoryId)
+        check = false;
     }
     const listImg = thisProduct.img_color
 
@@ -104,7 +122,39 @@ function DetailProduct() {
                                     </button>
                                 </div>
                             </div>
-                            <Link to="" className={cx('guide-box')} onClick={()=>window.scrollTo(0,0)}>
+                            {
+                                check && <div className={cx('size-product')}>
+                                    <div className={cx('size-title')}>
+                                        Size: {size}
+                                    </div>
+                                    <div className={cx('size-list')}>
+                                        {
+                                            ListSize.map((item, index) => {
+                                                return (
+                                                    <label htmlFor={`item+${index}`}
+                                                        className={cx('size-item')}
+                                                        style = {item-36===index ? {
+                                                            border: '1px solid #3f3fdb',
+                                                            color: '#3f3fdb'
+                                                        } : {
+                                                            border: '1px solid #f5f5f5',
+                                                            color: '#ccc'
+                                                        }}
+                                                    >
+                                                        <input id={`item+${index}`} value={item} name="check" hidden type="radio"
+                                                            onChange={e => {
+                                                                setSize(e.target.value)
+                                                            }}
+                                                        />
+                                                        {item}
+                                                    </label>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            <Link to="" className={cx('guide-box')} onClick={() => window.scrollTo(0, 0)}>
                                 <span>
                                     <FontAwesomeIcon icon={faClipboard} />
                                 </span> Xem hướng dẫn chọn size
@@ -115,6 +165,7 @@ function DetailProduct() {
                             <div className={cx('product-color')}>
                                 Màu sắc hiển thị: {listImg[0].color}
                             </div>
+
                         </div>
                     </div>
                     <div className={cx('product-detail')}>
@@ -144,8 +195,8 @@ function DetailProduct() {
                         </Title>
                         <div className='row'>
                             {
-                                products.map((product,index) =>{
-                                    if(index<4){
+                                products.map((product, index) => {
+                                    if (index < 4) {
                                         return (
                                             <div className='col l-3' key={product.id}>
                                                 <ProductItem product={product} />

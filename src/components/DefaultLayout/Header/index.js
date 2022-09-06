@@ -12,7 +12,20 @@ import Search from '../../Search'
 const cx = className.bind(styles)
 const size = 0;
 
-function Header({ thisAccount, login, setLogin }) {
+function Header({ thisAccount, login, setLogin, cart }) {
+
+    const total = () => {
+        let x = 0;
+        for (let product of cart) {
+            if (product.price_sale) {
+                x += product.price_sale * product.quantity
+            }
+            else {
+                x += product.price_main * product.quantity
+            }
+        }
+        return x;
+    }
 
     return (
         <div className={cx('header')}>
@@ -144,7 +157,7 @@ function Header({ thisAccount, login, setLogin }) {
                                     </div>
                                 </li>
                                 <li>
-                                    <Link to="" className={cx('login-icon')}>
+                                    <Link to={login ? routes.member : routes.signin} className={cx('login-icon')}>
                                         <FontAwesomeIcon icon={faUser} />
                                         {
                                             login ? (
@@ -152,7 +165,7 @@ function Header({ thisAccount, login, setLogin }) {
                                                     <Link to={routes.member} className={cx('my-account')}>
                                                         {thisAccount.username}
                                                     </Link>
-                                                    <Link to="/" className={cx('log-out')} onClick={() => setLogin(false)}>
+                                                    <Link to={routes.home} className={cx('log-out')} onClick={() => setLogin(false)}>
                                                         Đăng xuất
                                                     </Link>
                                                 </div>
@@ -178,14 +191,14 @@ function Header({ thisAccount, login, setLogin }) {
                                     </Link>
                                 </li>
                                 <li className={cx('header-cart')}>
-                                    <Link to="" className={cx('shopping-cart')}>
+                                    <Link to={routes.cart} className={cx('shopping-cart')}>
                                         <FontAwesomeIcon icon={faCartShopping} />
                                         <div className={cx('current')}>
-                                            0
+                                            {cart.length}
                                         </div>
                                     </Link>
                                     {
-                                        size <= 0 ? (
+                                        cart.length <= 0 ? (
                                             <div className={cx('cart-form')}>
                                                 <p className={cx('cart-noti')}>
                                                     Không có sản phẩm nào bên trong giỏ hàng của bạn
@@ -194,95 +207,38 @@ function Header({ thisAccount, login, setLogin }) {
                                         ) : (
                                             <div className={cx('cart-form', 'form-products')}>
                                                 <div className={cx('list-products')}>
-                                                    <div className={cx('product-item')}>
-                                                        <div className={cx('product-infor')}>
-                                                            <Link to="" className={cx('product-img')}>
-                                                                <img src="https://bizweb.dktcdn.net/thumb/compact/100/437/253/products/sp7-den-do.jpg" />
-                                                            </Link>
-                                                            <div className={cx('product-name')}>
-                                                                <Link to="" className={cx('product-title')}>
-                                                                    Nike air force 1
-                                                                </Link>
-                                                                <div className={cx('product-color')}>
-                                                                    Color: red
+                                                    {
+                                                        cart.map((product, index) => {
+                                                            return (
+                                                                <div className={cx('product-item')} key={index}>
+                                                                    <div className={cx('product-infor')}>
+                                                                        <Link to={`/product/${product.id}`} className={cx('product-img')}>
+                                                                            <img src={product.img_color[0].url[0]} />
+                                                                        </Link>
+                                                                        <div className={cx('product-name')}>
+                                                                            <Link to={`/product/${product.id}`} className={cx('product-title')}>
+                                                                                {product.name}
+                                                                            </Link>
+                                                                            <div className={cx('product-color')}>
+                                                                                Color: {product.img_color[0].color}
+                                                                            </div>
+                                                                            <div className={cx('product-quantity')}>
+                                                                                Số lượng: {product.quantity}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className={cx('product-price')}>
+                                                                        {product.price_sale || product.price_main}
+                                                                    </div>
                                                                 </div>
-                                                                <div className={cx('product-quantity')}>
-                                                                    Số lượng: 1
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className={cx('product-price')}>
-                                                            3.000.000đ
-                                                        </div>
-                                                    </div>
-                                                    <div className={cx('product-item')}>
-                                                        <div className={cx('product-infor')}>
-                                                            <Link to="" className={cx('product-img')}>
-                                                                <img src="https://bizweb.dktcdn.net/thumb/compact/100/437/253/products/sp7-den-do.jpg" />
-                                                            </Link>
-                                                            <div className={cx('product-name')}>
-                                                                <Link to="" className={cx('product-title')}>
-                                                                    Nike air force 1
-                                                                </Link>
-                                                                <div className={cx('product-color')}>
-                                                                    Color:  red
-                                                                </div>
-                                                                <div className={cx('product-quantity')}>
-                                                                    Số lượng: 1
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className={cx('product-price')}>
-                                                            3.000.000đ
-                                                        </div>
-                                                    </div>
-                                                    <div className={cx('product-item')}>
-                                                        <div className={cx('product-infor')}>
-                                                            <Link to="" className={cx('product-img')}>
-                                                                <img src="https://bizweb.dktcdn.net/thumb/compact/100/437/253/products/sp7-den-do.jpg" />
-                                                            </Link>
-                                                            <div className={cx('product-name')}>
-                                                                <Link to="" className={cx('product-title')}>
-                                                                    Nike air force 1
-                                                                </Link>
-                                                                <div className={cx('product-color')}>
-                                                                    Color:  red
-                                                                </div>
-                                                                <div className={cx('product-quantity')}>
-                                                                    Số lượng: 1
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className={cx('product-price')}>
-                                                            3.000.000đ
-                                                        </div>
-                                                    </div>
-                                                    <div className={cx('product-item')}>
-                                                        <div className={cx('product-infor')}>
-                                                            <Link to="" className={cx('product-img')}>
-                                                                <img src="https://bizweb.dktcdn.net/thumb/compact/100/437/253/products/sp7-den-do.jpg" />
-                                                            </Link>
-                                                            <div className={cx('product-name')}>
-                                                                <Link to="" className={cx('product-title')}>
-                                                                    Nike air force 1
-                                                                </Link>
-                                                                <div className={cx('product-color')}>
-                                                                    Color:  red
-                                                                </div>
-                                                                <div className={cx('product-quantity')}>
-                                                                    Số lượng: 1
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className={cx('product-price')}>
-                                                            3.000.000đ
-                                                        </div>
-                                                    </div>
+                                                            )
+                                                        })
+                                                    }
                                                 </div>
                                                 <div className={cx('pay-btn')}>
                                                     <div className={cx('total')}>
                                                         <span>Tổng tiền: </span>
-                                                        <span className={cx('result')}>3.000.000đ</span>
+                                                        <span className={cx('result')}>{total()}</span>
                                                     </div>
                                                     <button>
                                                         Thanh toán

@@ -10,7 +10,6 @@ import { useParams } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
-
 function AccessoryItem() {
 
     const {namePage} = useParams()

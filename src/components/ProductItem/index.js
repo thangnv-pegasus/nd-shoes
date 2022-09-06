@@ -2,17 +2,16 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faArrowDown, faCartArrowDown, faHeart as Heart1 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from './ProductItem.module.scss'
 
 const cx = classNames.bind(styles)
 
-function ProductItem({ product, setCart, setAllProduct, allProduct }) {
-
+function ProductItem({ product, setAllProduct, allProduct }) {
     const sale = false
 
-    let to = ''
+    let to = '' 
     if (product.class) {
         to = `/accessory/detail/${product.id}`
     }
@@ -32,7 +31,7 @@ function ProductItem({ product, setCart, setAllProduct, allProduct }) {
         if (check) {
             setAllProduct(pre =>
                 pre.map(productI =>
-                    productI.id === product.id && { ...productI, favorite: false }
+                    productI.id === product.id ? { ...productI, favorite: false } : productI
                 )
             )
         } else {
@@ -71,11 +70,6 @@ function ProductItem({ product, setCart, setAllProduct, allProduct }) {
             }}>
                 {!product.favorite && <FontAwesomeIcon icon={faHeart} className={cx('heart-1')} />}
                 {product.favorite && <FontAwesomeIcon icon={Heart1} className={cx('heart-2')} />}
-            </div>
-            <div className={cx('add-cart')}
-                onClick={() => setCart(product)}
-            >
-                <FontAwesomeIcon icon={faCartArrowDown} />
             </div>
             {
                 sale &&
