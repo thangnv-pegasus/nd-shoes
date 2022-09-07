@@ -13,6 +13,7 @@ import Signin from "../pages/Account/SignIn";
 import SignUp from "../pages/Account/SignUp";
 import Member from '../pages/Member'
 import Favorite from "../pages/Favorite";
+import SizeProduct from "../pages/SizeProduct";
 
 const publicRoutes = [
     {
@@ -74,8 +75,11 @@ const publicRoutes = [
     {
         path: routes.favorite,
         component: Favorite
+    },
+    {
+        path: routes.sizeProduct,
+        component: SizeProduct
     }
-    
 ]
 
 

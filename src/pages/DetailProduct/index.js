@@ -1,13 +1,14 @@
 import classNames from 'classnames/bind'
 import styles from './DetailProduct.module.scss'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Routes, useParams } from 'react-router-dom'
 import data from '../../data/db.json'
 import TitlePage from '../../components/TitlePage'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClipboard } from '@fortawesome/free-regular-svg-icons'
 import Title from '../../components/Title'
 import ProductItem from '../../components/ProductItem'
+import routes from '../../routes'
 
 const cx = classNames.bind(styles)
 const products = data.products
@@ -19,23 +20,11 @@ function DetailProduct() {
 
     const { productId } = useParams()
     const { accessoryId } = useParams()
-    let check = true;
-
     const [state, setState] = useState(1)
     const [size, setSize] = useState('')
+    const [thisSize, setThisSize] = useState()
 
-    const handleSize = (element) => {
-        let Ele = element.parentElement
-        console.log(element.checked)
-        if (element.checked) {
-            Ele.style.border = '1px solid #3f3fdb'
-            Ele.style.color = '#3f3fdb'
-        } else {
-            Ele.style.border = '1px solid #f5f5f5'
-            Ele.style.color = 'var(--text-color)'
-        }
-    }
-
+    let check = true;
 
     let thisProduct = products.find(product => product.id == productId)
     if (accessoryId) {
@@ -43,6 +32,16 @@ function DetailProduct() {
         check = false;
     }
     const listImg = thisProduct.img_color
+
+    const handleSize = (element) => {
+        if (thisSize) {
+            thisSize.style.border = '1px solid #f5f5f5'
+            thisSize.style.color = '#333'
+        }
+        element.style.border = '1px solid #3f3fdb'
+        element.style.color = '#3f3fdb'
+        setThisSize(element)
+    }
 
     return (
         <div className={cx('detail')}>
@@ -125,36 +124,30 @@ function DetailProduct() {
                             {
                                 check && <div className={cx('size-product')}>
                                     <div className={cx('size-title')}>
-                                        Size: {size}
+                                        Size: <span>{size}</span>
                                     </div>
                                     <div className={cx('size-list')}>
                                         {
                                             ListSize.map((item, index) => {
                                                 return (
-                                                    <label htmlFor={`item+${index}`}
+                                                    <div
+                                                        key={item}
                                                         className={cx('size-item')}
-                                                        style = {item-36===index ? {
-                                                            border: '1px solid #3f3fdb',
-                                                            color: '#3f3fdb'
-                                                        } : {
-                                                            border: '1px solid #f5f5f5',
-                                                            color: '#ccc'
+                                                        id = {item}
+                                                        onClick = {e => {
+                                                            handleSize(e.target)
+                                                            setSize(e.target.id)
                                                         }}
                                                     >
-                                                        <input id={`item+${index}`} value={item} name="check" hidden type="radio"
-                                                            onChange={e => {
-                                                                setSize(e.target.value)
-                                                            }}
-                                                        />
                                                         {item}
-                                                    </label>
+                                                    </div>
                                                 )
                                             })
                                         }
                                     </div>
                                 </div>
                             }
-                            <Link to="" className={cx('guide-box')} onClick={() => window.scrollTo(0, 0)}>
+                            <Link to={routes.sizeProduct} className={cx('guide-box')} onClick={() => window.scrollTo(0, 0)}>
                                 <span>
                                     <FontAwesomeIcon icon={faClipboard} />
                                 </span> Xem hướng dẫn chọn size
