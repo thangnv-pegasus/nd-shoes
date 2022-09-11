@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles)
 
-function DefaultLayout({ children, setLogin, setThisAccount, thisAccount, login, favoriteProducts, cart }) {
+function DefaultLayout({ children, setLogin, setThisAccount, thisAccount, login, cart }) {
     return (
         <>
             <Header

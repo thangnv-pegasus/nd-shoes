@@ -26,7 +26,6 @@ function Header({ thisAccount, login, setLogin, cart }) {
         }
         return x;
     }
-
     return (
         <div className={cx('header')}>
             <div className='grid wide'>
@@ -213,22 +212,31 @@ function Header({ thisAccount, login, setLogin, cart }) {
                                                                 <div className={cx('product-item')} key={index}>
                                                                     <div className={cx('product-infor')}>
                                                                         <Link to={`/product/${product.id}`} className={cx('product-img')}>
-                                                                            <img src={product.img_color[0].url[0]} />
+                                                                            <img src={product.img_color.url[0]} />
                                                                         </Link>
                                                                         <div className={cx('product-name')}>
                                                                             <Link to={`/product/${product.id}`} className={cx('product-title')}>
                                                                                 {product.name}
                                                                             </Link>
                                                                             <div className={cx('product-color')}>
-                                                                                Color: {product.img_color[0].color}
+                                                                                Color: {product.img_color.color}
                                                                             </div>
                                                                             <div className={cx('product-quantity')}>
                                                                                 Số lượng: {product.quantity}
                                                                             </div>
+                                                                            <div className={cx('product-size')}>
+                                                                                Size: {product.size}
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div className={cx('product-price')}>
-                                                                        {product.price_sale || product.price_main}
+                                                                        { 
+                                                                            product.price_sale ? (
+                                                                                new Intl.NumberFormat().format(parseInt(product.price_sale, 10)) + "đ"
+                                                                            ) : (
+                                                                                new Intl.NumberFormat().format(parseInt(product.price_main, 10))+ "đ"
+                                                                            )
+                                                                        }
                                                                     </div>
                                                                 </div>
                                                             )
@@ -238,7 +246,7 @@ function Header({ thisAccount, login, setLogin, cart }) {
                                                 <div className={cx('pay-btn')}>
                                                     <div className={cx('total')}>
                                                         <span>Tổng tiền: </span>
-                                                        <span className={cx('result')}>{total()}</span>
+                                                        <span className={cx('result')}>{new Intl.NumberFormat().format(parseInt(total(), 10))}đ</span>
                                                     </div>
                                                     <button>
                                                         Thanh toán

@@ -51,17 +51,20 @@
 
     .price-main {
         color: var(--red-color);
+        text-decoration: line-through;
+        color: var(--text-color);
+        opacity: 0.5;
+        text-decoration-thickness: 1.5px;
     }
 
     .price-sale {
         font-weight: 500;
         opacity: 0.5;
         text-decoration: line-through;
-        margin-left: 10px;
-        text-decoration-color: rgba(0, 0, 0, 0.5);
+        margin-right: 10px;
+        text-decoration-color: rgba(0, 0, 0, 0.1);
         text-decoration-style: solid;
         text-decoration-thickness: 1.5px;
-
     }
 
     .heart {
@@ -121,4 +124,10 @@
             opacity: 1;
         }
     }
+}
+.no-under{
+    text-decoration: none !important;
+    color: var(--red-color) !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
 }

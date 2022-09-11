@@ -9,6 +9,7 @@ import { faClipboard } from '@fortawesome/free-regular-svg-icons'
 import Title from '../../components/Title'
 import ProductItem from '../../components/ProductItem'
 import routes from '../../routes'
+import CartModal from '../../components/CartModal'
 
 const cx = classNames.bind(styles)
 const products = data.products
@@ -16,23 +17,27 @@ const accessorys = data.accessory
 
 const ListSize = [36, 37, 38, 39, 40, 41, 42, 43, 44]
 
-function DetailProduct() {
+function DetailProduct({ cart, setCart }) {
 
     const { productId } = useParams()
     const { accessoryId } = useParams()
-    const [state, setState] = useState(1)
+    const refListImg = useRef()
+
+    const [state, setState] = useState(1) // quantity
     const [size, setSize] = useState('')
     const [thisSize, setThisSize] = useState()
+    const [thisColor, setThisColor] = useState(0)
+    const [imgIndex, setImgIndex] = useState(0)
+    const [openModal, setOpenModal] = useState(false)
 
     let check = true;
-
     let thisProduct = products.find(product => product.id == productId)
     if (accessoryId) {
         thisProduct = accessorys.find(product => product.id == accessoryId)
         check = false;
     }
-    const listImg = thisProduct.img_color
 
+    const listImg = thisProduct.img_color
     const handleSize = (element) => {
         if (thisSize) {
             thisSize.style.border = '1px solid #f5f5f5'
@@ -43,6 +48,90 @@ function DetailProduct() {
         setThisSize(element)
     }
 
+    const scrollX = (list) => {
+        let check = false;
+        let startX, scrollLeft
+        list.addEventListener('mouseleave', () => {
+            check = false
+        })
+        list.addEventListener('mouseup', () => {
+            check = false;
+        })
+
+        list.addEventListener('mousedown', (e) => {
+            check = true
+            startX = e.pageX - list.offsetLeft // e.pageX chính là tọa độ khi nhấn chuột xuống so với toàn page
+            // list.offsetLeft chính là tọa độ của list cách 1 khoảng về phía lề bên trái
+            scrollLeft = list.scrollLeft
+        })
+        list.addEventListener('mousemove', (e) => {
+            if (!check) {
+                return;
+            }
+            const x = e.pageX - list.offsetLeft
+            const walk = x - startX
+            list.scrollLeft = scrollLeft - walk
+        })
+    }
+
+    const handleCart = (current) => {
+        let qqt = 1;
+        if (current) {
+            qqt = current
+        }
+        if (check && size === '') {
+            alert('Vui lòng chọn size')
+        }
+
+        /*
+            cart = [
+            {
+                id,
+                name,
+                img_color: {
+                    code,
+                    color,
+                    url: []
+                },
+                description,
+                brand,
+                price_main,
+                price_sale,
+                details: [],
+                size,
+                quantity
+            }
+        ]
+        */
+        else {
+            let productSearch = cart.find(item => item.id == thisProduct.id &&
+                item.img_color.color == thisProduct.img_color[thisColor].color &&
+                item.size == size
+            )
+            if (productSearch) {
+                setCart(pre => pre.map(item => (item.id === thisProduct.id &&
+                    item.img_color.color == thisProduct.img_color[thisColor].color &&
+                    item.size == size) ? 
+                    { ...productSearch, quantity: productSearch.quantity + qqt}
+                    : item
+                ))
+            }
+            else {
+                setCart(pre => [...pre, {...thisProduct, img_color: thisProduct.img_color[thisColor], size: size, quantity: qqt }])
+            }
+            setOpenModal(true)
+        }
+    }
+
+    useEffect(() => {
+        const list = refListImg.current
+        scrollX(list)
+        return () => {
+            scrollX(list)
+        }
+    }, [])
+
+
     return (
         <div className={cx('detail')}>
             <TitlePage chidren={thisProduct.name} />
@@ -51,14 +140,23 @@ function DetailProduct() {
                     <div className='row'>
                         <div className='col l-6'>
                             <div className={cx('img-render')}>
-                                <img src={listImg[0].url[0]} />
+                                <img src={listImg[thisColor].url[imgIndex]} />
                             </div>
-                            <div className={cx('list-img')}>
+                            <div className={cx('list-img')} ref={refListImg} >
                                 {
-                                    listImg[0].url.map((urlItem, index) => {
+                                    listImg[thisColor].url.map((urlItem, index) => {
                                         return (
-                                            <div className={cx('img-item')} key={index}>
-                                                <img src={urlItem} />
+                                            <div className={cx('img-item')} key={index}
+                                                style={imgIndex == index ? {
+                                                    border: '1px solid var(--primary-color)',
+                                                    backgroundImage: `url(${urlItem})`
+
+                                                } : {
+                                                    border: '1px solid transparent',
+                                                    backgroundImage: `url(${urlItem})`
+                                                }}
+                                                onClick={() => setImgIndex(index)}
+                                            >
                                             </div>
                                         )
                                     })
@@ -81,18 +179,41 @@ function DetailProduct() {
                                 {
                                     thisProduct.price_sale ? (
                                         <>
-                                            <span className={cx('primary')}> {thisProduct.price_sale}đ </span>
+                                            <span className={cx('primary')}>
+                                                {new Intl.NumberFormat().format(parseInt(thisProduct.price_sale, 10))}đ
+                                            </span>
                                             <div className={cx('price-main', 'under')}>
-                                                {thisProduct.price_main}đ
+                                                {new Intl.NumberFormat().format(parseInt(thisProduct.price_main, 10))}đ
                                             </div>
                                         </>
                                     ) : (
                                         <div className={cx('price-main', 'primary')}>
-                                            {thisProduct.price_main}đ
+                                            {new Intl.NumberFormat().format(parseInt(thisProduct.price_main, 10))}đ
                                         </div>
                                     )
                                 }
                             </div>
+
+                            <div className={cx('product-color')}>
+                                {
+                                    listImg.map((item, index) => {
+                                        return (
+                                            <div className={cx('product-color__item')} key={item.code}
+                                                style={thisColor == index ? {
+                                                    borderColor: 'var(--primary-color)'
+                                                } : {
+                                                    borderColor: 'transparent'
+                                                }}
+                                            >
+                                                <img src={item.url[0]} id={index}
+                                                    onClick={e => setThisColor(e.target.id)}
+                                                />
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+
                             <div className={cx('product-action')}>
                                 <div className={cx('product-quantity')}>
                                     <div className={cx('number')}>
@@ -113,7 +234,11 @@ function DetailProduct() {
                                     </div>
                                 </div>
                                 <div className={cx('order')}>
-                                    <button className={cx('add-cart')}>
+                                    <button className={cx('add-cart')}
+                                        onClick={() => {
+                                            handleCart(state)
+                                        }}
+                                    >
                                         Thêm vào giỏ
                                     </button>
                                     <button className={cx('buy-now')}>
@@ -128,13 +253,13 @@ function DetailProduct() {
                                     </div>
                                     <div className={cx('size-list')}>
                                         {
-                                            ListSize.map((item, index) => {
+                                            ListSize.map((item) => {
                                                 return (
                                                     <div
                                                         key={item}
                                                         className={cx('size-item')}
-                                                        id = {item}
-                                                        onClick = {e => {
+                                                        id={item}
+                                                        onClick={e => {
                                                             handleSize(e.target)
                                                             setSize(e.target.id)
                                                         }}
@@ -147,7 +272,9 @@ function DetailProduct() {
                                     </div>
                                 </div>
                             }
-                            <Link to={routes.sizeProduct} className={cx('guide-box')} onClick={() => window.scrollTo(0, 0)}>
+                            <Link to={routes.sizeProduct} className={cx('guide-box')}
+                                onClick={() => window.scrollTo(0, 0)}
+                            >
                                 <span>
                                     <FontAwesomeIcon icon={faClipboard} />
                                 </span> Xem hướng dẫn chọn size
@@ -156,7 +283,7 @@ function DetailProduct() {
                                 {thisProduct.description}
                             </div>
                             <div className={cx('product-color')}>
-                                Màu sắc hiển thị: {listImg[0].color}
+                                Màu sắc hiển thị: {listImg[thisColor].color}
                             </div>
 
                         </div>
@@ -202,6 +329,9 @@ function DetailProduct() {
                     </div>
                 </div>
             </div>
+            {
+                openModal && <CartModal cart={cart} setOpenModal={setOpenModal} setCart={setCart} />
+            }
         </div>
     )
 }

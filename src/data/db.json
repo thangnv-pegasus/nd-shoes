@@ -27,12 +27,28 @@
                 {
                     "code": 2,
                     "color": "Dark Grey",
-                    "url": "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/lfzlzcgbote8dtyoky1w/air-max-97-shoes-EBZrb8.png"
+                    "url": [
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/c350d55e-1a36-4d52-bd39-52f753b17e2d/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/151a6a50-0f41-420d-b0d2-e87cbb638951/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/fde2ecbe-ccfd-4aa1-9a13-ae626dee4409/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/7bcc1fc6-447b-4e27-ba26-8e3cf28f5360/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/5aed11ae-1bfa-4c6d-89d9-9c2c39310678/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/caf574e8-3000-4636-bad5-c4b7100ee5d8/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/40d03cc4-f5d0-4493-9467-b241d4291769/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/58133fe7-a09d-49fd-bcee-6736b14e0ab6/air-max-flyknit-racer-shoes-Q9lN71.png"
+                    ]
                 },
                 {
                     "code": 3,
                     "color": "black",
-                    "url": "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/fjfip8ga1ep22vhxdcew/air-max-97-shoe-EBZrb8.png"
+                    "url": [
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/b7675dbb-cd01-484b-98e7-14a5ce01edf9/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/aeef3c65-e87f-443c-aa72-5edfaa5d66fc/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/e3b342c5-4604-423d-934a-704601c1b131/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/28ba2379-1bc9-438e-8528-60e279113cc1/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/a26953ae-40a6-4ec8-bec9-edc9bfc6ad1d/air-max-flyknit-racer-shoes-Q9lN71.png",
+                        "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/0bff3012-9e30-4c5e-9f0c-28a96c9f999d/air-max-flyknit-racer-shoes-Q9lN71.png"
+                    ]
                 }
             ],
             "description": "Với thiết kế gợn sóng ban đầu lấy cảm hứng từ tàu cao tốc Nhật Bản, Nike Air Max 97 cho phép bạn đẩy phong cách của mình lên phía trước với tốc độ tối đa. cho phép bạn đi xe trong sự thoải mái hạng nhất.",
@@ -1337,7 +1353,7 @@
             ]
         },
         {
-            "id":30,
+            "id": 30,
             "name": "GV Special+ Sneakers",
             "img_color": [
                 {
@@ -2534,7 +2550,7 @@
                     ]
                 }
             ],
-            "description": "Balo Legacy của chúng tôi là một chiếc túi cổ điển bổ sung cho phong cách sống năng động của bạn. Thiết kế gọn gàng và thời trang của chiếc ba lô đa năng này khiến nó trở thành lựa chọn phù hợp cho sinh viên, vận động viên, người đi làm và hơn thế nữa.",
+           "description": "Balo Legacy của chúng tôi là một chiếc túi cổ điển bổ sung cho phong cách sống năng động của bạn. Thiết kế gọn gàng và thời trang của chiếc ba lô đa năng này khiến nó trở thành lựa chọn phù hợp cho sinh viên, vận động viên, người đi làm và hơn thế nữa.",
             "brand": "New Balance",
             "price_main": "701916",
             "price_sale": null,
@@ -2635,7 +2651,7 @@
             "id": 1,
             "title": "King James mang đôi OFF-WHITE x Nike Air Force 1 University Yellow của Virgil Abloh có gì đặc biệt?",
             "author": "Nguyễn Anh Dũng",
-            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t7.jpg?v=1640076034077",
+            "url": "https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t7.jpg?v=1640076034077",
             "date": "Ngày 21/12/2021",
             "content": [
                 "OFF-WHITE x Nike Air Force 1 University Yellow là đôi sneakers được hé lộ trong website public—domain.com, một website mô phỏng màn hình desktop làm việc của Virgil Abloh. Đây là đôi sneakers được giới sneakerhead trông chờ bởi phối màu vàng cực kỳ bắt mắt, bên cạnh việc collab cực hype giữa Virgil Abloh và Nike từ năm 2017 mang tên THE TEN.",
@@ -2647,7 +2663,7 @@
             "id": 2,
             "title": "Hàng loạt các phối màu của adidas Stan Smith được tung ra dành cho tín đồ mê sneakers",
             "author": "Nguyễn Anh Dũng",
-            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t5.jpg?v=1640075969097",
+            "url": "https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t5.jpg?v=1640075969097",
             "date": "Ngày 21/12/2021",
             "content": [
                 "Adidas Stan Smith đã không còn xa lạ với bất cứ ai yêu mến sneakers trên toàn cầu nói chung và tại Việt Nam nói riêng. Một thiết kế giản đơn sử dụng chất liệu da màu trắng & gót xanh lá cây lấy ý tưởng từ quả bóng tennis ra mắt vào năm 1963. Trải qua quá trình phát triển, Stan Smith là một trong những sản phẩm tiêu biểu cho nền văn hóa sneakers trên toàn cầu. Khó ai có thể phủ nhận được tính ứng dụng cực kỳ linh hoạt của đôi sneakers này bởi nó hoàn toàn có thể đi cùng với các outfit dành cho những ai yêu mến thời trang đường phố, hay linh động hơn là một item không thể thiếu cho những ai phải sử dụng thời trang văn phòng mang tính chuẩn mực nhưng có nét riêng phá cách.",
@@ -2659,7 +2675,7 @@
             "id": 3,
             "title": " Nike AIR FORCE 1 Love Women – Phối màu dành riêng cho một nửa thế giới",
             "author": "Nguyễn Anh Dũng",
-            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t6.jpeg?v=1640075992740",
+            "url": "https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t6.jpeg?v=1640075992740",
             "date": "Ngày 21/12/2021",
             "content": [
                 "Nike lại tiếp tục tung ra một phối màu sử dụng tông màu trắng chủ đạo bằng chất liệu canvas kết hợp denim trên đôi sneakers được xem là biểu tượng của thương hiệu, Nike Air Force 1 Love Women.",
@@ -2676,7 +2692,7 @@
             "id": 4,
             "title": "Tokyo hoài niệm trong Tuần lễ Thời trang Milan",
             "author": "Nguyễn Anh Dũng",
-            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t4.jpeg?v=1640075922867",
+            "url": "https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t4.jpeg?v=1640075922867",
             "date": "Ngày 21/12/2021",
             "content": [
                 "Thương hiệu thời trang Nhật Bản Onitsuka Tiger tiếp tục trình làng bộ sưu tập (BST) đương đại kết hợp giữa thời trang và thể thao, pha trộn giữa yếu tố di sản và tinh thần đổi mới.",
@@ -2693,7 +2709,7 @@
             "id": 5,
             "title": "Onitsuka Tiger ra mắt đồng phục chính thức của Intel World Open",
             "author": "Nguyễn Anh Dũng",
-            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t3.jpg?v=1640075877943",
+            "url": "https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t3.jpg?v=1640075877943",
             "date": "Ngày 21/12/2021",
             "content": [
                 "Thương hiệu thời trang Nhật Bản Onitsuka Tiger tự hào thông báo về việc tham gia Intel World Open – giải đấu Esports toàn cầu do Intel tổ chức, với tư cách là đối tác sản xuất đồng phục chính thức. Trong thời gian diễn ra sự kiện, thương hiệu cũng hợp tác với Tomohisa Yamashita và phát hành loạt video trên YouTube nhằm thúc đẩy sự phát triển của một xã hội hòa nhập thông qua Esports, trong đó video đầu tiên được phát hành hôm nay.",
@@ -2707,7 +2723,7 @@
             "id": 6,
             "title": "Vợ của Kobe Bryant đã thỏa thuận chấm dứt hợp đồng cùng Nike",
             "author": "Nguyễn Anh Dũng",
-            "url":"https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t2.jpg?v=1640075847057",
+            "url": "https://bizweb.dktcdn.net/thumb/large/100/437/253/articles/t2.jpg?v=1640075847057",
             "date": "Ngày 21/12/2021",
             "content": [
                 "Vanessa Bryant, vợ của Kobe Bryant – VĐV Bóng rổ có tầm ảnh hưởng cực lớn trong nền văn hóa sneakers cũng như bộ môn Bóng rổ, đã kết thúc hợp đồng hợp tác cùng Nike. Trong suốt quá trình Kobe Bryant (Black Mamba) và Nike hợp tác đã đưa ra hàng loạt sản phẩm cực đỉnh đến cộng đồng “Quả bóng Cam” trên toàn cầu. Di sản mà Kobe để lại sau ngày mất vẫn luôn ở đó & truyền cảm hứng cho những ai mong muốn theo đuổi đam mê & sống hết mình cho sự chọn lựa về sự nghiệp cũng như giấc mơ của riêng mình.",
@@ -2718,34 +2734,34 @@
             ]
         }
     ],
-    "account":[
+    "account": [
         {
-            "id":1,
-            "username":"Nguyễn Văn A",
+            "id": 1,
+            "username": "Nguyễn Văn A",
             "email": "NVA@gmail.com",
-            "phone":"012345678",
-            "password":"123456"
+            "phone": "012345678",
+            "password": "123456"
         },
         {
-            "id":2,
-            "username":"Nguyễn Văn B",
+            "id": 2,
+            "username": "Nguyễn Văn B",
             "email": "NVB@gmail.com",
-            "phone":"012345678",
-            "password":"123456"
+            "phone": "012345678",
+            "password": "123456"
         },
         {
-            "id":3,
-            "username":"Nguyễn Văn C",
+            "id": 3,
+            "username": "Nguyễn Văn C",
             "email": "NVC@gmail.com",
-            "phone":"012345678",
-            "password":"123456"
+            "phone": "012345678",
+            "password": "123456"
         },
         {
-            "id":4,
-            "username":"Nguyễn Văn D",
+            "id": 4,
+            "username": "Nguyễn Văn D",
             "email": "NVD@gmail.com",
-            "phone":"012345678",
-            "password":"123456"
+            "phone": "012345678",
+            "password": "123456"
         }
     ]
 }
