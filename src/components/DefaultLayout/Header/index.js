@@ -1,5 +1,5 @@
 import className from 'classnames/bind'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 import styles from './Header.module.scss'
 import routes from '../../../routes'
@@ -13,6 +13,8 @@ const cx = className.bind(styles)
 const size = 0;
 
 function Header({ thisAccount, login, setLogin, cart }) {
+
+    const navigate = useNavigate()
 
     const total = () => {
         let x = 0;
@@ -248,7 +250,7 @@ function Header({ thisAccount, login, setLogin, cart }) {
                                                         <span>Tổng tiền: </span>
                                                         <span className={cx('result')}>{new Intl.NumberFormat().format(parseInt(total(), 10))}đ</span>
                                                     </div>
-                                                    <button>
+                                                    <button onClick = {()=>navigate('/orderPage')}>
                                                         Thanh toán
                                                     </button>
                                                 </div>

@@ -14,6 +14,8 @@ import SignUp from "../pages/Account/SignUp";
 import Member from '../pages/Member'
 import Favorite from "../pages/Favorite";
 import SizeProduct from "../pages/SizeProduct";
+import CartPage from "../pages/CartPage";
+import OrderPage from "../pages/OrderPage";
 
 const publicRoutes = [
     {
@@ -79,6 +81,14 @@ const publicRoutes = [
     {
         path: routes.sizeProduct,
         component: SizeProduct
+    },
+    {
+        path: routes.cart,
+        component: CartPage
+    },
+    {
+        path: routes.order,
+        component: OrderPage
     }
 ]
 

@@ -2,7 +2,7 @@ import styles from './CartModal.module.scss'
 import classNames from 'classnames/bind'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 const cx = classNames.bind(styles)
@@ -10,6 +10,7 @@ const cx = classNames.bind(styles)
 function CartModal({ cart, setOpenModal, setCart }) {
 
     const [quantity, setQuantity] = useState()
+    const navigate = useNavigate()
 
     console.log(cart)
 
@@ -85,7 +86,9 @@ function CartModal({ cart, setOpenModal, setCart }) {
                             <p>Tổng tiền</p>
                             <p className={cx('result-price')}>{new Intl.NumberFormat().format(result())}đ</p>
                         </div>
-                        <button className={cx('pay-btn')}>
+                        <button className={cx('pay-btn')} 
+                            onClick = {()=>navigate('/orderPage')}
+                        >
                             Thanh toán
                         </button>
                     </div>

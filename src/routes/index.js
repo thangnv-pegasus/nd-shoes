@@ -15,7 +15,8 @@ const routes = {
     member: '/member',
     favorite: '/favorite',
     cart: '/cart',
-    sizeProduct: '/sizeProduct'
+    sizeProduct: '/sizeProduct',
+    order: '/orderPage'
 }
 
 export default routes
