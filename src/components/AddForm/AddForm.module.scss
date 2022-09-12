@@ -1,0 +1,19 @@
+.add-form {
+    textarea,
+    input {
+        border-radius: 4px;
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        padding: 14px 12px;
+        border: 1px #d9d9d9 solid;
+        height: 44px;
+        background-color: var(--white-color);
+        color: var(--text-color);
+        margin: 12px 6px;
+    }
+    textarea{
+        height: auto;
+        resize: vertical;
+    }
+}
