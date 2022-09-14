@@ -16,7 +16,8 @@ const routes = {
     favorite: '/favorite',
     cart: '/cart',
     sizeProduct: '/sizeProduct',
-    order: '/orderPage'
+    order: '/orderPage',
+    complete: '/complete'
 }
 
 export default routes

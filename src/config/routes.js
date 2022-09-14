@@ -16,6 +16,7 @@ import Favorite from "../pages/Favorite";
 import SizeProduct from "../pages/SizeProduct";
 import CartPage from "../pages/CartPage";
 import OrderPage from "../pages/OrderPage";
+import Complete from "../pages/Complete";
 
 const publicRoutes = [
     {
@@ -88,7 +89,13 @@ const publicRoutes = [
     },
     {
         path: routes.order,
-        component: OrderPage
+        component: OrderPage,
+        layout: null
+    },
+    {
+        path: routes.complete,
+        component: Complete,
+        layout: null
     }
 ]
 

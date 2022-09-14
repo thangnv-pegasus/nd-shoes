@@ -8,7 +8,7 @@ import NotFound from './pages/NotFound';
 
 const products = data.products
 
-const productsFavorit = products.map(item => ({...item, favorite: false}))
+const productsFavorit = products.map(item => ({ ...item, favorite: false }))
 
 function App() {
 
@@ -17,6 +17,12 @@ function App() {
   const [cart, setCart] = useState([])
   const [allProduct, setAllProduct] = useState(productsFavorit)
 
+  const [mail, setMail] = useState()
+  const [name, setName] = useState()
+  const [phone, setPhone] = useState()
+  const [address, setAddress] = useState()
+  const [note, setNote] = useState()
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -24,11 +30,13 @@ function App() {
           {
             publicRoutes.map((routeI, index) => {
               let Layout = DefaultLayout
+              let check = true;
               if (routeI.layout) {
                 Layout = routeI.layout
               }
-              else if(routeI.layout == 'null'){
+              else if (routeI.layout === null) {
                 Layout = Fragment
+                check = false;
               }
               let Element = routeI.component
               return (
@@ -52,6 +60,16 @@ function App() {
                         cart={cart}
                         setAllProduct={setAllProduct}
                         allProduct={allProduct}
+                        mail={mail}
+                        setMail={setMail}
+                        name={name}
+                        setName={setName}
+                        phone={phone}
+                        setPhone={setPhone}
+                        address={address}
+                        setAddress={setAddress}
+                        note={note}
+                        setNote={setNote}
                       />
                     </Layout>
                   }
@@ -59,7 +77,7 @@ function App() {
               )
             })
           }
-          <Route path='*' element={<NotFound/>} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>

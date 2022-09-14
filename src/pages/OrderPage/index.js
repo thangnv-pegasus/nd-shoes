@@ -2,14 +2,28 @@ import styles from './OrderPage.module.scss'
 import classNames from 'classnames/bind'
 import AddForm from '../../components/AddForm'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMoneyBill } from '@fortawesome/free-solid-svg-icons'
+import { faCaretLeft, faMoneyBill } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
+import { Link, Routes, useNavigate } from 'react-router-dom'
+import routes from '../../routes'
 
 const cx = classNames.bind(styles)
 
-function OrderPage({ cart }) {
+function OrderPage({ cart, ...props }) {
 
     const [check, setCheck] = useState()
+    const { name, setName, phone, setPhone, mail, setMail, address, setAddress, note, setNote } = props
+
+    const navigate = useNavigate()
+
+    let sumPrice = 0;
+    for (let item of cart) {
+        if (item.price_sale) {
+            sumPrice += parseInt(item.price_sale) * item.quantity
+        } else {
+            sumPrice += parseInt(item.price_main) * item.quantity
+        }
+    }
 
     return (
         <div className={cx('order-page')}>
@@ -26,7 +40,18 @@ function OrderPage({ cart }) {
                                         <div className={cx('add-title')}>
                                             Thông tin nhận hàng
                                         </div>
-                                        <AddForm />
+                                        <AddForm
+                                            mail={mail}
+                                            setMail={setMail}
+                                            name={name}
+                                            setName={setName}
+                                            phone={phone}
+                                            setPhone={setPhone}
+                                            address={address}
+                                            setAddress={setAddress}
+                                            note={note}
+                                            setNote={setNote}
+                                        />
                                     </div>
                                 </div>
                                 <div className='col l-6'>
@@ -70,16 +95,16 @@ function OrderPage({ cart }) {
                                         return (
                                             <div className={cx('product-item')} key={index}>
                                                 <div className={cx('product-infor')}>
-                                                    <div className={cx('product-img')}>
+                                                    <Link to={`/product/${item.id}`} className={cx('product-img')}>
                                                         <img src={item.img_color.url[0]} />
                                                         <div className={cx('product-quantity')}>
                                                             {item.quantity}
                                                         </div>
-                                                    </div>
+                                                    </Link>
                                                     <div className={cx('product-title')}>
-                                                        <div className={cx('product-name')}>
+                                                        <Link to={`/product/${item.id}`} className={cx('product-name')}>
                                                             {item.name}
-                                                        </div>
+                                                        </Link>
                                                         <div className={cx('product-size')}>
                                                             {item.img_color.color} / {item.size}
                                                         </div>
@@ -98,6 +123,32 @@ function OrderPage({ cart }) {
                                         )
                                     })
                                 }
+                            </div>
+                            <div className={cx('voucher')}>
+                                <input type="text" placeholder='Nhập mã giảm giá' /> <button> Áp dụng </button>
+                            </div>
+                            <div className={cx('bar-noti')}>
+                                <div>
+                                    <p>Tạm tính</p><p>{new Intl.NumberFormat().format(sumPrice)}đ</p>
+                                </div>
+                                <div>
+                                    <p>Phí vận chuyển</p> {check && <p> 40.000đ </p>}
+                                </div>
+                            </div>
+                            <div className={cx('result')}>
+                                <div>
+                                    <p>Tổng cộng</p> <p>{new Intl.NumberFormat().format(sumPrice + 40000)}đ </p>
+                                </div>
+                                <div>
+                                    <Link to={routes.cart}>
+                                        <FontAwesomeIcon icon={faCaretLeft} /> <span>Quay về giỏ hàng</span>
+                                    </Link>
+                                    <button className={cx('buy')}
+                                        onClick={() => navigate(routes.complete)}
+                                    >
+                                        Đặt hàng
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
