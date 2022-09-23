@@ -13,6 +13,70 @@ const products = data.products
 const accessorys = data.accessory
 
 const sortList = ['Mặc định', 'Tên A-z', 'Tên Z-A', 'Giá cao đến thấp', 'Giá thấp đến cao']
+const sortBrand = [
+    {
+        title: 'Tất cả',
+        value: 'allBrands'
+    },
+    {
+        title: 'Adidas',
+        value: 'Adidas'
+    },
+    {
+        title: 'Nike',
+        value: 'Nike'
+    },
+    {
+        title: 'Converse',
+        value: 'Converse'
+    },
+    {
+        title: 'Vans',
+        value: 'Vans'
+    },
+    {
+        title: 'Puma',
+        value: 'Puma'
+    },
+    {
+        title: 'Fila',
+        value: 'Fila'
+    },
+    {
+        title: 'MLB',
+        value: 'MLB'
+    },
+    {
+        title: 'New Balance',
+        value: 'New Balance'
+    }
+]
+const sortPrice = [
+    {
+        title: 'Tất cả',
+        value: 'all'
+    },
+    {
+        title: 'Giá dưới 1.000.000đ',
+        value: '1'
+    },
+    {
+        title: '1.000.000đ - 3.000.000đ',
+        value: '2'
+    },
+    {
+        title: '3.000.000đ - 5.000.000đ',
+        value: '3'
+    },
+    {
+        title: '5.000.000đ - 10.000.000đ',
+        value: '4'
+    },
+    {
+        title: 'Giá trên 10.000.000đ',
+        value: '5'
+    }
+]
 
 function Products() {
 
@@ -27,8 +91,10 @@ function Products() {
     const refOption2 = useRef()
     const refOption3 = useRef()
     const [productsRender, setProductsRender] = useState(thisData)
-    const [sort1, setSort1] = useState(0)
-    const [thisBrand, setThisBrand] = useState()
+    const [sort1, setSort1] = useState(0) // định nghĩa vị trí mặc định của khung sắp xếp theo tên
+    const [sort2, setSort2] = useState(0) // định nghĩa vị trí mặc định của khung sắp xếp theo brand
+    const [sort3, setSort3] = useState(0) // định nghĩa vị trí mặc định của khung sắp xếp theo price
+
 
     const splitProduct = (list, x) => {
         let array = list
@@ -43,7 +109,7 @@ function Products() {
 
     let pageNumber = splitProduct(productsRender, 9);
     const [thisPage, setThisPage] = useState(1)
-
+    const [thisBrand, setThisBrand] = useState(productsRender)
     const handleHeight = (Element, check) => {
         if (check) {
             Element.style.height = '0'
@@ -81,39 +147,35 @@ function Products() {
     // filter
     const SortByBrand = (brand) => {
         switch (brand.toLowerCase()) {
+            case 'allbrands':
+                setProductsRender(thisData)
+                break;
             case 'adidas':
                 setProductsRender(thisData.filter(item => item.brand.toLowerCase() === 'adidas'))
-                setThisBrand(productsRender)
                 break;
             case 'nike':
                 setProductsRender(thisData.filter(item => item.brand.toLowerCase() === 'nike'))
-                setThisBrand(productsRender)
                 break;
             case 'converse':
                 setProductsRender(thisData.filter(item => item.brand.toLowerCase() === 'converse'))
-                setThisBrand(productsRender)
                 break;
             case 'vans':
                 setProductsRender(thisData.filter(item => item.brand.toLowerCase() === 'vans'))
-                setThisBrand(productsRender)
                 break;
             case 'puma':
                 setProductsRender(thisData.filter(item => item.brand.toLowerCase() === 'puma'))
-                setThisBrand(productsRender)
                 break;
             case 'fila':
                 setProductsRender(thisData.filter(item => item.brand.toLowerCase() === 'fila'))
-                setThisBrand(productsRender)
                 break
             case 'mlb':
                 setProductsRender(thisData.filter(item => item.brand.toLowerCase() === 'mlb'))
-                setThisBrand(productsRender)
                 break;
             case 'new balance':
                 setProductsRender(thisData.filter(item => item.brand.toLowerCase() === 'new balance'))
-                setThisBrand(productsRender)
                 break;
         }
+        setThisBrand(productsRender)
     }
 
     const handleSort1 = (current) => {
@@ -175,68 +237,191 @@ function Products() {
         }
     }
 
+    const SortByPrice = (value) => {
+        switch (value) {
+            case 'all':
+                setProductsRender([...thisBrand])
+                break;
+            case '1':
+                setProductsRender([...thisBrand.filter(item => {
+                    if (item.price_sale) {
+                        return (Number(item.price_main) < 1000000)
+                    }
+                    else {
+                        return (Number(item.price_sale) < 1000000)
+                    }
+                })])
+                break;
+            case '2':
+                setProductsRender([...thisBrand.filter(item => {
+                    if (item.price_sale) {
+                        return (Number(item.price_sale) >= 1000000 && Number(item.price_sale) < 3000000)
+                    }
+                    else {
+                        return Number(item.price_main) >= 1000000 && Number(item.price_main) < 3000000
+                    }
+                })])
+                break;
+            case '3':
+                setProductsRender([...thisBrand.filter(item => {
+                    if (item.price_sale) {
+                        return Number(item.price_sale) >= 3000000 && Number(item.price_sale) < 5000000
+                    }
+                    else {
+                        return Number(item.price_main) >= 3000000 && Number(item.price_main) < 5000000
+                    }
+                })])
+                break;
+            case '4':
+                setProductsRender([...thisBrand.filter(item => {
+                    if (item.price_sale) {
+                        return Number(item.price_sale) >= 5000000 && Number(item.price_sale) < 10000000
+                    }
+                    else {
+                        return Number(item.price_main) >= 5000000 && Number(item.price_main) < 10000000
+                    }
+                })])
+                break;
+            case '5':
+                setProductsRender([...thisBrand.filter(item => {
+                    if (item.price_sale) {
+                        return Number(item.price_sale) >= 10000000
+                    }
+                    else {
+                        return Number(item.price_main) >= 10000000
+                    }
+                })])
+                break;
+        }
+        setThisPage(1)
+    }
+
+    // sort all price of brand
+    const SortAllPriceOfBrand = () => {
+        setProductsRender([...thisBrand])
+    }
+
     // < 1m
     const SortByPriceLow = () => {
-        setProductsRender([productsRender.filter(item => {
-            if (item.price_sale == 'null') {
-                return (Number(item.price_sale) < 1000000)
-            }
-            else {
-                return (Number(item.price_main) < 1000000)
-            }
-        })])
+        if (thisBrand) {
+            setProductsRender([...thisBrand.filter(item => {
+                if (item.price_sale) {
+                    return (Number(item.price_main) < 1000000)
+                }
+                else {
+                    return (Number(item.price_sale) < 1000000)
+                }
+            })])
+        }
+        else {
+            setProductsRender([...productsRender.filter(item => {
+                if (item.price_sale) {
+                    return (Number(item.price_main) < 1000000)
+                }
+                else {
+                    return (Number(item.price_sale) < 1000000)
+                }
+            })])
+        }
         setThisPage(1)
     }
 
     // 1m - 3m
     const SortByPriceMedium = () => {
-        setProductsRender([productsRender.filter(item => {
-            if (item.price_sale) {
-                return (Number(item.price_sale) >= 1000000 && Number(item.price_sale) < 3000000)
-            }
-            else {
-                return Number(item.price_main) >= 1000000 && Number(item.price_main) < 3000000
-            }
-        })])
+        if (thisBrand) {
+            setProductsRender([...thisBrand.filter(item => {
+                if (item.price_sale) {
+                    return (Number(item.price_sale) >= 1000000 && Number(item.price_sale) < 3000000)
+                }
+                else {
+                    return Number(item.price_main) >= 1000000 && Number(item.price_main) < 3000000
+                }
+            })])
+        }
+        else {
+            setProductsRender([...productsRender.filter(item => {
+                if (item.price_sale) {
+                    return (Number(item.price_sale) >= 1000000 && Number(item.price_sale) < 3000000)
+                }
+                else {
+                    return Number(item.price_main) >= 1000000 && Number(item.price_main) < 3000000
+                }
+            })])
+        }
         setThisPage(1)
     }
 
     // 3m - 5m
     const SortByPriceNormal = () => {
-        setProductsRender([productsRender.filter(item => {
-            if (item.price_sale) {
-                return Number(item.price_sale) >= 3000000 && Number(item.price_sale) < 5000000
-            }
-            else {
-                return Number(item.price_main) >= 3000000 && Number(item.price_main) < 5000000
-            }
-        })])
+        if (thisBrand) {
+            setProductsRender([...thisBrand.filter(item => {
+                if (item.price_sale) {
+                    return Number(item.price_sale) >= 3000000 && Number(item.price_sale) < 5000000
+                }
+                else {
+                    return Number(item.price_main) >= 3000000 && Number(item.price_main) < 5000000
+                }
+            })])
+        }
+        else {
+            setProductsRender([...productsRender.filter(item => {
+                if (item.price_sale) {
+                    return Number(item.price_sale) >= 3000000 && Number(item.price_sale) < 5000000
+                }
+                else {
+                    return Number(item.price_main) >= 3000000 && Number(item.price_main) < 5000000
+                }
+            })])
+        }
         setThisPage(1)
     }
 
     // 5m - 10m
     const SortByPriceHigh = () => {
-        setProductsRender([productsRender.filter(item => {
-            if (item.price_sale) {
-                return Number(item.price_sale) >= 5000000 && Number(item.price_sale) < 10000000
-            }
-            else {
-                return Number(item.price_main) >= 5000000 && Number(item.price_main) < 10000000
-            }
-        })])
+        if (thisBrand) {
+            setProductsRender([...thisBrand.filter(item => {
+                if (item.price_sale) {
+                    return Number(item.price_sale) >= 5000000 && Number(item.price_sale) < 10000000
+                }
+                else {
+                    return Number(item.price_main) >= 5000000 && Number(item.price_main) < 10000000
+                }
+            })])
+        }
+        else {
+            setProductsRender([...productsRender.filter(item => {
+                if (item.price_sale) {
+                    return Number(item.price_sale) >= 5000000 && Number(item.price_sale) < 10000000
+                }
+                else {
+                    return Number(item.price_main) >= 5000000 && Number(item.price_main) < 10000000
+                }
+            })])
+        }
         setThisPage(1)
     }
 
     // > 10m
     const SortByPriceMaxLV = () => {
-        setProductsRender([productsRender.filter(item => {
-            if (item.price_sale) {
-                return Number(item.price_sale) >= 10000000
-            }
-            else {
-                return Number(item.price_main) >= 10000000
-            }
-        })])
+        if (thisBrand) {
+            setProductsRender([...thisBrand.filter(item => {
+                if (item.price_sale) {
+                    return Number(item.price_sale) >= 10000000
+                }
+                else {
+                    return Number(item.price_main) >= 10000000
+                }
+            })])
+        } else {
+            setProductsRender([...productsRender.filter(item => {
+                if (item.price_sale) {
+                    return Number(item.price_sale) >= 10000000
+                }
+                else {
+                    return Number(item.price_main) >= 10000000
+                }
+            })])
+        }
         setThisPage(1)
     }
 
@@ -249,6 +434,7 @@ function Products() {
                     <div className='row'>
                         <div className={cx('col l-3')}>
                             <div className={cx('bar')}>
+                                {/* sort-by-name */}
                                 <div className={cx('sort')}>
                                     <div className={cx('title')}>
                                         <p>Sắp xếp</p>
@@ -275,6 +461,8 @@ function Products() {
                                         }
                                     </div>
                                 </div>
+
+                                {/* sort-by-brands */}
                                 <div className={cx('sort')}>
                                     <div className={cx('title')}>
                                         <p>Thương hiệu</p>
@@ -283,40 +471,26 @@ function Products() {
                                         </span>
                                     </div>
                                     <div className={cx('sort-options')} ref={refOption2}>
-                                        <label>
-                                            <input type="radio" name="check2" hidden onChange={() => SortByBrand('adidas')} />
-                                            <span></span>Adidas
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="check2" hidden onChange={() => SortByBrand('nike')} />
-                                            <span></span> Nike
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="check2" hidden onChange={() => SortByBrand('converse')} />
-                                            <span></span> Converse
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="check2" hidden onChange={() => SortByBrand('vans')} />
-                                            <span></span> Vans
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="check2" hidden onChange={() => SortByBrand('puma')} />
-                                            <span></span> Puma
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="check2" hidden onChange={() => SortByBrand('fila')} />
-                                            <span></span> Fila
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="check2" hidden onChange={() => SortByBrand('mlb')} />
-                                            <span></span> MLB
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="check2" hidden onChange={() => SortByBrand('new balance')} />
-                                            <span></span> New Balance
-                                        </label>
+                                        {
+                                            sortBrand.map((item, index) => {
+                                                return (
+                                                    <label key={index}>
+                                                        <input type="radio" name="check2" hidden
+                                                            onChange={() => {
+                                                                SortByBrand(`${item.value}`)
+                                                                setSort2(index)
+                                                            }}
+                                                            checked={index === sort2}
+                                                        />
+                                                        <span></span>{item.title}
+                                                    </label>
+                                                )
+                                            })
+                                        }
                                     </div>
                                 </div>
+
+                                {/* sort-by-price */}
                                 <div className={cx('sort')}>
                                     <div className={cx('title')}>
                                         <p>Giá sản phẩm</p>
@@ -325,26 +499,22 @@ function Products() {
                                         </span>
                                     </div>
                                     <div className={cx('sort-options')} ref={refOption3}>
-                                        <label>
-                                            <input type="radio" id="1" name="check3" hidden onChange={() => SortByPriceLow()} />
-                                            <span></span>Giá dưới 1.000.000đ
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="2" name="check3" hidden onChange={() => SortByPriceMedium()} />
-                                            <span></span> 1.000.000đ - 3.000.000đ
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="3" name="check3" hidden onChange={() => SortByPriceNormal()} />
-                                            <span></span> 3.000.000đ - 5.000.000đ
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="4" name="check3" hidden onChange={() => SortByPriceHigh()} />
-                                            <span></span> 5.000.000đ - 10.000.000đ
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="5" name="check3" hidden onChange={() => SortByPriceMaxLV()} />
-                                            <span></span> Giá trên 10.000.000đ
-                                        </label>
+                                        {
+                                            sortPrice.map((item, index) => {
+                                                return (
+                                                    <label key={index}>
+                                                        <input type="radio" id={index} name="check3" hidden
+                                                            onChange={() => {
+                                                                SortByPrice(`${item.value}`)
+                                                                setSort3(index)
+                                                            }}
+                                                            checked={index === sort3}
+                                                        />
+                                                        <span></span>{item.title}
+                                                    </label>
+                                                )
+                                            })
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -353,17 +523,21 @@ function Products() {
                             <div className={cx('products')}>
                                 <div className='row'>
                                     {
-                                        pageNumber.length > 0 && pageNumber[thisPage - 1].map((product, index) => {
-                                            if (index < 9) {
-                                                return (
-                                                    <div className='col l-4' key={index}>
-                                                        <ProductItem
-                                                            product={product}
-                                                        />
-                                                    </div>
-                                                )
-                                            }
-                                        })
+                                        (pageNumber.length > 0) ? (
+                                            pageNumber[thisPage - 1].map((product, index) => {
+                                                if (index < 9) {
+                                                    return (
+                                                        <div className='col l-4' key={index}>
+                                                            <ProductItem
+                                                                product={product}
+                                                            />
+                                                        </div>
+                                                    )
+                                                }
+                                            })
+                                        ) : (
+                                            <></>
+                                        )
                                     }
                                 </div>
                             </div>

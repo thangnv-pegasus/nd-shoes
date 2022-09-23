@@ -8,14 +8,12 @@ import NotFound from './pages/NotFound';
 
 const products = data.products
 
-const productsFavorit = products.map(item => ({ ...item, favorite: false }))
-
 function App() {
 
   const [login, setLogin] = useState(false)
   const [thisAccount, setThisAccount] = useState()
   const [cart, setCart] = useState([])
-  const [allProduct, setAllProduct] = useState(productsFavorit)
+  const [allProduct, setAllProduct] = useState(products)
 
   const [mail, setMail] = useState()
   const [name, setName] = useState()

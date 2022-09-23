@@ -5,11 +5,12 @@ import data from '../../data/db.json'
 import TitlePage from '../../components/TitlePage'
 import { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClipboard } from '@fortawesome/free-regular-svg-icons'
+import { faClipboard, faHeart } from '@fortawesome/free-regular-svg-icons'
 import Title from '../../components/Title'
 import ProductItem from '../../components/ProductItem'
 import routes from '../../routes'
 import CartModal from '../../components/CartModal'
+import { faHeart as Heart1 } from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(styles)
 const products = data.products
@@ -17,7 +18,7 @@ const accessorys = data.accessory
 
 const ListSize = [36, 37, 38, 39, 40, 41, 42, 43, 44]
 
-function DetailProduct({ cart, setCart }) {
+function DetailProduct({ cart, setCart, allProduct, setAllProduct }) {
 
     const { productId } = useParams()
     const { accessoryId } = useParams()
@@ -111,13 +112,13 @@ function DetailProduct({ cart, setCart }) {
             if (productSearch) {
                 setCart(pre => pre.map(item => (item.id === thisProduct.id &&
                     item.img_color.color == thisProduct.img_color[thisColor].color &&
-                    item.size == size) ? 
-                    { ...productSearch, quantity: productSearch.quantity + qqt}
+                    item.size == size) ?
+                    { ...productSearch, quantity: productSearch.quantity + qqt }
                     : item
                 ))
             }
             else {
-                setCart(pre => [...pre, {...thisProduct, img_color: thisProduct.img_color[thisColor], size: size, quantity: qqt }])
+                setCart(pre => [...pre, { ...thisProduct, img_color: thisProduct.img_color[thisColor], size: size, quantity: qqt }])
             }
             setOpenModal(true)
         }
@@ -141,6 +142,10 @@ function DetailProduct({ cart, setCart }) {
                         <div className='col l-6'>
                             <div className={cx('img-render')}>
                                 <img src={listImg[thisColor].url[imgIndex]} />
+                                <div className={cx('favorite')}>
+                                    {!thisProduct.favorite && <FontAwesomeIcon icon={faHeart} className={cx('heart-1')} />}
+                                    {thisProduct.favorite && <FontAwesomeIcon icon={Heart1} className={cx('heart-2')} />}
+                                </div>
                             </div>
                             <div className={cx('list-img')} ref={refListImg} >
                                 {
@@ -319,7 +324,10 @@ function DetailProduct({ cart, setCart }) {
                                     if (index < 4) {
                                         return (
                                             <div className='col l-3' key={product.id}>
-                                                <ProductItem product={product} />
+                                                <ProductItem
+                                                    product={product}
+                                                    allProduct={allProduct}
+                                                />
                                             </div>
                                         )
                                     }

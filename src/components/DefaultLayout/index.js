@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles)
 
-function DefaultLayout({ children, setLogin, setThisAccount, thisAccount, login, cart }) {
+function DefaultLayout({ children, setLogin, setThisAccount, thisAccount, login, cart, allProduct }) {
     return (
         <>
             <Header
@@ -13,7 +13,8 @@ function DefaultLayout({ children, setLogin, setThisAccount, thisAccount, login,
                 setThisAccount={setThisAccount}
                 thisAccount={thisAccount}
                 login={login}
-                cart = {cart}
+                cart={cart}
+                allProduct={allProduct}
             />
             <div className={cx('content')}>
                 {children}
