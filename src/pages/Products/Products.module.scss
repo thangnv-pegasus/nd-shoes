@@ -51,3 +51,18 @@
         background-color: var(--red-color);
     }
 }
+
+.list-page{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    li{
+        margin: 0 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        background: #fff;
+        border: 1px solid rgb(145, 145, 145);
+        user-select: none;
+    }
+}
