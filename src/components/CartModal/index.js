@@ -12,8 +12,6 @@ function CartModal({ cart, setOpenModal, setCart }) {
     const [quantity, setQuantity] = useState()
     const navigate = useNavigate()
 
-    console.log(cart)
-
     const result = () => {
         let s = 0;
         for (let itemx of cart) {
@@ -47,7 +45,7 @@ function CartModal({ cart, setOpenModal, setCart }) {
                                         </div>
                                         <div className={cx('product-infor')}>
                                             <Link to={`/product/${product.id}`} className={cx('product-name')}
-                                                onClick = {()=>setOpenModal(false)}
+                                                onClick={() => setOpenModal(false)}
                                             >
                                                 {product.name}
                                             </Link>
@@ -58,9 +56,43 @@ function CartModal({ cart, setOpenModal, setCart }) {
                                                 <div className={cx('product-quantity')}>
                                                     Số lượng:
                                                     <div className={cx('set-product')}>
-                                                        <button>-</button>
+                                                        <button
+                                                            onClick={() => {
+                                                                if (product.quantity == 1) {
+                                                                    setCart(pre => pre.filter(item2 => {
+                                                                        if (item2.id === product.id && item2.img_color.code === product.img_color.code && item2.size === product.size) {
+                                                                            return false;
+                                                                        } else {
+                                                                            return true;
+                                                                        }
+                                                                    }))
+                                                                } else {
+                                                                    setCart(pre => pre.map(item2 => {
+                                                                        if (item2.id === product.id && item2.img_color.code === product.img_color.code && item2.size === product.size) {
+                                                                            return { ...item2, quantity: item2.quantity - 1 }
+                                                                        } else {
+                                                                            return { ...item2 }
+                                                                        }
+                                                                    }))
+                                                                }
+                                                            }}
+                                                        >
+                                                            -
+                                                        </button>
                                                         <button className={cx('quantity')}>{product.quantity}</button>
-                                                        <button>+</button>
+                                                        <button
+                                                            onClick={() => {
+                                                                setCart(pre => pre.map(item2 => {
+                                                                    if (item2.id === product.id && item2.img_color.code === product.img_color.code && item2.size === product.size) {
+                                                                        return { ...item2, quantity: item2.quantity + 1 }
+                                                                    } else {
+                                                                        return { ...item2 }
+                                                                    }
+                                                                }))
+                                                            }}
+                                                        >
+                                                            +
+                                                        </button>
                                                     </div>
                                                 </div>
                                                 <div className={cx('product-price')}>
@@ -71,7 +103,20 @@ function CartModal({ cart, setOpenModal, setCart }) {
                                                             new Intl.NumberFormat().format(parseInt(product.price_main, 10)) + "đ"
                                                         )
                                                     }
-                                                    <button>Xóa</button>
+                                                    <button
+                                                        onClick={() => {
+                                                            setCart(pre => [...pre.filter(item2 => {
+                                                                if ((item2.size === product.size && item2.img_color.code === product.img_color.code) && item2.id === product.id) {
+                                                                    return false;
+                                                                }
+                                                                else {
+                                                                    return true;
+                                                                }
+                                                            })])
+                                                        }}
+                                                    >
+                                                        Xóa
+                                                    </button>
                                                 </div>
                                             </div>
 
@@ -86,8 +131,8 @@ function CartModal({ cart, setOpenModal, setCart }) {
                             <p>Tổng tiền</p>
                             <p className={cx('result-price')}>{new Intl.NumberFormat().format(result())}đ</p>
                         </div>
-                        <button className={cx('pay-btn')} 
-                            onClick = {()=>navigate('/orderPage')}
+                        <button className={cx('pay-btn')}
+                            onClick={() => navigate('/orderPage')}
                         >
                             Thanh toán
                         </button>

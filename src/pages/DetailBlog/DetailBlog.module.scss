@@ -63,3 +63,13 @@
     line-height: 1.5;
     font-weight: 400;
 }
+
+@media (max-width: 1023px) {
+    .detail-blog__section{
+        padding: 0 10px;
+    }
+    .order-1{
+        order: 1;
+    }
+    
+}

@@ -15,8 +15,8 @@ function Footer() {
         <div className={cx('footer')}>
             <div className='grid wide'>
                 <div className={cx('footer-section')}>
-                    <div className='row no-gutters'>
-                        <div className='col l-4'>
+                    <div className='row'>
+                        <div className='col l-4 m-12'>
                             <div className={cx('footer-contact')}>
                                 <Logo />
                                 <ul className={cx('footer-infor')}>
@@ -47,10 +47,10 @@ function Footer() {
                                 </ul>
                             </div>
                         </div>
-                        <div className='col l-8'>
+                        <div className='col l-8 m-12'>
                             <div className={cx('footer-intro')}>
                                 <div className='row no-gutters'>
-                                    <div className='col l-4'>
+                                    <div className='col l-4 m-4'>
                                         <div className={cx('intro-content')}>
                                             <div className={cx('footer-title')}>
                                                 Về chúng tôi
@@ -95,7 +95,7 @@ function Footer() {
                                             </ul>
                                         </div>
                                     </div>
-                                    <div className='col l-4'>
+                                    <div className='col l-4 m-4'>
                                         <div className={cx('intro-content')}>
                                             <div className={cx('footer-title')}>
                                                 Chính sách
@@ -140,7 +140,7 @@ function Footer() {
                                             </ul>
                                         </div>
                                     </div>
-                                    <div className='col l-4'>
+                                    <div className='col l-4 m-4'>
                                         <div className={cx('intro-content')}>
                                             <div className={cx('footer-title')}>
                                                 Theo dõi chúng tôi

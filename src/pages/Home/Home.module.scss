@@ -69,9 +69,9 @@
     text-align: center;
     line-height: 60px;
     margin: auto;
-    margin-top: 45px;
     color: var(--white-color);
     font-weight: 600;
+    margin-bottom: 50px;
 
     &:hover {
         background: var(--red-color);
@@ -175,5 +175,30 @@
 
 .news{
     margin-bottom: 40px;
+}
+.accessory-section{
+    margin-bottom: 50px;
+}
+
+@media (max-width: 1023px) {
+    .see-more{
+        margin-top: 0;
+        margin-bottom: 50px;
+    }
+    .intro-img{
+        height: 218px;
+    }
+    .sm-1 {
+        margin-bottom: 15px;
+    }
+    
+    .feed-back{
+        height: 500px;
+    }
+    .feedback-box,
+    .sub-banner__section{
+        overflow: hidden;
+        white-space: nowrap;
+    }
 }
 

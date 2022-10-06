@@ -332,6 +332,9 @@
     font-weight: 400;
     text-align: left;
 }
+.header__menu{
+    display: none;
+}
 
 
 
@@ -342,5 +345,29 @@
 
     to {
         transform: perspective(600px) rotateX(0deg);
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .group-account{
+        justify-content: flex-end;
+        li{
+            padding: 5px;
+            &:last-child{
+                // padding-right: 0;
+            }
+        }
+    }
+    .login-icon:hover .form {
+        display: none;
+    }
+    .header-cart {
+        &:hover .cart-form {
+            display: none;
+        }
+    }
+    .header__menu{
+        display: block;
     }
 }

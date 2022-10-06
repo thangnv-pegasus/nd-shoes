@@ -1,31 +1,73 @@
-import classNames from "classnames/bind";
-import { useParams } from "react-router-dom";
+import classNames from 'classnames/bind'
 import styles from './ProductKind.module.scss'
-import data from '../../data/db.json'
 import TitlePage from '../../components/TitlePage'
-import { useEffect, useRef, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
-import ProductItem from "../../components/ProductItem";
-
-const products = data.products
+import data from '../../data/db.json'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useRef, useState } from 'react'
+import ProductItem from '../../components/ProductItem'
+import { useParams } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
+
+const sortList = ['Mặc định', 'Tên A-z', 'Tên Z-A', 'Giá cao đến thấp', 'Giá thấp đến cao']
+
+const sortPrice = [
+    {
+        title: 'Tất cả',
+        value: 'all'
+    },
+    {
+        title: 'Giá dưới 1.000.000đ',
+        value: '1'
+    },
+    {
+        title: '1.000.000đ - 3.000.000đ',
+        value: '2'
+    },
+    {
+        title: '3.000.000đ - 5.000.000đ',
+        value: '3'
+    },
+    {
+        title: '5.000.000đ - 10.000.000đ',
+        value: '4'
+    },
+    {
+        title: 'Giá trên 10.000.000đ',
+        value: '5'
+    }
+]
+
+const products = data.products
 
 function ProductKind() {
 
     const { kind } = useParams()
 
-    const thisProducts = products.filter(product => product.brand.toLowerCase() === kind)
+    const thisData = products.filter(product => product.brand.toLowerCase() === kind)
 
-    const [check1, setCheck1] = useState(false)
-    const [check2, setCheck2] = useState(false)
-    const [check3, setCheck3] = useState(false)
+    const [check1, setCheck1] = useState(false) //đóng mở menu1 trong sidebar
+    const [check3, setCheck3] = useState(false) // đóng mở menu3 trong sidebar
     const refOption1 = useRef()
-    const refOption2 = useRef()
     const refOption3 = useRef()
-    const [productsRender, setProductsRender] = useState(products)
+    const [productsRender, setProductsRender] = useState(() => [...thisData])
+    const [sort1, setSort1] = useState(0) // định nghĩa vị trí mặc định của khung sắp xếp theo tên
+    const [sort3, setSort3] = useState(0) // định nghĩa vị trí mặc định của khung sắp xếp theo price
 
+    const splitProduct = (list, x) => {
+        let array = list
+        let newArr = []
+        let i = 0
+        for (i; i < array.length; i += x) {
+            let temp = array.slice(i, i + x)
+            newArr.push(temp)
+        }
+        return newArr
+    }
+
+    const pageNumber = splitProduct(thisData, 9)
+    const [thisPage, setThisPage] = useState(1)
     const handleHeight = (Element, check) => {
         if (check) {
             Element.style.height = '0'
@@ -34,18 +76,6 @@ function ProductKind() {
             Element.style.height = 'unset'
         }
     }
-
-    const splitProduct = (list, x) => {
-        let newArr = []
-        let i = 0
-        for (i; i < list.length; i = i + x) {
-            let temp = list.splice(i, i + x)
-            newArr.push(temp)
-        }
-        return newArr
-    }
-
-    // const PageProduct = splitProduct(productsRender, 9)
 
     useEffect(() => {
         const element = refOption1.current
@@ -56,14 +86,6 @@ function ProductKind() {
         }
     }, [check1])
     useEffect(() => {
-        const element = refOption2.current
-        handleHeight(element, check2)
-
-        return () => {
-
-        }
-    }, [check2])
-    useEffect(() => {
         const element = refOption3.current
         handleHeight(element, check3)
 
@@ -72,14 +94,136 @@ function ProductKind() {
         }
     }, [check3])
 
+    console.log(productsRender)
+
+    // filter
+    const handleSort1 = (current) => {
+        switch (current) {
+            case 0:
+                setProductsRender([...thisData])
+                break;
+            case 1:
+                setProductsRender(pre => [...pre.sort((a, b) => a.name.localeCompare(b.name))])
+                break;
+            case 2:
+                setProductsRender(pre => [...pre.sort((a, b) => b.name.localeCompare(a.name))])
+                break;
+            case 3:
+                setProductsRender(pre => [...pre.sort((a, b) => {
+                    if (a.price_sale && b.price_sale) {
+                        return Number(a.price_sale) - Number(b.price_sale)
+                    } else if (a.price_sale) {
+                        return Number(a.price_sale) - Number(b.price_main)
+                    }
+                    else if (b.price_sale) {
+                        return Number(a.price_main) - Number(b.price_sale)
+                    }
+                    else {
+                        return a.price_main - b.price_main
+                    }
+                })])
+                break;
+            case 4:
+                setProductsRender(pre => [...pre.sort((a, b) => {
+                    if (a.price_sale && b.price_sale) {
+                        return Number(b.price_sale) - Number(a.price_sale)
+                    } else if (a.price_sale) {
+                        return Number(b.price_main) - Number(a.price_sale)
+                    }
+                    else if (b.price_sale) {
+                        return Number(b.price_sale) - Number(a.price_main)
+                    }
+                    else {
+                        return Number(b.price_main) - Number(a.price_main)
+                    }
+                })])
+                break;
+            case 5:
+                setProductsRender(pre => [...pre.sort((a, b) => {
+                    if (a.price_sale && b.price_sale) {
+                        return Number(b.price_sale) - Number(a.price_sale)
+                    } else if (a.price_sale) {
+                        return Number(b.price_main) - Number(a.price_sale)
+                    }
+                    else if (b.price_sale) {
+                        return Number(b.price_sale) - Number(a.price_main)
+                    }
+                    else {
+                        return Number(b.price_main) - Number(a.price_main)
+                    }
+                })])
+                break;
+        }
+    }
+
+    const SortByPrice = (value) => {
+        switch (value) {
+            case 'all':
+                setProductsRender([...thisData])
+                break;
+            case '1':
+                setProductsRender([...thisData.filter(item => {
+                    if (item.price_sale) {
+                        return (Number(item.price_sale) < 1000000)
+                    }
+                    else {
+                        return (Number(item.price_main) < 1000000)
+                    }
+                })])
+                break;
+            case '2':
+                setProductsRender([...thisData.filter(item => {
+                    if (item.price_sale) {
+                        return (Number(item.price_sale) >= 1000000 && Number(item.price_sale) < 3000000)
+                    }
+                    else {
+                        return Number(item.price_main) >= 1000000 && Number(item.price_main) < 3000000
+                    }
+                })])
+                break;
+            case '3':
+                setProductsRender([...thisData.filter(item => {
+                    if (item.price_sale) {
+                        return Number(item.price_sale) >= 3000000 && Number(item.price_sale) < 5000000
+                    }
+                    else {
+                        return Number(item.price_main) >= 3000000 && Number(item.price_main) < 5000000
+                    }
+                })])
+                break;
+            case '4':
+                setProductsRender([...thisData.filter(item => {
+                    if (item.price_sale) {
+                        return Number(item.price_sale) >= 5000000 && Number(item.price_sale) < 10000000
+                    }
+                    else {
+                        return Number(item.price_main) >= 5000000 && Number(item.price_main) < 10000000
+                    }
+                })])
+                break;
+            case '5':
+                setProductsRender([...thisData.filter(item => {
+                    if (item.price_sale) {
+                        return Number(item.price_sale) >= 10000000
+                    }
+                    else {
+                        return Number(item.price_main) >= 10000000
+                    }
+                })])
+                break;
+        }
+        setThisPage(1)
+    }
+
     return (
-        <div className={cx('product-kind')}>
+        <div className={cx('product-page')}>
             <TitlePage chidren={kind} />
             <div className='grid wide'>
                 <div className={cx('page-section')}>
                     <div className='row'>
                         <div className={cx('col l-3')}>
                             <div className={cx('bar')}>
+                                {/* sort-by-name */}
                                 <div className={cx('sort')}>
                                     <div className={cx('title')}>
                                         <p>Sắp xếp</p>
@@ -88,63 +232,26 @@ function ProductKind() {
                                         </span>
                                     </div>
                                     <div className={cx('sort-options')} ref={refOption1}>
-                                        <label>
-                                            <input type="radio" id="1" name="check" hidden />
-                                            <span></span>
-                                            Mặc định
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="2" name="check" hidden />
-                                            <span></span>
-                                            Tên A-Z
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="3" name="check" hidden />
-                                            <span></span>
-                                            Tên Z-A
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="4" name="check" hidden />
-                                            <span></span>
-                                            Giá thấp đến cao
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="5" name="check" hidden />
-                                            <span></span>
-                                            Giá cao đến thấp
-                                        </label>
+                                        {
+                                            sortList.map((item, index) => {
+                                                return (
+                                                    <label key={index}>
+                                                        <input type="radio" name="check" hidden onChange={() => {
+                                                            setSort1(index)
+                                                            handleSort1(index)
+                                                        }}
+                                                            checked={index === sort1}
+                                                        />
+                                                        <span></span>
+                                                        {item}
+                                                    </label>
+                                                )
+                                            })
+                                        }
                                     </div>
                                 </div>
-                                <div className={cx('sort')}>
-                                    <div className={cx('title')}>
-                                        <p>Thương hiệu</p>
-                                        <span className={cx('open-btn')} onClick={() => setCheck2(!check2)}>
-                                            <FontAwesomeIcon icon={faAngleDown} />
-                                        </span>
-                                    </div>
-                                    <div className={cx('sort-options')} ref={refOption2}>
-                                        <label>
-                                            <input type="radio" name="check2" hidden />
-                                            <span></span>Adidas
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="check2" hidden />
-                                            <span></span> Nike
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="check2" hidden />
-                                            <span></span> Converse
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="check2" hidden />
-                                            <span></span> Vans
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="check2" hidden />
-                                            <span></span> Puma
-                                        </label>
-                                    </div>
-                                </div>
+
+                                {/* sort-by-price */}
                                 <div className={cx('sort')}>
                                     <div className={cx('title')}>
                                         <p>Giá sản phẩm</p>
@@ -153,26 +260,22 @@ function ProductKind() {
                                         </span>
                                     </div>
                                     <div className={cx('sort-options')} ref={refOption3}>
-                                        <label>
-                                            <input type="radio" id="1" name="check3" hidden />
-                                            <span></span>Giá dưới 1.000.000đ
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="2" name="check3" hidden />
-                                            <span></span> 1.000.000đ - 3.000.000đ
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="3" name="check3" hidden />
-                                            <span></span> 3.000.000đ - 5.000.000đ
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="4" name="check3" hidden />
-                                            <span></span> 5.000.000đ - 10.000.000đ
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="5" name="check3" hidden />
-                                            <span></span> Giá trên 10.000.000đ
-                                        </label>
+                                        {
+                                            sortPrice.map((item, index) => {
+                                                return (
+                                                    <label key={index}>
+                                                        <input type="radio" id={index} name="check3" hidden
+                                                            onChange={() => {
+                                                                SortByPrice(`${item.value}`)
+                                                                setSort3(index)
+                                                            }}
+                                                            checked={index === sort3}
+                                                        />
+                                                        <span></span>{item.title}
+                                                    </label>
+                                                )
+                                            })
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -181,18 +284,54 @@ function ProductKind() {
                             <div className={cx('products')}>
                                 <div className='row'>
                                     {
-                                        thisProducts.map((product) => {
-                                            return (
-                                                <div className='col l-4' key={product.id}>
-                                                    <ProductItem
-                                                        product={product}
-                                                    />
-                                                </div>
-                                            )
-                                        })
+                                        (pageNumber.length > 0) ? (
+                                            pageNumber[thisPage - 1].map((product, index) => {
+                                                if (index < 9) {
+                                                    return (
+                                                        <div className='col l-4' key={index}>
+                                                            <ProductItem
+                                                                product={product}
+                                                            // handleFavoriteSneaker={handleFavoriteSneaker}
+                                                            />
+                                                        </div>
+                                                    )
+                                                }
+                                            })
+                                        ) : (
+                                            <></>
+                                        )
                                     }
                                 </div>
                             </div>
+                            <ul className={cx('list-page')}>
+                                {
+                                    pageNumber.map((item, index) => {
+                                        return (
+                                            <li key={index} className={cx('page-number')} style={index + 1 === thisPage ? {
+                                                backgroundColor: '#3f3fdb',
+                                                color: 'var(--white-color)'
+                                            } : {
+                                                backgroundColor: 'var(--white-color)',
+                                                color: 'var(--text-color)'
+                                            }}
+                                                onClick={() => setThisPage(index + 1)}
+                                            >
+                                                {index + 1}
+                                            </li>
+                                        )
+                                    })
+                                }
+                                <li className={cx('next-page')} onClick={() => setThisPage(pre => {
+                                    if (pre < pageNumber.length) {
+                                        return pre + 1
+                                    }
+                                    else {
+                                        return 1
+                                    }
+                                })}>
+                                    &gt;
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -202,3 +341,4 @@ function ProductKind() {
 }
 
 export default ProductKind
+

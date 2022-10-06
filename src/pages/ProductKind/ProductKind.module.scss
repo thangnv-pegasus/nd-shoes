@@ -1,8 +1,9 @@
-.sort{
+.sort {
     padding-bottom: 15px;
     user-select: none;
 }
-.title{
+
+.title {
     font-size: 1.4rem;
     color: var(--text-color);
     text-transform: uppercase;
@@ -13,24 +14,27 @@
     padding-right: 25px;
     justify-content: space-between;
 }
-.sort-options{
+
+.sort-options {
     overflow: hidden;
-    
-    label{
+
+    label {
         font-size: 1.3rem;
         color: var(--text-color);
         display: block;
         margin-bottom: 10px;
         cursor: pointer;
-        
-        &:hover{
+
+        &:hover {
             color: var(--red-color);
-            span{
+
+            span {
                 border-color: var(--red-color);
             }
         }
     }
-    span{
+
+    span {
         height: 11px;
         width: 11px;
         border: solid 1px #E7E7E7;
@@ -40,14 +44,36 @@
         top: 1px;
     }
 
-    input:checked{
-        & ~ span{
+    input:checked {
+        &~span {
             background-color: var(--red-color) !important;
         }
-    } 
+    }
 }
-.default{
-    span{
+
+.default {
+    span {
         background-color: var(--red-color);
+    }
+}
+
+.list-page {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 50px;
+
+    li {
+        padding: 5px 10px;
+        margin: 5px;
+
+        cursor: pointer;
+        background: #fff;
+        border: 1px solid rgb(145, 145, 145);
+
+        &:hover {
+            background-color: #3f3fdb;
+            color: var(--white-color);
+        }
     }
 }

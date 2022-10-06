@@ -35,62 +35,64 @@ function SearchPage() {
         <div className={cx('search-page')}>
             <TitlePage chidren={`${searchValue} - ND Shoes`} />
             <div className="grid wide">
-                <div className={cx('title-page')}>
+                <div className={cx('search-page__section')}>
+                    <div className={cx('title-page')}>
+                        {
+                            result.length > 0 ? (
+                                <>
+                                    Tìm thấy {result.length} Kết quả với từ khóa "{searchValue}"
+                                </>
+                            ) : (
+                                <>
+                                    Không tìm thấy kết quả nào với từ khóa trên
+                                </>
+                            )
+                        }
+                    </div>
                     {
-                        result.length > 0 ? (
-                            <>
-                                Tìm thấy {result.length} Kết quả với từ khóa "{searchValue}"
-                            </>
-                        ) : (
-                            <>
-                                Không tìm thấy kết quả nào với từ khóa trên
-                            </>
-                        )
+                        result.length > 0 &&
+                        <>
+                            <div className="row">
+                                {
+                                    newArr[page].map(product => {
+                                        return (
+                                            <div className="col l-3 m-4" key={product.id}>
+                                                <ProductItem product={product} />
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                            <div className={cx('page-number')}>
+                                {
+                                    newArr.map((arr, index) => {
+                                        return (
+                                            <div className={cx('page-item')} key={index}
+                                                style={page === index ? {
+                                                    backgroundColor: '#3f3fdb',
+                                                    color: '#fff'
+                                                } : {}}
+                                                onClick={(e) => setPage(index)}
+                                            >
+                                                {index + 1}
+                                            </div>
+                                        )
+                                    })
+                                }
+                                <div className={cx('next-page', 'page-item')}
+                                    onClick={() => setPage(pre => {
+                                        if (pre < newArr.length - 1) {
+                                            return page + 1
+                                        }
+                                        return 0;
+                                    })}
+                                >
+                                    <FontAwesomeIcon icon={faAngleRight} />
+                                </div>
+                            </div>
+                        </>
                     }
                 </div>
-                {
-                    result.length > 0 &&
-                    <>
-                        <div className="row">
-                            {
-                                newArr[page].map(product => {
-                                    return (
-                                        <div className="col l-3" key={product.id}>
-                                            <ProductItem product={product} />
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                        <div className={cx('page-number')}>
-                            {
-                                newArr.map((arr, index) => {
-                                    return (
-                                        <div className={cx('page-item')} key={index}
-                                            style={page === index ? {
-                                                backgroundColor: '#3f3fdb',
-                                                color: '#fff'
-                                            } : {}}
-                                            onClick={(e) => setPage(index)}
-                                        >
-                                            {index + 1}
-                                        </div>
-                                    )
-                                })
-                            }
-                            <div className={cx('next-page', 'page-item')}
-                                onClick={() => setPage(pre => {
-                                    if (pre < newArr.length-1) {
-                                        return page + 1
-                                    }
-                                    return 0;
-                                })}
-                            >
-                                <FontAwesomeIcon icon={faAngleRight} />
-                            </div>
-                        </div>
-                    </>
-                }
             </div>
         </div>
     )

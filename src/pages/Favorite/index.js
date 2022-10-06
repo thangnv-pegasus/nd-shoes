@@ -5,15 +5,16 @@ import ProductItem from '../../components/ProductItem'
 
 const cx = classNames.bind(styles)
 
-function Favorite({favoriteProducts,setFavoriteProducts}){
-    return(
+function Favorite() {
+    const listFavorite = []
+    return (
         <div className={cx('favorite')}>
             <TitlePage chidren="Yêu thích" />
             <div className='grid wide'>
                 <div className={cx('title')}>
                     Danh sách yêu thích của tôi
                     {
-                        favoriteProducts.length == 0 && (
+                        listFavorite.length == 0 && (
                             <div>
                                 Bạn chưa có sản phẩm yêu thích
                             </div>
@@ -22,13 +23,13 @@ function Favorite({favoriteProducts,setFavoriteProducts}){
                 </div>
                 <div className='row'>
                     {
-                        favoriteProducts.length > 0 && (
-                            favoriteProducts.map((product,index)=>{
+                        listFavorite.length > 0 && (
+                            listFavorite.map((product, index) => {
                                 return (
                                     <div className='col l-3' key={index}>
-                                        <ProductItem 
+                                        <ProductItem
                                             product={product}
-                                            setFavoriteProducts={setFavoriteProducts}
+                                            // handleFavoriteSneaker={handleFavoriteSneaker}
                                         />
                                     </div>
                                 )

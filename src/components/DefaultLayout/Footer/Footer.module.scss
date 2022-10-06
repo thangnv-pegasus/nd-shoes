@@ -143,3 +143,14 @@
         color: var(--white-color);
     }
 }
+
+@media (max-width: 1023px) {
+    .footer-form{
+        input{
+            width: 160px;
+        }
+    }
+    .footer-contact{
+        padding: 10px 20px;
+    }
+}

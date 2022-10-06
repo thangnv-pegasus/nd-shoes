@@ -18,7 +18,7 @@ const accessorys = data.accessory
 
 const ListSize = [36, 37, 38, 39, 40, 41, 42, 43, 44]
 
-function DetailProduct({ cart, setCart, allProduct, setAllProduct }) {
+function DetailProduct({ cart, setCart, handleFavoriteSneaker }) {
 
     const { productId } = useParams()
     const { accessoryId } = useParams()
@@ -30,6 +30,7 @@ function DetailProduct({ cart, setCart, allProduct, setAllProduct }) {
     const [thisColor, setThisColor] = useState(0)
     const [imgIndex, setImgIndex] = useState(0)
     const [openModal, setOpenModal] = useState(false)
+    const refSimilarProducts = useRef()
 
     let check = true;
     let thisProduct = products.find(product => product.id == productId)
@@ -132,6 +133,10 @@ function DetailProduct({ cart, setCart, allProduct, setAllProduct }) {
         }
     }, [])
 
+    useEffect(()=>{
+        const list = refSimilarProducts.current
+        scrollX(list)
+    },[])
 
     return (
         <div className={cx('detail')}>
@@ -139,10 +144,12 @@ function DetailProduct({ cart, setCart, allProduct, setAllProduct }) {
             <div className='grid wide'>
                 <div className={cx('detail-section')}>
                     <div className='row'>
-                        <div className='col l-6'>
+                        <div className='col l-6 m-12'>
                             <div className={cx('img-render')}>
                                 <img src={listImg[thisColor].url[imgIndex]} />
-                                <div className={cx('favorite')}>
+                                <div className={cx('favorite')}
+                                    onClick={() => handleFavoriteSneaker(thisProduct)}
+                                >
                                     {!thisProduct.favorite && <FontAwesomeIcon icon={faHeart} className={cx('heart-1')} />}
                                     {thisProduct.favorite && <FontAwesomeIcon icon={Heart1} className={cx('heart-2')} />}
                                 </div>
@@ -168,7 +175,7 @@ function DetailProduct({ cart, setCart, allProduct, setAllProduct }) {
                                 }
                             </div>
                         </div>
-                        <div className='col l-6'>
+                        <div className='col l-6 m-12'>
                             <div className={cx('product-name')}>
                                 {thisProduct.name}
                             </div>
@@ -314,19 +321,21 @@ function DetailProduct({ cart, setCart, allProduct, setAllProduct }) {
                             }
                         </div>
                     </div>
-                    <div className={cx('similar-product')}>
-                        <Title slogan='Các sản phẩm tương tự'>
-                            Sản phẩm tương tự
-                        </Title>
-                        <div className='row'>
+                    <Title slogan='Các sản phẩm tương tự'>
+                        Sản phẩm tương tự
+                    </Title>
+                    <div className={cx('similar-product')} ref={refSimilarProducts}>
+
+                        <div className='row no-wrap-2'>
                             {
                                 products.map((product, index) => {
                                     if (index < 4) {
                                         return (
-                                            <div className='col l-3' key={product.id}>
+                                            <div className='col l-3 m-4' key={product.id}>
                                                 <ProductItem
                                                     product={product}
-                                                    allProduct={allProduct}
+                                                // allProduct={allProduct}
+                                                // handleFavoriteSneaker={handleFavoriteSneaker}
                                                 />
                                             </div>
                                         )

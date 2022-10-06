@@ -13,3 +13,9 @@
     line-height: 1.5;
     color: #212529;
 }
+
+@media (max-width: 1023px) {
+    .intro-page__section{
+        padding: 0 10px;
+    }
+}

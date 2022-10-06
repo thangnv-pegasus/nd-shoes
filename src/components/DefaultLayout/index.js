@@ -14,7 +14,7 @@ function DefaultLayout({ children, setLogin, setThisAccount, thisAccount, login,
                 thisAccount={thisAccount}
                 login={login}
                 cart={cart}
-                allProduct={allProduct}
+                // allProduct={allProduct}
             />
             <div className={cx('content')}>
                 {children}

@@ -64,5 +64,9 @@
         background: #fff;
         border: 1px solid rgb(145, 145, 145);
         user-select: none;
+        &:hover{
+            background-color: #3f3fdb !important;
+            color: var(--white-color) !important;
+        }
     }
 }

@@ -17,6 +17,9 @@ import routes from '../../routes'
 
 const cx = classNames.bind(styles)
 const products = data.products
+
+const feedback = data.feedback
+const blogs = data.blogs
 const Adidas = products.filter((product) => product.brand.toLowerCase() === 'adidas')
 const Nike = products.filter((product) => product.brand.toLowerCase() === 'nike')
 const Converse = products.filter((product) => product.brand.toLowerCase() === 'converse')
@@ -26,15 +29,16 @@ const Fila = products.filter((product) => product.brand.toLowerCase() === 'fila'
 const MLB = products.filter((product) => product.brand.toLowerCase() === 'mlb')
 const NewBalance = products.filter((product) => product.brand.toLowerCase() === 'new balance')
 
-const feedback = data.feedback
-const blogs = data.blogs
+function Home({ cart, setCart }) {
 
-function Home({ cart, setCart, setAllProduct, allProduct }) {
     const [elementActive, setElementActive] = useState()
-
     const [productKind, setProductKind] = useState([...Adidas])
-
     const refAdidas = useRef()
+    const refSubBanner = useRef()
+    const refNewProducts = useRef();
+    const refHotProducts = useRef();
+    const refProductsKind = useRef()
+    const refFeedBack = useRef()
 
     const handleActive = (element) => {
         element.classList.add('active')
@@ -49,8 +53,59 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
     useEffect(() => {
         let element = refAdidas.current
         setElementActive(element)
+        setProductKind(pre => [...pre])
     }, [])
 
+    const scrollX = (list) => {
+        let isMouseDown = false
+        let startX, scrollLeft
+
+        list.addEventListener('mousedown', (e) => {
+            isMouseDown = true
+            startX = e.pageX - list.offsetLeft
+            scrollLeft = list.scrollLeft
+        })
+
+        list.addEventListener('mouseleave', () => {
+            isMouseDown = false
+        })
+
+        list.addEventListener('mouseup', () => {
+            isMouseDown = false
+        })
+
+        list.addEventListener('mousemove', (e) => {
+            if (!isMouseDown) return
+
+            const x = e.pageX - list.offsetLeft
+            // 3 là tốc độ scroll
+            const walk = (x - startX) * 1.5
+            list.scrollLeft = scrollLeft - walk
+        })
+    }
+
+    useEffect(() => {
+        const list = refSubBanner.current;
+        scrollX(list)
+    }, [])
+
+    useEffect(() => {
+        const list = refNewProducts.current;
+        scrollX(list)
+    }, [])
+
+    useEffect(() => {
+        const list = refHotProducts.current;
+        scrollX(list)
+    }, [])
+    useEffect(() => {
+        const list = refProductsKind.current;
+        scrollX(list)
+    }, [])
+    useEffect(() => {
+        const list = refFeedBack.current;
+        scrollX(list)
+    }, [])
 
     const handleProductKind = (element) => {
         switch (element.id) {
@@ -82,16 +137,15 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
         handleActive(element)
     }
 
-
     return (
         <div className={cx('home')}>
             <Banner />
-            <div className={cx('sub-banner')}>
+            <div className={cx('sub-banner')} >
                 <div className='grid wide'>
-                    <div className={cx('sub-banner__section')}>
-                        <div className='row no-gutters'>
-                            <div className='col c-3'>
-                                <div className={cx('banner-item')}>
+                    <div className={cx('sub-banner__section')} ref={refSubBanner}>
+                        <div className='row no-gutters no-wrap-2' >
+                            <div className='col l-3 m-4'>
+                                <div className={cx('banner-item')}  >
                                     <BannerItem
                                         icon={<FontAwesomeIcon icon={faHandshake} />}
                                         title='Giao hàng toàn quốc'
@@ -99,7 +153,7 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                                     />
                                 </div>
                             </div>
-                            <div className='col c-3'>
+                            <div className='col l-3 m-4'>
                                 <div className={cx('banner-item')}>
                                     <BannerItem
                                         icon={<FontAwesomeIcon icon={faPhone} />}
@@ -108,7 +162,7 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                                     />
                                 </div>
                             </div>
-                            <div className='col c-3'>
+                            <div className='col l-3 m-4'>
                                 <div className={cx('banner-item')}>
                                     <BannerItem
                                         icon={<FontAwesomeIcon icon={faArrowsRotate} />}
@@ -117,7 +171,7 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                                     />
                                 </div>
                             </div>
-                            <div className='col c-3'>
+                            <div className='col l-3 m-4'>
                                 <div className={cx('banner-item')}>
                                     <BannerItem
                                         icon={<FontAwesomeIcon icon={faGift} />}
@@ -137,19 +191,20 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                     <Title to={`/${'products'}`} slogan='Các sản phẩm mới có tại cửa hàng'>
                         Sản phẩm mới
                     </Title>
-                    <div className={cx('products-section')}>
-                        <div className='row'>
+                    <div className={cx('products-section')} ref={refNewProducts} style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                        <div className='row no-wrap-2'>
                             {
                                 products.map((product, index) => {
                                     if (index < 8) {
                                         return (
-                                            <div className='col l-3' key={index}>
+                                            <div className='col l-3 m-4' key={index}>
                                                 <ProductItem
                                                     setCart={setCart}
                                                     cart={cart}
                                                     product={product}
-                                                    setAllProduct={setAllProduct}
-                                                    allProduct={allProduct}
+                                                // setAllProduct={setAllProduct}
+                                                // allProduct={allProduct}
+                                                // handleFavoriteSneaker={handleFavoriteSneaker}
                                                 />
                                             </div>
                                         )
@@ -157,10 +212,11 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                                 })
                             }
                         </div>
-                        <Link to={`/${'products'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
-                            Xem tất cả
-                        </Link>
+
                     </div>
+                    <Link to={`/${'products'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
+                        Xem tất cả
+                    </Link>
                 </div>
             </div>
 
@@ -173,15 +229,16 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                     <div className={cx('intro-img')}>
                         <img src="https://bizweb.dktcdn.net/100/437/253/collections/img-best-sellers.jpg?v=1640074839860" />
                     </div>
-                    <div className={cx('products-section')}>
-                        <div className='row'>
+                    <div className={cx('products-section')} ref={refHotProducts} style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                        <div className='row no-wrap-2'>
                             {
                                 products.map((product, index) => {
                                     if (product.id > 9 && product.id < 18) {
                                         return (
-                                            <div className='col l-3' key={index}>
+                                            <div className='col l-3 m-4' key={index}>
                                                 <ProductItem
                                                     product={product}
+                                                // handleFavoriteSneaker={handleFavoriteSneaker}
                                                 />
                                             </div>
                                         )
@@ -189,10 +246,10 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                                 })
                             }
                         </div>
-                        <Link to={`/${'products'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
-                            Xem tất cả
-                        </Link>
                     </div>
+                    <Link to={`/${'products'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
+                        Xem tất cả
+                    </Link>
                 </div>
             </div>
 
@@ -202,41 +259,42 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                     <Title to={`/${'products'}`} slogan='Các sản phẩm Sneakers có tại ND Shoes'>
                         Sneakers
                     </Title>
-                    <div className={cx('products-section')}>
-                        <ul className={cx('options')}>
-                            <li id="1" className='active' onClick={(e) => handleProductKind(e.target)} ref={refAdidas}>
-                                Adidas
-                            </li>
-                            <li id="2" onClick={(e) => handleProductKind(e.target)}>
-                                Nike
-                            </li>
-                            <li id="3" onClick={(e) => handleProductKind(e.target)}>
-                                Converse
-                            </li>
-                            <li id="4" onClick={(e) => handleProductKind(e.target)}>
-                                Vans
-                            </li>
-                            <li id="5" onClick={(e) => handleProductKind(e.target)}>
-                                Puma
-                            </li>
-                            <li id="6" onClick={(e) => handleProductKind(e.target)}>
-                                FILA
-                            </li>
-                            <li id="7" onClick={(e) => handleProductKind(e.target)}>
-                                MLB
-                            </li>
-                            <li id="8" onClick={(e) => handleProductKind(e.target)}>
-                                New Balance
-                            </li>
-                        </ul>
-                        <div className='row'>
+                    <ul className={cx('options')}>
+                        <li id="1" className='active' onClick={(e) => handleProductKind(e.target)} ref={refAdidas}>
+                            Adidas
+                        </li>
+                        <li id="2" onClick={(e) => handleProductKind(e.target)}>
+                            Nike
+                        </li>
+                        <li id="3" onClick={(e) => handleProductKind(e.target)}>
+                            Converse
+                        </li>
+                        <li id="4" onClick={(e) => handleProductKind(e.target)}>
+                            Vans
+                        </li>
+                        <li id="5" onClick={(e) => handleProductKind(e.target)}>
+                            Puma
+                        </li>
+                        <li id="6" onClick={(e) => handleProductKind(e.target)}>
+                            FILA
+                        </li>
+                        <li id="7" onClick={(e) => handleProductKind(e.target)}>
+                            MLB
+                        </li>
+                        <li id="8" onClick={(e) => handleProductKind(e.target)}>
+                            New Balance
+                        </li>
+                    </ul>
+                    <div className={cx('products-section')} ref={refProductsKind} style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                        <div className='row no-wrap-2'>
                             {
-                                productKind.map((product, index) => {
+                                productKind.map((productI, index) => {
                                     if (index < 9) {
                                         return (
-                                            <div className='col l-3' key={index}>
+                                            <div className='col l-3 m-4' key={index}>
                                                 <ProductItem
-                                                    product={product}
+                                                    product={productI}
+                                                // handleFavoriteSneaker={handleFavoriteSneaker}
                                                 />
                                             </div>
                                         )
@@ -256,7 +314,7 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                 <div className='grid wide'>
                     <div className={cx('accessory-section')}>
                         <div className='row'>
-                            <div className='col c-6'>
+                            <div className='col l-6 m-6'>
                                 <div className={cx('accessory-img', 'big-img')}>
                                     <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/accessories_1.jpg?1660294502239" />
                                     <div className={cx('accessory-title')}>
@@ -270,7 +328,7 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className='col c-6'>
+                            <div className='col l-6 m-6'>
                                 <div className={cx('accessory-img', 'sm-img', 'sm-1')}>
                                     <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/accessories_2.jpg?1660294502239" />
                                     <div className={cx('accessory-title')}>
@@ -297,10 +355,10 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                                 </div>
                             </div>
                         </div>
-                        <Link to={`/${'accessory'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
-                            Xem tất cả
-                        </Link>
                     </div>
+                    <Link to={`/${'accessory'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
+                        Xem tất cả
+                    </Link>
                 </div>
             </div>
 
@@ -314,18 +372,20 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                         >
                             Feed back
                         </Title>
-                        <div className='row'>
-                            {
-                                feedback.map((fb, index) => {
-                                    return (
-                                        <div className='col l-3' key={index}>
-                                            <FeedBack
-                                                feedback={fb}
-                                            />
-                                        </div>
-                                    )
-                                })
-                            }
+                        <div ref={refFeedBack} className={cx('feedback-box')}>
+                            <div className='row no-wrap-2'>
+                                {
+                                    feedback.map((fb, index) => {
+                                        return (
+                                            <div className='col l-3 m-4' key={index}>
+                                                <FeedBack
+                                                    feedback={fb}
+                                                />
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -345,7 +405,7 @@ function Home({ cart, setCart, setAllProduct, allProduct }) {
                                 blogs.map(blog => {
                                     if (blog.id < 4) {
                                         return (
-                                            <div className='col l-4'>
+                                            <div className='col l-4 m-4'>
                                                 <Blog
                                                     blog={blog}
                                                 />

@@ -29,6 +29,10 @@
     height: var(--height-header);
 }
 
+.no-wrap{
+    flex-wrap: nowrap;
+}
+
 .col {
     padding-left: 4px;
     padding-right: 4px;
@@ -155,8 +159,8 @@
     }
 
     .col {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .m-0 {
@@ -436,11 +440,11 @@
 }
 
 /* Tablet - PC low resolution */
-@media (min-width: 740px) and (max-width: 1023px) {
-    .wide {
-        width: 644px;
-    }
-}
+// @media (min-width: 740px) and (max-width: 1023px) {
+//     .wide {
+//         width: 644px;
+//     }
+// }
 
 /* > PC low resolution */
 @media (min-width: 1024px) and (max-width: 1239px) {
@@ -602,4 +606,13 @@
 .active{
     background-color: #3f3fdb !important;
     color: var(--white-color) !important;
+}
+
+@media (max-width: 1024px){
+    .space-between{
+        justify-content: space-between;
+    }
+    .no-wrap-2{
+        flex-wrap: nowrap;
+    }
 }

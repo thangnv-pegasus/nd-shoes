@@ -2,18 +2,16 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faArrowDown, faCartArrowDown, faHeart as Heart1 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
-import { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from './ProductItem.module.scss'
 import data from '../../data/db.json'
 
 const cx = classNames.bind(styles)
 const products = data.products
 
-function ProductItem({ product, setAllProduct, allProduct }) {
+function ProductItem({ product, handleFavoriteSneaker }) {
     const sale = (product.price_sale / product.price_main) * 100;
-
-    console.log(allProduct)
+    const navigate = useNavigate();
 
     let to = ''
     if (product.class) {
@@ -23,23 +21,30 @@ function ProductItem({ product, setAllProduct, allProduct }) {
         to = `/product/${product.id}`
     }
 
-    const addFavorite = () => {
-        const thisProduct = allProduct.find(item => item.id === product.id)
-        if(thisProduct){
-            
-        }
-    }
-
-
+    const urlImg = `url(${product.img_color[0].url[0]})`
 
     return (
         <div className={cx('product-item')}>
-            <div className={cx('product-img')}>
-                <img src={product.img_color[0].url[0]} className={cx('img-1')} />
+            <div className={cx('product-img')} 
+                style={{
+                    backgroundImage: urlImg,
+                    backgroundSize:'cover',
+                    backgroundPosition: 'center'
+                }}
+                onClick={() =>{ 
+                    window.scrollTo(0, 0)
+                    navigate(to)
+                }}
+            >
             </div>
-            <Link to={to} className={cx('product-name')} onClick={() => window.scrollTo(0, 0)}>
+            <div to={to} className={cx('product-name')} 
+                onClick={() =>{ 
+                    window.scrollTo(0, 0)
+                    navigate(to)
+                }}
+            >
                 {product.name}
-            </Link>
+            </div>
             <div className={cx('product-brand')}>
                 {product.brand}
             </div>
@@ -64,7 +69,7 @@ function ProductItem({ product, setAllProduct, allProduct }) {
 
             </div>
             <div className={cx('heart')} onClick={() => {
-                // handleFavorite()
+                handleFavoriteSneaker(product)
             }}>
                 {!product.favorite && <FontAwesomeIcon icon={faHeart} className={cx('heart-1')} />}
                 {product.favorite && <FontAwesomeIcon icon={Heart1} className={cx('heart-2')} />}
@@ -72,7 +77,7 @@ function ProductItem({ product, setAllProduct, allProduct }) {
             {
                 (sale) ?
                     (<div className={cx('sale')}>
-                        {100-sale.toFixed(0)}%
+                        -{100-sale.toFixed(0)}%
                     </div>) : (<></>)
             }
         </div>

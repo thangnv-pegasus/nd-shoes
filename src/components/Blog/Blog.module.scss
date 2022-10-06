@@ -53,3 +53,12 @@
         color: var(--red-color);
     }
 }
+
+@media (max-width: 1024px) {
+    .blog-title{
+        -webkit-line-clamp: 1;
+    }
+    .blog-img{
+        height: 140px;
+    }
+}

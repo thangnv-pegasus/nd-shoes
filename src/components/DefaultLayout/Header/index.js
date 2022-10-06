@@ -5,16 +5,18 @@ import styles from './Header.module.scss'
 import routes from '../../../routes'
 import Logo from '../../Logo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown, faBasketShopping, faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faBars, faBasketShopping, faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faUser } from '@fortawesome/free-regular-svg-icons'
 import Search from '../../Search'
 
 const cx = className.bind(styles)
 const size = 0;
 
-function Header({ thisAccount, login, setLogin, cart }) {
+function Header({ thisAccount, login, setLogin, cart, allProduct }) {
 
     const navigate = useNavigate()
+
+    // const productFavorite = allProduct.filter(item => item.favorite == 'true')
 
     const total = () => {
         let x = 0;
@@ -32,11 +34,11 @@ function Header({ thisAccount, login, setLogin, cart }) {
         <div className={cx('header')}>
             <div className='grid wide'>
                 <div className={cx('header-section')}>
-                    <div className='row no-gutters height-header align-items-center'>
-                        <div className='col l-2'>
+                    <div className='row no-gutters space-between height-header align-items-center'>
+                        <div className='col l-2 m-2'>
                             <Logo />
                         </div>
-                        <div className='col l-8'>
+                        <div className='col l-8 m-0'>
                             <ul className={cx('nav')}>
                                 <li>
                                     <NavLink to={routes.home} className={(nav) => cx({
@@ -64,7 +66,8 @@ function Header({ thisAccount, login, setLogin, cart }) {
                                                 cx({
                                                     active: nav.isActive
                                                 })
-                                            }}>
+                                            }}
+                                            >
                                                 Adidas
                                             </NavLink>
                                         </li>
@@ -149,7 +152,7 @@ function Header({ thisAccount, login, setLogin, cart }) {
                                 </li>
                             </ul>
                         </div>
-                        <div className='col l-2'>
+                        <div className='col l-2 m-2'>
                             <ul className={cx('group-account')}>
                                 <li className={cx('search-icon')}>
                                     <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -187,7 +190,7 @@ function Header({ thisAccount, login, setLogin, cart }) {
                                     <Link to={routes.favorite} className={cx('products-favorite')}>
                                         <FontAwesomeIcon icon={faHeart} />
                                         <div className={cx('current')}>
-                                            {/* {favoriteProducts.length} */}0
+                                            {/* {productFavorite.length} */}0
                                         </div>
                                     </Link>
                                 </li>
@@ -232,11 +235,11 @@ function Header({ thisAccount, login, setLogin, cart }) {
                                                                         </div>
                                                                     </div>
                                                                     <div className={cx('product-price')}>
-                                                                        { 
+                                                                        {
                                                                             product.price_sale ? (
                                                                                 new Intl.NumberFormat().format(parseInt(product.price_sale, 10)) + "đ"
                                                                             ) : (
-                                                                                new Intl.NumberFormat().format(parseInt(product.price_main, 10))+ "đ"
+                                                                                new Intl.NumberFormat().format(parseInt(product.price_main, 10)) + "đ"
                                                                             )
                                                                         }
                                                                     </div>
@@ -250,13 +253,16 @@ function Header({ thisAccount, login, setLogin, cart }) {
                                                         <span>Tổng tiền: </span>
                                                         <span className={cx('result')}>{new Intl.NumberFormat().format(parseInt(total(), 10))}đ</span>
                                                     </div>
-                                                    <button onClick = {()=>navigate('/orderPage')}>
+                                                    <button onClick={() => navigate('/orderPage')}>
                                                         Thanh toán
                                                     </button>
                                                 </div>
                                             </div>
                                         )
                                     }
+                                </li>
+                                <li className={cx('header__menu')}>
+                                    <FontAwesomeIcon icon={faBars} />
                                 </li>
                             </ul>
                         </div>

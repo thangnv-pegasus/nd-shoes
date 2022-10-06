@@ -7,16 +7,16 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
-function CartPage({ cart }) {
+function CartPage({ cart, setCart }) {
 
     const navigate = useNavigate()
 
     let result = 0;
     for (let item of cart) {
         if (item.price_sale) {
-            result += parseInt(item.price_sale)
+            result += parseInt(item.price_sale)*item.quantity;
         } else {
-            result += parseInt(item.price_main)
+            result += parseInt(item.price_main)*item.quantity;
         }
     }
 
@@ -63,7 +63,18 @@ function CartPage({ cart }) {
                                                         <div>
                                                             {item.img_color.color} / {item.size}
                                                         </div>
-                                                        <button>
+                                                        <button
+                                                            onClick={() => {
+                                                                setCart(pre => [...pre.filter(item2 => {
+                                                                    if ((item2.size === item.size && item2.img_color.code === item.img_color.code) && item2.id === item.id) {
+                                                                        return false;
+                                                                    }
+                                                                    else {
+                                                                        return true;
+                                                                    }
+                                                                })])
+                                                            }}
+                                                        >
                                                             Xóa
                                                         </button>
                                                     </div>
@@ -78,13 +89,43 @@ function CartPage({ cart }) {
                                                     }
                                                 </div>
                                                 <div className={cx('product-quantity', 'table-body')}>
-                                                    <button>
+                                                    <button
+                                                        onClick={() => {
+                                                            if (item.quantity == 1) {
+                                                                setCart(pre => pre.filter(item2 => {
+                                                                    if (item2.id === item.id && item2.img_color.code === item.img_color.code && item2.size === item.size) {
+                                                                        return false;
+                                                                    } else {
+                                                                        return true;
+                                                                    }
+                                                                }))
+                                                            } else {
+                                                                setCart(pre => pre.map(item2 => {
+                                                                    if (item2.id === item.id && item2.img_color.code === item.img_color.code && item2.size === item.size) {
+                                                                        return { ...item2, quantity: item2.quantity - 1 }
+                                                                    } else {
+                                                                        return { ...item2 }
+                                                                    }
+                                                                }))
+                                                            }
+                                                        }}
+                                                    >
                                                         -
                                                     </button>
-                                                    <button>
+                                                    <button tabIndex='-1'>
                                                         {item.quantity}
                                                     </button>
-                                                    <button>
+                                                    <button
+                                                        onClick={() => {
+                                                            setCart(pre => pre.map(item2 => {
+                                                                if (item2.id === item.id && item2.img_color.code === item.img_color.code && item2.size === item.size) {
+                                                                    return { ...item2, quantity: item2.quantity + 1 }
+                                                                } else {
+                                                                    return { ...item2 }
+                                                                }
+                                                            }))
+                                                        }}
+                                                    >
                                                         +
                                                     </button>
                                                 </div>
@@ -104,12 +145,12 @@ function CartPage({ cart }) {
                             </div>
                             <div className={cx('result')}>
                                 <div className={cx('row')}>
-                                    <div className='c-4'>
+                                    <div className='l-4 m-12'>
                                         <div className={cx('result-text')}>
                                             <p>Tổng tiền: </p>
-                                            <p className={cx('total')}>{new Intl.NumberFormat().format(result,10)}đ</p>
+                                            <p className={cx('total')}>{new Intl.NumberFormat().format(result, 10)}đ</p>
                                         </div>
-                                        <button onClick = {()=>navigate('/orderPage')}>
+                                        <button onClick={() => navigate('/orderPage')}>
                                             Thanh toán
                                         </button>
                                     </div>

@@ -10,3 +10,9 @@
         display: block;
     }
 }
+
+@media (max-width: 1024px) {
+    .logo{
+        width: 150px;
+    }
+}

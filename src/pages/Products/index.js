@@ -78,7 +78,7 @@ const sortPrice = [
     }
 ]
 
-function Products() {
+function Products({handleFavoriteSneaker}) {
 
     const { classI } = useParams()
     let thisData = products
@@ -245,10 +245,10 @@ function Products() {
             case '1':
                 setProductsRender([...thisBrand.filter(item => {
                     if (item.price_sale) {
-                        return (Number(item.price_main) < 1000000)
+                        return (Number(item.price_sale) < 1000000)
                     }
                     else {
-                        return (Number(item.price_sale) < 1000000)
+                        return (Number(item.price_main) < 1000000)
                     }
                 })])
                 break;
@@ -296,143 +296,13 @@ function Products() {
         setThisPage(1)
     }
 
-    // sort all price of brand
-    const SortAllPriceOfBrand = () => {
-        setProductsRender([...thisBrand])
-    }
-
-    // < 1m
-    const SortByPriceLow = () => {
-        if (thisBrand) {
-            setProductsRender([...thisBrand.filter(item => {
-                if (item.price_sale) {
-                    return (Number(item.price_main) < 1000000)
-                }
-                else {
-                    return (Number(item.price_sale) < 1000000)
-                }
-            })])
-        }
-        else {
-            setProductsRender([...productsRender.filter(item => {
-                if (item.price_sale) {
-                    return (Number(item.price_main) < 1000000)
-                }
-                else {
-                    return (Number(item.price_sale) < 1000000)
-                }
-            })])
-        }
-        setThisPage(1)
-    }
-
-    // 1m - 3m
-    const SortByPriceMedium = () => {
-        if (thisBrand) {
-            setProductsRender([...thisBrand.filter(item => {
-                if (item.price_sale) {
-                    return (Number(item.price_sale) >= 1000000 && Number(item.price_sale) < 3000000)
-                }
-                else {
-                    return Number(item.price_main) >= 1000000 && Number(item.price_main) < 3000000
-                }
-            })])
-        }
-        else {
-            setProductsRender([...productsRender.filter(item => {
-                if (item.price_sale) {
-                    return (Number(item.price_sale) >= 1000000 && Number(item.price_sale) < 3000000)
-                }
-                else {
-                    return Number(item.price_main) >= 1000000 && Number(item.price_main) < 3000000
-                }
-            })])
-        }
-        setThisPage(1)
-    }
-
-    // 3m - 5m
-    const SortByPriceNormal = () => {
-        if (thisBrand) {
-            setProductsRender([...thisBrand.filter(item => {
-                if (item.price_sale) {
-                    return Number(item.price_sale) >= 3000000 && Number(item.price_sale) < 5000000
-                }
-                else {
-                    return Number(item.price_main) >= 3000000 && Number(item.price_main) < 5000000
-                }
-            })])
-        }
-        else {
-            setProductsRender([...productsRender.filter(item => {
-                if (item.price_sale) {
-                    return Number(item.price_sale) >= 3000000 && Number(item.price_sale) < 5000000
-                }
-                else {
-                    return Number(item.price_main) >= 3000000 && Number(item.price_main) < 5000000
-                }
-            })])
-        }
-        setThisPage(1)
-    }
-
-    // 5m - 10m
-    const SortByPriceHigh = () => {
-        if (thisBrand) {
-            setProductsRender([...thisBrand.filter(item => {
-                if (item.price_sale) {
-                    return Number(item.price_sale) >= 5000000 && Number(item.price_sale) < 10000000
-                }
-                else {
-                    return Number(item.price_main) >= 5000000 && Number(item.price_main) < 10000000
-                }
-            })])
-        }
-        else {
-            setProductsRender([...productsRender.filter(item => {
-                if (item.price_sale) {
-                    return Number(item.price_sale) >= 5000000 && Number(item.price_sale) < 10000000
-                }
-                else {
-                    return Number(item.price_main) >= 5000000 && Number(item.price_main) < 10000000
-                }
-            })])
-        }
-        setThisPage(1)
-    }
-
-    // > 10m
-    const SortByPriceMaxLV = () => {
-        if (thisBrand) {
-            setProductsRender([...thisBrand.filter(item => {
-                if (item.price_sale) {
-                    return Number(item.price_sale) >= 10000000
-                }
-                else {
-                    return Number(item.price_main) >= 10000000
-                }
-            })])
-        } else {
-            setProductsRender([...productsRender.filter(item => {
-                if (item.price_sale) {
-                    return Number(item.price_sale) >= 10000000
-                }
-                else {
-                    return Number(item.price_main) >= 10000000
-                }
-            })])
-        }
-        setThisPage(1)
-    }
-
-
     return (
         <div className={cx('product-page')}>
             <TitlePage chidren='Tất cả sản phẩm' />
             <div className='grid wide'>
                 <div className={cx('page-section')}>
                     <div className='row'>
-                        <div className={cx('col l-3')}>
+                        <div className={cx('col l-3 m-0')}>
                             <div className={cx('bar')}>
                                 {/* sort-by-name */}
                                 <div className={cx('sort')}>
@@ -519,7 +389,7 @@ function Products() {
                                 </div>
                             </div>
                         </div>
-                        <div className={cx('col l-9')}>
+                        <div className={cx('col l-9 m-12')}>
                             <div className={cx('products')}>
                                 <div className='row'>
                                     {
@@ -527,9 +397,10 @@ function Products() {
                                             pageNumber[thisPage - 1].map((product, index) => {
                                                 if (index < 9) {
                                                     return (
-                                                        <div className='col l-4' key={index}>
+                                                        <div className='col l-4 m-4' key={index}>
                                                             <ProductItem
                                                                 product={product}
+                                                                handleFavoriteSneaker = {handleFavoriteSneaker}
                                                             />
                                                         </div>
                                                     )
