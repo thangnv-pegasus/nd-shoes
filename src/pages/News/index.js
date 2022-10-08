@@ -17,7 +17,7 @@ function News() {
                     {
                         blogs.map(blog => {
                             return (
-                                <div className='col l-4 m-4' key={blog.id}>
+                                <div className='col l-4 m-4 c-12' key={blog.id}>
                                     <Blog blog={blog} />
                                 </div>
                             )

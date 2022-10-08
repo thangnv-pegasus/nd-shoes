@@ -16,8 +16,6 @@ function Header({ thisAccount, login, setLogin, cart, allProduct }) {
 
     const navigate = useNavigate()
 
-    // const productFavorite = allProduct.filter(item => item.favorite == 'true')
-
     const total = () => {
         let x = 0;
         for (let product of cart) {
@@ -35,10 +33,10 @@ function Header({ thisAccount, login, setLogin, cart, allProduct }) {
             <div className='grid wide'>
                 <div className={cx('header-section')}>
                     <div className='row no-gutters space-between height-header align-items-center'>
-                        <div className='col l-2 m-2'>
+                        <div className='col l-2 m-2 c-2'>
                             <Logo />
                         </div>
-                        <div className='col l-8 m-0'>
+                        <div className='col l-8 m-0 c-0'>
                             <ul className={cx('nav')}>
                                 <li>
                                     <NavLink to={routes.home} className={(nav) => cx({
@@ -152,7 +150,7 @@ function Header({ thisAccount, login, setLogin, cart, allProduct }) {
                                 </li>
                             </ul>
                         </div>
-                        <div className='col l-2 m-2'>
+                        <div className='col l-2 m-2 c-2'>
                             <ul className={cx('group-account')}>
                                 <li className={cx('search-icon')}>
                                     <FontAwesomeIcon icon={faMagnifyingGlass} />

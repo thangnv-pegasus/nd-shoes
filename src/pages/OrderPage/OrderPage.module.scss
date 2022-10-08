@@ -222,3 +222,10 @@
     font-size: 1.4rem;
     text-transform: uppercase;
 }
+
+@media (max-width: 739px) {
+    .main{
+        padding-left:0;
+        padding-right: 0;
+    }
+}

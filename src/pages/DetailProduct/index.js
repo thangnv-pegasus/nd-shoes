@@ -144,7 +144,7 @@ function DetailProduct({ cart, setCart, handleFavoriteSneaker }) {
             <div className='grid wide'>
                 <div className={cx('detail-section')}>
                     <div className='row'>
-                        <div className='col l-6 m-12'>
+                        <div className='col l-6 m-12 c-12'>
                             <div className={cx('img-render')}>
                                 <img src={listImg[thisColor].url[imgIndex]} />
                                 <div className={cx('favorite')}
@@ -175,7 +175,7 @@ function DetailProduct({ cart, setCart, handleFavoriteSneaker }) {
                                 }
                             </div>
                         </div>
-                        <div className='col l-6 m-12'>
+                        <div className='col l-6 m-12 c-12'>
                             <div className={cx('product-name')}>
                                 {thisProduct.name}
                             </div>
@@ -331,7 +331,7 @@ function DetailProduct({ cart, setCart, handleFavoriteSneaker }) {
                                 products.map((product, index) => {
                                     if (index < 4) {
                                         return (
-                                            <div className='col l-3 m-4' key={product.id}>
+                                            <div className='col l-3 m-4 c-6' key={product.id}>
                                                 <ProductItem
                                                     product={product}
                                                 // allProduct={allProduct}

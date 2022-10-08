@@ -29,13 +29,13 @@ function OrderPage({ cart, ...props }) {
         <div className={cx('order-page')}>
             <div className='grid wide'>
                 <div className='row'>
-                    <div className='col l-8 m-12'>
+                    <div className='col l-8 m-12 c-12'>
                         <div className={cx('main')}>
                             <div className={cx('title')}>
                                 <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/logo.png?1662953459377" />
                             </div>
                             <div className='row'>
-                                <div className='col l-6 m-12'>
+                                <div className='col l-6 m-12 c-12'>
                                     <div className={cx('add-member')}>
                                         <div className={cx('add-title')}>
                                             Thông tin nhận hàng
@@ -54,7 +54,7 @@ function OrderPage({ cart, ...props }) {
                                         />
                                     </div>
                                 </div>
-                                <div className='col l-6 m-12'>
+                                <div className='col l-6 m-12 c-12'>
                                     <div className={cx('add-title')}>
                                         Vận chuyển
                                     </div>
@@ -84,7 +84,7 @@ function OrderPage({ cart, ...props }) {
                             </div>
                         </div>
                     </div>
-                    <div className='col l-4 m-12'>
+                    <div className='col l-4 m-12 c-12'>
                         <div className={cx('side-bar')}>
                             <div className={cx('side-bar__heading')}>
                                 Đơn hàng({cart.length} sản phẩm)

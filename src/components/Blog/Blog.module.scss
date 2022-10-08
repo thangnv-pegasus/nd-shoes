@@ -62,3 +62,12 @@
         height: 140px;
     }
 }
+
+@media (max-width: 739px){
+    .blog-img{
+        height: 250px;
+    }
+    .blog-infor{
+        padding: 0 5px;
+    }
+}

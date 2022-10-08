@@ -26,7 +26,7 @@ function Complete({ cart, ...props }) {
                     <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/logo.png?1662953459377" />
                 </Link>
                 <div className='row'>
-                    <div className='col l-7 m-12'>
+                    <div className='col l-7 m-12 c-12'>
                         <div className={cx('noti')}>
                             <div className={cx('noti-icon')}>
                                 <FontAwesomeIcon icon={faCircleCheck} />
@@ -42,7 +42,7 @@ function Complete({ cart, ...props }) {
                         </div>
                         <div className={cx('infor-order')}>
                             <div className='row'>
-                                <div className='col l-6 m-6'>
+                                <div className='col l-6 m-6 c-12'>
                                     <div className={cx('order-title')}>
                                         Thông tin mua hàng
                                     </div>
@@ -52,7 +52,7 @@ function Complete({ cart, ...props }) {
                                         <li>{phone}</li>
                                     </ul>
                                 </div>
-                                <div className='col l-6 m-6'>
+                                <div className='col l-6 m-6 c-12'>
                                     <div className={cx('order-title')}>
                                         Địa chỉ nhận hàng
                                     </div>
@@ -62,7 +62,7 @@ function Complete({ cart, ...props }) {
                                         <li>{phone}</li>
                                     </ul>
                                 </div>
-                                <div className='col l-6 m-6'>
+                                <div className='col l-6 m-6 c-12'>
                                     <div className={cx('order-title')}>
                                         Phương thức thanh toán
                                     </div>
@@ -70,7 +70,7 @@ function Complete({ cart, ...props }) {
                                         <li>Thanh toán khi giao hàng(COD)</li>
                                     </ul>
                                 </div>
-                                <div className='col l-6 m-6'>
+                                <div className='col l-6 m-6 c-12'>
                                     <div className={cx('order-title')}>
                                         Phương thức vận chuyển
                                     </div>
@@ -81,7 +81,7 @@ function Complete({ cart, ...props }) {
                             </div>
                         </div>
                     </div>
-                    <div className='col l-5 m-12'>
+                    <div className='col l-5 m-12 c-12'>
                         <div className={cx('member-order')}>
                             <div className={cx('heading')}>
                                 Đơn hàng #1 ({cart.length})

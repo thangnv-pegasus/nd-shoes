@@ -2,7 +2,6 @@ import styles from './Footer.module.scss'
 import classNames from 'classnames/bind'
 import Logo from '../../Logo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMap } from '@fortawesome/free-regular-svg-icons'
 import { faHeadphones, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom'
 import routes from '../../../routes'
@@ -16,7 +15,7 @@ function Footer() {
             <div className='grid wide'>
                 <div className={cx('footer-section')}>
                     <div className='row'>
-                        <div className='col l-4 m-12'>
+                        <div className='col l-4 m-12 c-12'>
                             <div className={cx('footer-contact')}>
                                 <Logo />
                                 <ul className={cx('footer-infor')}>
@@ -47,10 +46,10 @@ function Footer() {
                                 </ul>
                             </div>
                         </div>
-                        <div className='col l-8 m-12'>
+                        <div className='col l-8 m-12 c-12'>
                             <div className={cx('footer-intro')}>
                                 <div className='row no-gutters'>
-                                    <div className='col l-4 m-4'>
+                                    <div className='col l-4 m-4 c-6'>
                                         <div className={cx('intro-content')}>
                                             <div className={cx('footer-title')}>
                                                 Về chúng tôi
@@ -95,7 +94,7 @@ function Footer() {
                                             </ul>
                                         </div>
                                     </div>
-                                    <div className='col l-4 m-4'>
+                                    <div className='col l-4 m-4 c-6'>
                                         <div className={cx('intro-content')}>
                                             <div className={cx('footer-title')}>
                                                 Chính sách
@@ -140,7 +139,7 @@ function Footer() {
                                             </ul>
                                         </div>
                                     </div>
-                                    <div className='col l-4 m-4'>
+                                    <div className='col l-4 m-4 c-6'>
                                         <div className={cx('intro-content')}>
                                             <div className={cx('footer-title')}>
                                                 Theo dõi chúng tôi

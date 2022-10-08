@@ -32,3 +32,9 @@
         font-size: 1.6rem;
     }
 }
+
+@media (max-width: 739px) {
+    .search-form{
+        transform: translateX(75px);
+    }
+}

@@ -56,7 +56,7 @@ function SearchPage() {
                                 {
                                     newArr[page].map(product => {
                                         return (
-                                            <div className="col l-3 m-4" key={product.id}>
+                                            <div className="col l-3 m-4 c-6" key={product.id}>
                                                 <ProductItem product={product} />
                                             </div>
                                         )

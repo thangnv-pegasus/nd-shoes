@@ -14,12 +14,11 @@ function CartPage({ cart, setCart }) {
     let result = 0;
     for (let item of cart) {
         if (item.price_sale) {
-            result += parseInt(item.price_sale)*item.quantity;
+            result += parseInt(item.price_sale) * item.quantity;
         } else {
-            result += parseInt(item.price_main)*item.quantity;
+            result += parseInt(item.price_main) * item.quantity;
         }
     }
-
 
     return (
         <div className={cx('cart-page')}>
@@ -79,64 +78,66 @@ function CartPage({ cart, setCart }) {
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div className={cx('product-price', 'table-body')}>
-                                                    {
-                                                        item.price_sale ? (
-                                                            new Intl.NumberFormat().format(parseInt(item.price_sale, 10)) + "đ"
-                                                        ) : (
-                                                            new Intl.NumberFormat().format(parseInt(item.price_main, 10)) + "đ"
-                                                        )
-                                                    }
-                                                </div>
-                                                <div className={cx('product-quantity', 'table-body')}>
-                                                    <button
-                                                        onClick={() => {
-                                                            if (item.quantity == 1) {
-                                                                setCart(pre => pre.filter(item2 => {
-                                                                    if (item2.id === item.id && item2.img_color.code === item.img_color.code && item2.size === item.size) {
-                                                                        return false;
-                                                                    } else {
-                                                                        return true;
-                                                                    }
-                                                                }))
-                                                            } else {
+                                                <div className={cx('product-myset')}>
+                                                    <div className={cx('product-price', 'table-body')}>
+                                                        {
+                                                            item.price_sale ? (
+                                                                new Intl.NumberFormat().format(parseInt(item.price_sale, 10)) + "đ"
+                                                            ) : (
+                                                                new Intl.NumberFormat().format(parseInt(item.price_main, 10)) + "đ"
+                                                            )
+                                                        }
+                                                    </div>
+                                                    <div className={cx('product-quantity', 'table-body')}>
+                                                        <button
+                                                            onClick={() => {
+                                                                if (item.quantity == 1) {
+                                                                    setCart(pre => pre.filter(item2 => {
+                                                                        if (item2.id === item.id && item2.img_color.code === item.img_color.code && item2.size === item.size) {
+                                                                            return false;
+                                                                        } else {
+                                                                            return true;
+                                                                        }
+                                                                    }))
+                                                                } else {
+                                                                    setCart(pre => pre.map(item2 => {
+                                                                        if (item2.id === item.id && item2.img_color.code === item.img_color.code && item2.size === item.size) {
+                                                                            return { ...item2, quantity: item2.quantity - 1 }
+                                                                        } else {
+                                                                            return { ...item2 }
+                                                                        }
+                                                                    }))
+                                                                }
+                                                            }}
+                                                        >
+                                                            -
+                                                        </button>
+                                                        <button tabIndex='-1'>
+                                                            {item.quantity}
+                                                        </button>
+                                                        <button
+                                                            onClick={() => {
                                                                 setCart(pre => pre.map(item2 => {
                                                                     if (item2.id === item.id && item2.img_color.code === item.img_color.code && item2.size === item.size) {
-                                                                        return { ...item2, quantity: item2.quantity - 1 }
+                                                                        return { ...item2, quantity: item2.quantity + 1 }
                                                                     } else {
                                                                         return { ...item2 }
                                                                     }
                                                                 }))
-                                                            }
-                                                        }}
-                                                    >
-                                                        -
-                                                    </button>
-                                                    <button tabIndex='-1'>
-                                                        {item.quantity}
-                                                    </button>
-                                                    <button
-                                                        onClick={() => {
-                                                            setCart(pre => pre.map(item2 => {
-                                                                if (item2.id === item.id && item2.img_color.code === item.img_color.code && item2.size === item.size) {
-                                                                    return { ...item2, quantity: item2.quantity + 1 }
-                                                                } else {
-                                                                    return { ...item2 }
-                                                                }
-                                                            }))
-                                                        }}
-                                                    >
-                                                        +
-                                                    </button>
-                                                </div>
-                                                <div className={cx('product-sumary', 'table-body')}>
-                                                    {
-                                                        item.price_sale ? (
-                                                            new Intl.NumberFormat().format(parseInt(item.price_sale) * item.quantity, 10) + "đ"
-                                                        ) : (
-                                                            new Intl.NumberFormat().format(parseInt(item.price_main) * item.quantity, 10) + "đ"
-                                                        )
-                                                    }
+                                                            }}
+                                                        >
+                                                            +
+                                                        </button>
+                                                    </div>
+                                                    <div className={cx('product-sumary', 'table-body')}>
+                                                        {
+                                                            item.price_sale ? (
+                                                                new Intl.NumberFormat().format(parseInt(item.price_sale) * item.quantity, 10) + "đ"
+                                                            ) : (
+                                                                new Intl.NumberFormat().format(parseInt(item.price_main) * item.quantity, 10) + "đ"
+                                                            )
+                                                        }
+                                                    </div>
                                                 </div>
                                             </div>
                                         )
@@ -145,7 +146,7 @@ function CartPage({ cart, setCart }) {
                             </div>
                             <div className={cx('result')}>
                                 <div className={cx('row')}>
-                                    <div className='l-4 m-12'>
+                                    <div className='l-4 m-12 c-12'>
                                         <div className={cx('result-text')}>
                                             <p>Tổng tiền: </p>
                                             <p className={cx('total')}>{new Intl.NumberFormat().format(result, 10)}đ</p>

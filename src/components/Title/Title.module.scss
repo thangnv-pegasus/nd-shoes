@@ -51,3 +51,12 @@
     color: #616161;
     margin-bottom: 35px;
 }
+
+@media (max-width: 739px) {
+    .title {
+        font-size: 1.8rem;
+    }
+    .slogan{
+        font-size: 1.4rem;
+    }
+}

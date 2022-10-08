@@ -271,3 +271,14 @@
         margin-top: 20px;
     }
 }
+
+@media (max-width: 739px) {
+    .list-img{
+        .img-item{
+            flex: 0 0 24%;
+            max-width: 24%;
+            height: 86px;
+        }
+    }
+    
+}

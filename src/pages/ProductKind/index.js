@@ -94,8 +94,6 @@ function ProductKind() {
         }
     }, [check3])
 
-    console.log(productsRender)
-
     // filter
     const handleSort1 = (current) => {
         switch (current) {
@@ -221,7 +219,7 @@ function ProductKind() {
             <div className='grid wide'>
                 <div className={cx('page-section')}>
                     <div className='row'>
-                        <div className={cx('col l-3')}>
+                        <div className={cx('col l-3 m-0 c-0')}>
                             <div className={cx('bar')}>
                                 {/* sort-by-name */}
                                 <div className={cx('sort')}>
@@ -280,7 +278,7 @@ function ProductKind() {
                                 </div>
                             </div>
                         </div>
-                        <div className={cx('col l-9')}>
+                        <div className={cx('col l-9 m-12 c-12')}>
                             <div className={cx('products')}>
                                 <div className='row'>
                                     {
@@ -288,7 +286,7 @@ function ProductKind() {
                                             pageNumber[thisPage - 1].map((product, index) => {
                                                 if (index < 9) {
                                                     return (
-                                                        <div className='col l-4' key={index}>
+                                                        <div className='col l-4 m-3 c-6' key={index}>
                                                             <ProductItem
                                                                 product={product}
                                                             // handleFavoriteSneaker={handleFavoriteSneaker}

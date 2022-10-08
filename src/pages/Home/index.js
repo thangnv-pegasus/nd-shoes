@@ -144,7 +144,7 @@ function Home({ cart, setCart }) {
                 <div className='grid wide'>
                     <div className={cx('sub-banner__section')} ref={refSubBanner}>
                         <div className='row no-gutters no-wrap-2' >
-                            <div className='col l-3 m-4'>
+                            <div className='col l-3 m-4 c-12'>
                                 <div className={cx('banner-item')}  >
                                     <BannerItem
                                         icon={<FontAwesomeIcon icon={faHandshake} />}
@@ -153,7 +153,7 @@ function Home({ cart, setCart }) {
                                     />
                                 </div>
                             </div>
-                            <div className='col l-3 m-4'>
+                            <div className='col l-3 m-4 c-12'>
                                 <div className={cx('banner-item')}>
                                     <BannerItem
                                         icon={<FontAwesomeIcon icon={faPhone} />}
@@ -162,7 +162,7 @@ function Home({ cart, setCart }) {
                                     />
                                 </div>
                             </div>
-                            <div className='col l-3 m-4'>
+                            <div className='col l-3 m-4 c-12'>
                                 <div className={cx('banner-item')}>
                                     <BannerItem
                                         icon={<FontAwesomeIcon icon={faArrowsRotate} />}
@@ -171,7 +171,7 @@ function Home({ cart, setCart }) {
                                     />
                                 </div>
                             </div>
-                            <div className='col l-3 m-4'>
+                            <div className='col l-3 m-4 c-12'>
                                 <div className={cx('banner-item')}>
                                     <BannerItem
                                         icon={<FontAwesomeIcon icon={faGift} />}
@@ -197,7 +197,7 @@ function Home({ cart, setCart }) {
                                 products.map((product, index) => {
                                     if (index < 8) {
                                         return (
-                                            <div className='col l-3 m-4' key={index}>
+                                            <div className='col l-3 m-4 c-6' key={index}>
                                                 <ProductItem
                                                     setCart={setCart}
                                                     cart={cart}
@@ -235,7 +235,7 @@ function Home({ cart, setCart }) {
                                 products.map((product, index) => {
                                     if (product.id > 9 && product.id < 18) {
                                         return (
-                                            <div className='col l-3 m-4' key={index}>
+                                            <div className='col l-3 m-4 c-6' key={index}>
                                                 <ProductItem
                                                     product={product}
                                                 // handleFavoriteSneaker={handleFavoriteSneaker}
@@ -291,7 +291,7 @@ function Home({ cart, setCart }) {
                                 productKind.map((productI, index) => {
                                     if (index < 9) {
                                         return (
-                                            <div className='col l-3 m-4' key={index}>
+                                            <div className='col l-3 m-4 c-6' key={index}>
                                                 <ProductItem
                                                     product={productI}
                                                 // handleFavoriteSneaker={handleFavoriteSneaker}
@@ -314,7 +314,7 @@ function Home({ cart, setCart }) {
                 <div className='grid wide'>
                     <div className={cx('accessory-section')}>
                         <div className='row'>
-                            <div className='col l-6 m-6'>
+                            <div className='col l-6 m-6 c-12'>
                                 <div className={cx('accessory-img', 'big-img')}>
                                     <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/accessories_1.jpg?1660294502239" />
                                     <div className={cx('accessory-title')}>
@@ -328,7 +328,7 @@ function Home({ cart, setCart }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className='col l-6 m-6'>
+                            <div className='col l-6 m-6 c-12'>
                                 <div className={cx('accessory-img', 'sm-img', 'sm-1')}>
                                     <img src="https://bizweb.dktcdn.net/100/437/253/themes/872488/assets/accessories_2.jpg?1660294502239" />
                                     <div className={cx('accessory-title')}>
@@ -377,7 +377,7 @@ function Home({ cart, setCart }) {
                                 {
                                     feedback.map((fb, index) => {
                                         return (
-                                            <div className='col l-3 m-4' key={index}>
+                                            <div className='col l-3 m-4 c-6' key={index}>
                                                 <FeedBack
                                                     feedback={fb}
                                                 />
@@ -405,7 +405,7 @@ function Home({ cart, setCart }) {
                                 blogs.map(blog => {
                                     if (blog.id < 4) {
                                         return (
-                                            <div className='col l-4 m-4'>
+                                            <div className='col l-4 m-4 c-12'>
                                                 <Blog
                                                     blog={blog}
                                                 />

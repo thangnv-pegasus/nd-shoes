@@ -21,7 +21,7 @@ function DetailBlog() {
             <div className='grid wide'>
                 <div className={cx('detail-blog__section')}>
                     <div className='row'>
-                        <div className={cx('order-1') + ' col l-3 m-12'}>
+                        <div className={cx('order-1') + ' col l-3 m-12 c-12'}>
                             <div className={cx('similar-blogs')}>
                                 <Link to={routes.news} className={cx('similar-title')} onClick={() => window.scrollTo(0, 0)}>
                                     Bài viết liên quan
@@ -44,7 +44,7 @@ function DetailBlog() {
                                 </div>
                             </div>
                         </div>
-                        <div className='col l-9 m-12'>
+                        <div className='col l-9 m-12 c-12'>
                             <div className={cx('content-blog')}>
                                 {
                                     thisBlog.content.map((text, index) => {
