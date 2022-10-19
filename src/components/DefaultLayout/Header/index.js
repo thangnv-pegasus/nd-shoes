@@ -5,9 +5,11 @@ import styles from './Header.module.scss'
 import routes from '../../../routes'
 import Logo from '../../Logo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown, faBars, faBasketShopping, faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faBars, faBasketShopping, faCartShopping, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faUser } from '@fortawesome/free-regular-svg-icons'
 import Search from '../../Search'
+import Menu from '../../Menu'
+import { useState } from 'react'
 
 const cx = className.bind(styles)
 const size = 0;
@@ -15,6 +17,13 @@ const size = 0;
 function Header({ thisAccount, login, setLogin, cart, allProduct }) {
 
     const navigate = useNavigate()
+
+    const [openList, setOpenList] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
+
+    const handleDown = () => {
+        setOpenList(!openList)
+    }
 
     const total = () => {
         let x = 0;
@@ -28,12 +37,14 @@ function Header({ thisAccount, login, setLogin, cart, allProduct }) {
         }
         return x;
     }
+
+
     return (
         <div className={cx('header')}>
             <div className='grid wide'>
                 <div className={cx('header-section')}>
                     <div className='row no-gutters space-between height-header align-items-center'>
-                        <div className='col l-2 m-2 c-2'>
+                        <div className='col l-2 m-2 c-5'>
                             <Logo />
                         </div>
                         <div className='col l-8 m-0 c-0'>
@@ -150,7 +161,7 @@ function Header({ thisAccount, login, setLogin, cart, allProduct }) {
                                 </li>
                             </ul>
                         </div>
-                        <div className='col l-2 m-2 c-2'>
+                        <div className='col l-2 m-2 c-7'>
                             <ul className={cx('group-account')}>
                                 <li className={cx('search-icon')}>
                                     <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -260,7 +271,63 @@ function Header({ thisAccount, login, setLogin, cart, allProduct }) {
                                     }
                                 </li>
                                 <li className={cx('header__menu')}>
-                                    <FontAwesomeIcon icon={faBars} />
+                                    <FontAwesomeIcon icon={faBars} onClick={() => setOpenModal(!openModal)} />
+                                    <div className={cx('menu-modal')}
+                                        style={openModal ? ({ display: 'block' }) : ({ display: 'none' })}
+                                        onClick={()=>setOpenModal(false)}
+                                    >
+                                        <ul className={cx('menu')} onClick={(e)=>e.stopPropagation()}>
+                                            <li>
+                                                <a href={routes.home}>Trang chủ</a>
+                                            </li>
+                                            <li>
+                                                <a href={routes.intro}>Giới thiệu</a>
+                                            </li>
+                                            <li className={cx('sub-menu')}>
+                                                <div className={cx('flex')}>
+                                                    <a href={routes.products}>Sản phẩm</a>
+                                                    <span onClick={handleDown}>
+                                                        <FontAwesomeIcon icon={faAngleDown} />
+                                                    </span>
+                                                </div>
+                                                <ul className={cx('list-brand')} style={openList ? ({ display: 'block' }) : ({ display: 'none' })}>
+                                                    <li>
+                                                        <a href={`/productKind/${'Adidas'}`}>Adidas</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href={`/productKind/${'Nike'}`}>Nike</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href={`/productKind/${'Converse'}`}>Converse</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href={`/productKind/${'Vans'}`}>Vans</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href={`/productKind/${'Puma'}`}>Puma</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href={`/productKind/${'Fila'}`}>FILA</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href={`/productKind/${'MLB'}`}>MLB</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href={`/productKind/${'New Balance'}`}>New Balance</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href={routes.news}>Tin tức</a>
+                                            </li>
+                                            <li>
+                                                <a href={routes.contact}>Liên hệ</a>
+                                            </li>
+                                            <div className={cx('close-icon')} onClick={() => setOpenModal(false)}>
+                                                <FontAwesomeIcon icon={faXmark} />
+                                            </div>
+                                        </ul>
+                                    </div>
                                 </li>
                             </ul>
                         </div>

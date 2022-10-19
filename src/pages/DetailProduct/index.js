@@ -161,11 +161,13 @@ function DetailProduct({ cart, setCart, handleFavoriteSneaker }) {
                                             <div className={cx('img-item')} key={index}
                                                 style={imgIndex == index ? {
                                                     border: '1px solid var(--primary-color)',
-                                                    backgroundImage: `url(${urlItem})`
+                                                    backgroundImage: `url(${urlItem})`,
+                                                    backgroundSize: 'cover'
 
                                                 } : {
                                                     border: '1px solid transparent',
-                                                    backgroundImage: `url(${urlItem})`
+                                                    backgroundImage: `url(${urlItem})`,
+                                                    backgroundSize: 'cover'
                                                 }}
                                                 onClick={() => setImgIndex(index)}
                                             >

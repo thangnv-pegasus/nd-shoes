@@ -36,5 +36,15 @@
 @media (max-width: 739px) {
     .search-form{
         transform: translateX(75px);
+        width: 250px;
+        input{
+            height: 35px;
+            min-height: 35px;
+            line-height: 35px;
+        }
+        button{
+            padding: 0 12px;
+            font-size: 1.4rem;
+        }
     }
 }

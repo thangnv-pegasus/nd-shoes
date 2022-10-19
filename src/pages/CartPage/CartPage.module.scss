@@ -128,7 +128,6 @@
         &:first-child{
             cursor: pointer;
         }
-        
     }
 }
 .product-item.table{
@@ -172,6 +171,13 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    width: 50%;
+}
+
+.product-price.table-body,
+.product-quantity.table-body,
+.product-sumary.table-body{
+    width: calc(100%/3);
 }
 
 @media (max-width: 1023px) {
@@ -213,7 +219,7 @@
         width: unset !important;
     }
     .product-quantity{
-        justify-self: flex-end;
+        justify-content: flex-end;
     }
     .product-price{
         padding: 0 !important;
@@ -225,5 +231,8 @@
         & > div{
             width: 100% !important;
         }
+    }
+    .product-price.table-body{
+        text-align: right;
     }
 }

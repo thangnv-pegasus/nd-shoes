@@ -1,56 +1,43 @@
-import className from 'classnames/bind'
-import styles from './Banner.module.scss'
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+// import required modules
+import { Navigation } from "swiper";
 import data from '../../data/db.json'
-import { useReducer, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import styles from './Banner.module.scss'
+import classNames from "classnames/bind";
 
-const cx = className.bind(styles)
+const banners = data.banner
 
+const cx = classNames.bind(styles)
 
-function Banner() {
-    
-    const banners = data.banner
-    const initState = 0;
-    const next = 'NEXT'
-    const pre = 'PRE'
-    
-    const reducer = (current,action) => {
-        switch (action) {
-            case 'PRE':
-                if(current>0){
-                    return current - 1;
-                }
-                else{
-                    return 3;
-                }
-            case 'NEXT':
-                if(current < banners.length-1){
-                    return current + 1;
-                }
-                else{
-                    return 0;
-                }
-            default: 
-                throw new Error('Lỗi!')
-        }
-    }
-
-    const [current, dispatch] = useReducer(reducer, initState)
-    let imgUrl = `url(${banners[current]})`
-
+export default function App() {
     return (
-        <div className={cx('banner')} style={{
-            backgroundImage: imgUrl
-        }}>
-            <div className={cx('control', 'control-right')} onClick = {()=>dispatch(next)}>
-                <FontAwesomeIcon icon={faAngleRight} />
-            </div>
-            <div className={cx('control', 'control-left')} onClick = {()=>dispatch(pre)}>
-                <FontAwesomeIcon icon={faAngleLeft} />
-            </div>
-        </div>
-    )
-}
+        <>
+            <Swiper
+                navigation={true}
+                loop={true}
+                modules={[Navigation]}
+                className="mySwiper"
 
-export default Banner
+            >
+                {
+                    banners.map((item, index) => {
+                        return (
+                            <SwiperSlide key={index} className={cx()}>
+                                <div className={cx('full-width')}>
+                                    <img src={item} />
+                                </div>
+                            </SwiperSlide>
+                        )
+                    })
+                }
+            </Swiper>
+        </>
+    );
+}

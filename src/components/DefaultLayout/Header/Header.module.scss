@@ -336,6 +336,95 @@
     display: none;
 }
 
+.menu-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 10;
+    display: none;
+    li{
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+.close-icon{
+    position: absolute;
+    top: 40px;
+    right: -33px;
+    background-color: #fe6b5e;
+    color: var(--white-color);
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+
+.menu {
+    background-color: var(--white-color);
+    width: 80%;
+    font-size: 1.4rem;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    animation: fadeIn ease 0.4s;
+    position: relative;
+    li {
+        margin: 0;
+        padding: 0;
+    }
+
+    li a {
+        color: var(--text-color);
+        padding: 0 10px !important;
+        height: unset;
+        line-height: 35px;
+        display: block;
+    }
+}
+
+.sub-menu {
+    .flex {
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: space-between;
+    }
+
+    span {
+        color: var(--text-color);
+        padding: 0 10px;
+        cursor: pointer;
+    }
+
+    .list-brand {
+        padding-left: 20px;
+        display: none;
+        overflow: hidden;
+        animation: openMenu linear 1s;
+    }
+}
+
+@keyframes openMenu {
+    from {
+        height: 0;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from{
+        transform: translateX(-100%);
+    }to{
+        transform: translateX(0);
+    }
+}
+
+
+
 
 
 @keyframes SubNavAnimation {
@@ -369,6 +458,7 @@
     }
     .header__menu{
         display: block;
+        position: relative;
     }
 }
 

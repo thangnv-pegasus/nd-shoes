@@ -28,6 +28,7 @@ function ProductItem({ product, handleFavoriteSneaker }) {
             <div className={cx('product-img')} 
                 style={{
                     backgroundImage: urlImg,
+                    backgroundImage: urlImg,
                     backgroundSize:'cover',
                     backgroundPosition: 'center'
                 }}
