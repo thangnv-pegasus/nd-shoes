@@ -81,6 +81,11 @@ const sortPrice = [
 function Products({handleFavoriteSneaker}) {
 
     const { classI } = useParams()
+    console.log(classI)
+    // const url = params.split('/')
+    // const classI = url[url.length-1]
+    // const classI = 'products' 
+    // console.log(classI)
     let thisData = products
     if (classI == 'accessory') { thisData = accessorys }
 

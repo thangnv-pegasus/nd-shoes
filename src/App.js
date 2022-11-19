@@ -19,7 +19,6 @@ function App() {
   const [address, setAddress] = useState()
   const [note, setNote] = useState()
 
-
   // const handleFavoriteSneaker = (product) => {
   //   const thisProduct = allProduct.find(item => item.id === product.id)
   //   let newArr;

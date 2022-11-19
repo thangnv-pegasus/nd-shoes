@@ -188,7 +188,7 @@ function Home({ cart, setCart }) {
             {/* new products */}
             <div className={cx('new-products')}>
                 <div className='grid wide'>
-                    <Title to={`/${'products'}`} slogan='Các sản phẩm mới có tại cửa hàng'>
+                    <Title to={`/collections/${'products'}`} slogan='Các sản phẩm mới có tại cửa hàng'>
                         Sản phẩm mới
                     </Title>
                     <div className={cx('products-section')} ref={refNewProducts} style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
@@ -214,7 +214,7 @@ function Home({ cart, setCart }) {
                         </div>
 
                     </div>
-                    <Link to={`/${'products'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
+                    <Link to={`/collections/${'products'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
                         Xem tất cả
                     </Link>
                 </div>
@@ -223,7 +223,7 @@ function Home({ cart, setCart }) {
             {/* product hot */}
             <div className={cx('products-hot')}>
                 <div className='grid wide'>
-                    <Title to={`/${'products'}`} slogan='Các sản phẩm bán chạy tại cửa hàng'>
+                    <Title to={`/collections/${'products'}`} slogan='Các sản phẩm bán chạy tại cửa hàng'>
                         Sản phẩm bán chạy
                     </Title>
                     <div className={cx('intro-img')}>
@@ -247,7 +247,7 @@ function Home({ cart, setCart }) {
                             }
                         </div>
                     </div>
-                    <Link to={`/${'products'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
+                    <Link to={`/collections/${'products'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
                         Xem tất cả
                     </Link>
                 </div>
@@ -256,7 +256,7 @@ function Home({ cart, setCart }) {
             {/* product classification */}
             <div className={cx('products-kind')}>
                 <div className='grid wide'>
-                    <Title to={`/${'products'}`} slogan='Các sản phẩm Sneakers có tại ND Shoes'>
+                    <Title to={`/collections/${'products'}`} slogan='Các sản phẩm Sneakers có tại ND Shoes'>
                         Sneakers
                     </Title>
                     <ul className={cx('options')}>
@@ -356,7 +356,7 @@ function Home({ cart, setCart }) {
                             </div>
                         </div>
                     </div>
-                    <Link to={`/${'accessory'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
+                    <Link to={`/collections/${'accessory'}`} className={cx('see-more')} onClick={() => window.scrollTo(0, 0)}>
                         Xem tất cả
                     </Link>
                 </div>

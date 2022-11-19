@@ -1,4 +1,4 @@
-.banner{
+.banner {
     width: 100%;
     height: 610px;
     background-size: cover;
@@ -6,13 +6,15 @@
     background-repeat: no-repeat;
     position: relative;
     padding-top: var(--height-header);
-    &:hover{
-        .control{
+
+    &:hover {
+        .control {
             display: block;
         }
     }
 }
-.control{
+
+.control {
     position: absolute;
     top: 50%;
     font-size: 3rem;
@@ -21,21 +23,26 @@
     color: var(--white-color);
     cursor: pointer;
     display: none;
-    &:hover{
+
+    &:hover {
         color: var(--blue-color);
     }
 }
-.control-left{
-    left:0;
+
+.control-left {
+    left: 0;
 }
-.control-right{
+
+.control-right {
     right: 0;
 }
-.full-width{
+
+.full-width {
     width: 100%;
     overflow: hidden;
     height: 640px;
-    img{
+
+    img {
         object-fit: cover;
         object-position: center;
         width: 100%;
@@ -43,15 +50,20 @@
     }
 }
 
-@media (max-width: 1023px){
-    .banner{
+@media (max-width: 1023px) {
+    .banner {
         height: 310px;
+    }
+
+    .full-width {
+        height: 380px;
     }
 }
 
 
 @media (max-width: 739px) {
-    .banner{
-        height: 230px;
+    .full-width {
+        height: 250px;
+        
     }
 }

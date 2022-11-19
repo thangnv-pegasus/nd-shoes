@@ -64,7 +64,7 @@ function Header({ thisAccount, login, setLogin, cart, allProduct }) {
                                     </NavLink>
                                 </li>
                                 <li className={cx('all-products')}>
-                                    <NavLink to={`/${'products'}`} className={(nav) => cx({
+                                    <NavLink to={`/collections/${'products'}`} className={(nav) => cx({
                                         active: nav.isActive
                                     })}>
                                         Sản phẩm <span><FontAwesomeIcon icon={faAngleDown} /></span>
